@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNID - Inicio de Sesión</title>
+    
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+    <div class="login-bg px-3 py-4">
+        <!-- Espaciador superior -->
+        <div></div>
+
+        <!-- Contenido Central: Logo y Formulario -->
+        <main class="login-card text-center my-auto">
+            
+            <!-- Logo / Identidad UNID -->
+            <div class="mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center mb-1">
+                    <span class="brand-logo-text">UNID</span>
+                    <span class="brand-divider"></span>
+                    <span class="brand-icon-u">U</span>
+                </div>
+                <div class="brand-subtitle">
+                    Universidad Interamericana para el Desarrollo
+                </div>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form id="loginForm" class="text-start mt-5" novalidate>
+                
+                <!-- ID de Usuario -->
+                <div class="mb-3">
+                    <label for="userId" class="form-label-custom">ID de Usuario</label>
+                    <div class="input-group custom-input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-person-badge"></i>
+                        </span>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="userId" 
+                            placeholder="Ingresa tu número de identificación" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="mb-4">
+                    <label for="password" class="form-label-custom">Contraseña</label>
+                    <div class="input-group custom-input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="password" 
+                            placeholder="Escribe tu contraseña" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Botón de Entrada -->
+                <button type="submit" id="btnLogin" class="btn btn-access w-100 mb-3">
+                    ACCEDER
+                </button>
+
+                <!-- Ayuda -->
+                <div class="text-center mt-3">
+                    <a href="#" class="help-link">¿Necesitas ayuda?</a>
+                </div>
+
+            </form>
+
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="d-flex justify-content-between align-items-center w-100 px-md-4">
+            <a href="#" class="footer-link text-decoration-underline">AVISO DE PRIVACIDAD</a>
+            <span class="footer-text">Versión: 8.8.4.1</span>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5.3.8 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lógica Frontend Vanilla JS -->
+     <script src="js/script.js"></script>
+</body>
+</html>
