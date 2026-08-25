@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNID - Menú de Servicios</title>
+
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      :root {
+        /* Colores de Header / Footer (Intactos) */
+        --nav-bg: #151c2c;
+        --btn-red: #dc3545;
+        --btn-red-hover: #bb2d3b;
+
+        /* UI Refinada con Psicología del Color */
+        --main-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+
+        /* Primarios: Confianza y Acción */
+        --primary-blue: #1e40af;
+        --primary-blue-hover: #1e3a8a;
+        --accent-blue-bg: #eff6ff;
+
+        /* Badges */
+        --badge-institution-bg: #e0e7ff;
+        --badge-institution-text: #3730a3;
+      }
+
+      body {
+        background-color: var(--main-bg);
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header Principal (Sin Cambios) */
+      .navbar-unid {
+        background-color: var(--nav-bg);
+        padding: 0.6rem 2rem;
+      }
+
+      .navbar-brand-logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: 1px;
+      }
+
+      .navbar-brand-divider {
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        height: 20px;
+        margin: 0 12px;
+      }
+
+      .navbar-brand-sub {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+      }
+
+      .btn-header-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.38rem 0.9rem;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+
+      .btn-header-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+
+      .btn-header-danger {
+        background-color: var(--btn-red);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.38rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        border: none;
+      }
+
+      .btn-header-danger:hover {
+        background-color: var(--btn-red-hover);
+        color: #ffffff;
+      }
+
+      /* Submenú de Navegación Secundario */
+      .subnav-bar {
+        background-color: #ffffff;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0 2rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      }
+
+      .subnav-link {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.85rem 1.25rem;
+        display: inline-block;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .subnav-link:hover {
+        color: var(--primary-blue);
+      }
+
+      .subnav-link.active {
+        color: var(--primary-blue);
+        border-bottom-color: var(--primary-blue);
+      }
+
+      /* Indicador de Institución */
+      .badge-institution {
+        background-color: #e0f2fe;
+        color: #0369a1;
+        font-weight: 600;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid #bae6fd;
+      }
+
+      /* Tarjeta de Información del Alumno */
+      .student-info-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+
+      .avatar-circle {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background-color: var(--accent-blue-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+      }
+
+      /* Tarjetas de Servicio */
+      .service-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+        border-color: #cbd5e1;
+      }
+
+      .service-icon-wrapper {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        background-color: var(--accent-blue-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+      }
+
+      .service-icon-wrapper i {
+        font-size: 1.75rem;
+        color: var(--primary-blue);
+      }
+
+      .service-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text-main);
+        margin-bottom: 0.5rem;
+      }
+
+      .service-description-box {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        line-height: 1.5;
+      }
+
+      .btn-service-action {
+        background-color: var(--primary-blue);
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.75rem 1.75rem;
+        border-radius: 8px;
+        border: none;
+        transition: all 0.2s ease;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+      }
+
+      .btn-service-action:hover {
+        background-color: var(--primary-blue-hover);
+        color: #ffffff;
+        box-shadow: 0 4px 8px rgba(30, 64, 175, 0.3);
+        transform: translateY(-1px);
+      }
+
+      /* Footer (Sin Cambios) */
+      .footer-portal {
+        background-color: var(--nav-bg);
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        padding: 1rem 2rem;
+        margin-top: auto;
+      }
+
+           /* Psicología y Estética del Modal de Salida */
+      .bg-danger-subtle {
+        background-color: #fee2e2 !important;
+      }
+
+      .modal-content {
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="modal fade"
+      id="modalLogout"
+      tabindex="-1"
+      aria-labelledby="modalLogoutLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-body text-center p-4">
+            <div
+              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+              style="width: 60px; height: 60px"
+            >
+              <i class="bi bi-box-arrow-right fs-2"></i>
+            </div>
+            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+            <p class="text-muted small mb-4">
+              Estás a punto de salir del Portal de Alumnos UNID.
+            </p>
+            <div class="d-flex gap-2">
+              <button
+                type="button"
+                class="btn btn-light w-50 fw-semibold"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                id="btnConfirmLogout"
+                class="btn btn-danger w-50 fw-semibold"
+              >
+                Salir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Principal -->
+    <nav
+      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
+    >
+      <div class="d-flex align-items-center">
+        <span class="navbar-brand-logo">U UNID</span>
+        <span class="navbar-brand-divider"></span>
+        <span class="navbar-brand-sub">Portal de Alumnos</span>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-header-outline d-flex align-items-center gap-1">
+          <i class="bi bi-question-circle"></i> Ayuda
+        </button>
+        <button class="btn btn-header-outline d-flex align-items-center gap-1">
+          <i class="bi bi-list"></i> Menú
+        </button>
+        <button
+          id="btnLogout"
+          class="btn btn-header-danger d-flex align-items-center gap-1"
+        >
+          <i class="bi bi-box-arrow-right"></i> Salir
+        </button>
+      </div>
+    </nav>
+
+    <!-- Submenú Secundario de Navegación -->
+    <div class="subnav-bar">
+      <a href="../dashboard.html" class="subnav-link active">Inicio</a>
+      <a href="../informacion-personal.html" class="subnav-link"
+        >Información Personal</a
+      >
+      <a href="../alumnos-egresados.html" class="subnav-link"
+        >Alumnos y Egresados</a
+      >
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container-fluid px-md-5 py-4">
+      <!-- Encabezado de Sección -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold fs-3 m-0">Menú principal</h2>
+        <span class="badge-institution"
+          >Institución: <strong>UNID</strong></span
+        >
+      </div>
+
+      <!-- Tarjeta Alumno -->
+      <div class="student-info-card mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <div class="avatar-circle">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div>
+            <h2 class="h5 fw-bold mb-0 text-dark">Cesareo López, Marbella</h2>
+            <span class="text-muted small"
+              >Matrícula: <strong class="text-dark">00914664</strong></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Módulos de Servicio -->
+      <div class="row g-4 mb-4">
+        <!-- Solicitud de Servicio -->
+        <div class="col-12 col-md-6">
+          <div class="service-card">
+            <div>
+              <div class="service-icon-wrapper">
+                <i class="bi bi-journal-plus"></i>
+              </div>
+              <h3 class="service-title">Solicitud de Servicio</h3>
+              <div class="service-description-box">
+                Genera las solicitudes necesarias para tus trámites y servicios
+                estudiantiles de manera rápida y segura.
+              </div>
+            </div>
+            <div>
+              <button id="btnGenerarSolicitud" class="btn btn-service-action">
+                Generar Solicitud <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ver Estatus del Servicio -->
+        <div class="col-12 col-md-6">
+          <div class="service-card">
+            <div>
+              <div class="service-icon-wrapper">
+                <i class="bi bi-file-earmark-check"></i>
+              </div>
+              <h3 class="service-title">Ver Estatus del Servicio</h3>
+              <div class="service-description-box">
+                Consulta en tiempo real el progreso y estado actual de los
+                servicios que has solicitado previamente.
+              </div>
+            </div>
+            <div>
+              <button id="btnVerEstatus" class="btn btn-service-action">
+                Ver Estatus <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer
+      class="footer-portal d-flex justify-content-between align-items-center"
+    >
+      <span
+        >© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
+        reservados.</span
+      >
+      <div class="d-flex gap-3">
+        <a href="#" class="text-white-50 text-decoration-underline"
+          >Aviso de privacidad</a
+        >
+        <span>Versión: 8.8.4.1</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.8 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Lógica JavaScript Vanilla -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Manejo de clicks en botones de acción
+        const btnGenerarSolicitud = document.getElementById(
+          "btnGenerarSolicitud",
+        );
+        const btnVerEstatus = document.getElementById("btnVerEstatus");
+
+        if (btnGenerarSolicitud) {
+          btnGenerarSolicitud.addEventListener("click", () => {
+            console.log("Navegando a Generar Solicitud de Servicio...");
+          });
+        }
+
+        if (btnVerEstatus) {
+          btnVerEstatus.addEventListener("click", () => {
+            console.log("Navegando a Consulta de Estatus de Servicio...");
+          });
+        }
+
+        const modalLogout = new bootstrap.Modal(
+          document.getElementById("modalLogout"),
+        );
+
+        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+        const btnLogout = document.getElementById("btnLogout");
+        if (btnLogout) {
+          btnLogout.addEventListener("click", () => {
+            modalLogout.show();
+            F;
+          });
+        }
+
+        // Acción al confirmar la salida dentro del modal
+        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+        if (btnConfirmLogout) {
+          btnConfirmLogout.addEventListener("click", () => {
+            // Borrar el historial de navegación para evitar volver atrás
+            history.pushState(null, null, "../index.html");
+            window.location.href = "../index.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

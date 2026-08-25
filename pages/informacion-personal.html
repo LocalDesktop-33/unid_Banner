@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNID - Información Personal</title>
+
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      :root {
+        --nav-bg: #0f172a;
+        --main-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --btn-red: #dc3545;
+        --btn-red-hover: #bb2d3b;
+
+        /* Paleta Psicológica de Acentos UI */
+        --accent-blue: #2563eb;
+        --accent-blue-bg: #eff6ff;
+
+        --accent-coral: #e11d48;
+        --accent-coral-bg: #fff1f2;
+
+        --accent-green: #059669;
+        --accent-green-bg: #ecfdf5;
+
+        --accent-purple: #7c3aed;
+        --accent-purple-bg: #f5f3ff;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        background-color: var(--main-bg);
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Barra de Navegación Superior */
+      .navbar-unid {
+        background-color: var(--nav-bg);
+        padding: 0.6rem 2rem;
+      }
+
+      .navbar-brand-logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: 1px;
+      }
+
+      .navbar-brand-divider {
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        height: 20px;
+        margin: 0 12px;
+      }
+
+      .navbar-brand-sub {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+      }
+
+      .btn-header-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.38rem 0.9rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .btn-header-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+
+      .btn-header-danger {
+        background-color: var(--btn-red);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.38rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        border: none;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn-header-danger:hover {
+        background-color: var(--btn-red-hover);
+        color: #ffffff;
+      }
+
+      /* Sub-Navegación / Tabs */
+      .subnav-tabs-bar {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0 2rem;
+      }
+
+      .nav-tabs-unid {
+        border-bottom: none;
+        gap: 1.5rem;
+      }
+
+      .nav-tabs-unid .nav-link {
+        border: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.85rem 0.2rem;
+        position: relative;
+        background: transparent;
+      }
+
+      .nav-tabs-unid .nav-link.active {
+        color: var(--accent-blue);
+        background: transparent;
+      }
+
+      .nav-tabs-unid .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: var(--accent-blue);
+        border-radius: 3px 3px 0 0;
+      }
+
+      /* Buscador Superior */
+      .search-input-group {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        border: none;
+        overflow: hidden;
+        width: 260px;
+      }
+
+      .search-input-group .input-group-text {
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, 0.6);
+        padding-right: 0.5rem;
+      }
+
+      .search-input-group .form-control {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 0.88rem;
+      }
+
+      .search-input-group .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .search-input-group .form-control:focus {
+        box-shadow: none;
+        background: transparent;
+        color: #ffffff;
+      }
+
+      .btn-header-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        font-size: 0.85rem;
+        padding: 0.38rem 0.9rem;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+
+      /* Layout de Contenido */
+      .main-content {
+        flex: 1 0 auto;
+      }
+
+      .badge-institution {
+        background-color: #e0f2fe;
+        color: #0369a1;
+        font-weight: 600;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid #bae6fd;
+      }
+
+      /* Tarjetas de Módulo con Elevación */
+      .module-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        padding: 1.75rem;
+        border: 1px solid #f1f5f9;
+        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .module-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
+      }
+
+      .module-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* Iconos Temáticos con Código de Color */
+      .module-icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        flex-shrink: 0;
+      }
+
+      /* Variaciones según Categoría Psicológica */
+      .theme-contact .module-icon-box {
+        background-color: var(--accent-blue-bg);
+        color: var(--accent-blue);
+      }
+      .theme-contact .btn-module-action {
+        background-color: var(--accent-blue);
+      }
+
+      .theme-emergency .module-icon-box {
+        background-color: var(--accent-coral-bg);
+        color: var(--accent-coral);
+      }
+      .theme-emergency .btn-module-action {
+        background-color: var(--accent-coral);
+      }
+
+      .theme-security .module-icon-box {
+        background-color: var(--accent-green-bg);
+        color: var(--accent-green);
+      }
+      .theme-security .btn-module-action {
+        background-color: var(--accent-green);
+      }
+
+      .theme-profile .module-icon-box {
+        background-color: var(--accent-purple-bg);
+        color: var(--accent-purple);
+      }
+      .theme-profile .btn-module-action {
+        background-color: var(--accent-purple);
+      }
+
+      .module-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin: 0;
+      }
+
+      .module-list {
+        list-style-type: disc;
+        padding-left: 1.25rem;
+        margin-bottom: 2rem;
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
+
+      .module-list li {
+        margin-bottom: 0.25rem;
+      }
+
+      .module-card-footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .btn-module-action {
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 0.65rem 1.35rem;
+        border-radius: 10px;
+        border: none;
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .btn-module-action:hover {
+        opacity: 0.9;
+        color: #ffffff;
+        transform: translateX(2px);
+      }
+
+      /* Footer Oscuro */
+      .footer-portal {
+        background-color: var(--nav-bg);
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.8rem;
+        padding: 1rem clamp(1.5rem, 5vw, 4rem);
+        margin-top: auto;
+      }
+
+      .footer-portal a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: underline;
+      }
+
+      .footer-portal a:hover {
+        color: #ffffff;
+      }
+
+      .footer-version {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      /* Psicología y Estética del Modal de Salida */
+      .bg-danger-subtle {
+        background-color: #fee2e2 !important;
+      }
+
+      .modal-content {
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- modal -->
+    <!-- Modal Confirmación Cierre de Sesión -->
+    <div
+      class="modal fade"
+      id="modalLogout"
+      tabindex="-1"
+      aria-labelledby="modalLogoutLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-body text-center p-4">
+            <div
+              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+              style="width: 60px; height: 60px"
+            >
+              <i class="bi bi-box-arrow-right fs-2"></i>
+            </div>
+            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+            <p class="text-muted small mb-4">
+              Estás a punto de salir del Portal de Alumnos UNID.
+            </p>
+            <div class="d-flex gap-2">
+              <button
+                type="button"
+                class="btn btn-light w-50 fw-semibold"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                id="btnConfirmLogout"
+                class="btn btn-danger w-50 fw-semibold"
+              >
+                Salir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header Principal -->
+    <nav
+      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
+    >
+      <div class="d-flex align-items-center">
+        <span class="navbar-brand-logo">U UNID</span>
+        <span class="navbar-brand-divider"></span>
+        <span class="navbar-brand-sub">Portal de Alumnos</span>
+      </div>
+
+      <div class="d-flex align-items-center gap-3">
+        <div class="input-group search-input-group d-none d-md-flex">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control" placeholder="Buscar..." />
+        </div>
+
+        <button class="btn btn-header-outline d-flex align-items-center gap-1">
+          <i class="bi bi-question-circle"></i> Ayuda
+        </button>
+
+        <button
+          id="btnLogout"
+          class="btn btn-header-danger d-flex align-items-center gap-1"
+        >
+          <i class="bi bi-box-arrow-right"></i> Salir
+        </button>
+      </div>
+    </nav>
+    <!-- Sub-Navegación / Tabs -->
+    <div class="subnav-tabs-bar">
+      <ul class="nav nav-tabs-unid">
+        <li class="nav-item">
+          <a class="nav-link" href="./dashboard.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="./informacion-personal.html"
+            >Información Personal</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./alumnos-egresados.html"
+            >Alumnos y Egresados</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="main-content container-fluid px-md-5 py-4">
+      <!-- Encabezado de Sección y Badge Institución -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 fw-bold mb-0">Información Personal</h1>
+        <span class="badge-institution"
+          >Institución: <strong>UNID</strong></span
+        >
+      </div>
+
+      <!-- Grid de Opciones -->
+      <div class="row g-4 mb-4">
+        <!-- Tarjeta 1: Datos de Contacto (Azul: Comunicación/Confianza) -->
+        <div class="col-12 col-md-6">
+          <div class="module-card theme-contact">
+            <div class="module-card-header">
+              <div class="module-icon-box">
+                <i class="bi bi-person-vcard-fill"></i>
+              </div>
+              <h2 class="module-title">Datos de Contacto</h2>
+            </div>
+            <ul class="module-list">
+              <li>Direcciones y Teléfonos.</li>
+              <li>Correos electrónicos.</li>
+            </ul>
+            <div class="module-card-footer">
+              <button class="btn btn-module-action">
+                Editar Contacto <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Contactos de Emergencia (Coral: Atención/Soporte Vital) -->
+        <div class="col-12 col-md-6">
+          <div class="module-card theme-emergency">
+            <div class="module-card-header">
+              <div class="module-icon-box">
+                <i class="bi bi-telephone-plus-fill"></i>
+              </div>
+              <h2 class="module-title">Contactos de Emergencia</h2>
+            </div>
+            <ul class="module-list">
+              <li>Personas de Contacto.</li>
+              <li>Relación y Teléfono Directo.</li>
+            </ul>
+            <div class="module-card-footer">
+              <button class="btn btn-module-action">
+                Gestionar Contactos <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Seguridad y Cuenta (Verde: Protección/Tranquilidad) -->
+        <div class="col-12 col-md-6">
+          <div class="module-card theme-security">
+            <div class="module-card-header">
+              <div class="module-icon-box">
+                <i class="bi bi-shield-lock-fill"></i>
+              </div>
+              <h2 class="module-title">Seguridad y Cuenta</h2>
+            </div>
+            <ul class="module-list">
+              <li>Cambiar Pregunta de Seguridad.</li>
+              <li>Cambiar NIP / Contraseña.</li>
+              <li>Firma o PIN</li>
+            </ul>
+            <div class="module-card-footer">
+              <button class="btn btn-module-action">
+                Ajustes de Seguridad <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Perfil y Encuestas (Púrpura: Percepción/Identidad) -->
+        <div class="col-12 col-md-6">
+          <div class="module-card theme-profile">
+            <div class="module-card-header">
+              <div class="module-icon-box">
+                <i class="bi bi-person-circle"></i>
+              </div>
+              <h2 class="module-title">Perfil y Encuestas</h2>
+            </div>
+            <ul class="module-list">
+              <li>Perfil de Directorio</li>
+              <li>Estado Civil</li>
+              <li>Encuestas Generales y Resultados</li>
+            </ul>
+            <div class="module-card-footer">
+              <button class="btn btn-module-action">
+                Ver / Responder <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Oscuro Estático -->
+    <footer
+      class="footer-portal d-flex justify-content-between align-items-center flex-wrap gap-2"
+    >
+      <span
+        >© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
+        reservados.</span
+      >
+
+      <div class="d-flex align-items-center gap-3">
+        <a href="#">Aviso de privacidad</a>
+        <span class="footer-version">Versión: 8.8.4.1</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.8 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Lógica JavaScript Vanilla -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const modalLogout = new bootstrap.Modal(
+          document.getElementById("modalLogout"),
+        );
+
+        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+        const btnLogout = document.getElementById("btnLogout");
+        if (btnLogout) {
+          btnLogout.addEventListener("click", () => {
+            modalLogout.show();
+            F;
+          });
+        }
+
+        // Acción al confirmar la salida dentro del modal
+        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+        if (btnConfirmLogout) {
+          btnConfirmLogout.addEventListener("click", () => {
+            // Borrar el historial de navegación para evitar volver atrás
+            history.pushState(null, null, "../index.html");
+            window.location.href = "../index.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

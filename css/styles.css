@@ -1,0 +1,159 @@
+    
+
+        :root {
+            --primary-yellow: #f8b300;
+            --primary-yellow-hover: #e0a200;
+            --dark-overlay: rgba(23, 22, 38, 0.82);
+            --border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #ffffff;
+        }
+
+        /* Fondo con imagen y overlay oscuro */
+        .login-bg {
+            background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), 
+                        url('https://sic.cultura.gob.mx/images/138447') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Contenedor del Formulario */
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        /* Títulos e Identidad */
+        .brand-logo-text {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .brand-divider {
+            border-left: 2px solid rgba(255, 255, 255, 0.4);
+            height: 50px;
+            margin: 0 15px;
+        }
+
+        .brand-icon-u {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #171626;
+            background: #ffffff;
+            padding: 0 10px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Detalle amarillo superior en la 'U' */
+        .brand-icon-u::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 12px 12px 0;
+            border-color: transparent var(--primary-yellow) transparent transparent;
+        }
+
+        .brand-subtitle {
+            font-size: 1.15rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Inputs Personalizados estilo UNID */
+        .custom-input-group {
+            border: 1px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.2);
+            transition: border-color 0.2s ease;
+        }
+
+        .custom-input-group:focus-within {
+            border-color: #ffffff;
+            box-shadow: 0 0 0 1px #ffffff;
+        }
+
+        .custom-input-group .input-group-text {
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--border-color);
+            color: #ffffff;
+            padding: 0.6rem 1rem;
+            font-size: 1.25rem;
+        }
+
+        .custom-input-group .form-control {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 0.95rem;
+            padding: 0.6rem 1rem;
+        }
+
+        .custom-input-group .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .custom-input-group .form-control:focus {
+            background: transparent;
+            color: #ffffff;
+            box-shadow: none;
+        }
+
+        .form-label-custom {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+            color: #ffffff;
+        }
+
+        /* Botón de Acción Principal */
+        .btn-access {
+            background-color: var(--primary-yellow);
+            color: #000000;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-access:hover {
+            background-color: var(--primary-yellow-hover);
+            color: #000000;
+        }
+
+        /* Enlaces del pie de página y ayuda */
+        .help-link, .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .help-link:hover, .footer-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }

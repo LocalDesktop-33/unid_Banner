@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNID - Estado de cuenta</title>
+    
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            /* Psicología del Color en UI Financiera */
+            --nav-bg: #0f172a;               /* Slate 900: Autoridad, seguridad y elegancia */
+            --main-bg: #f8fafc;              /* Slate 50: Neutralidad limpia, reduce fatiga visual */
+            --card-bg: #ffffff;
+            --text-main: #1e293b;            /* Slate 800: Alto contraste y legibilidad óptima */
+            --text-muted: #64748b;           /* Slate 500: Jerarquía secundaria */
+            --border-color: #e2e8f0;
+            
+            /* Colores de Estado y Acción */
+            --primary-blue: #2563eb;         /* Blue 600: Confianza institucional */
+            --btn-pay: #059669;              /* Emerald 600: Éxito, avance y resolución financiera */
+            --btn-pay-hover: #047857;
+            --alert-warning-bg: #fffbeb;     /* Amber 50: Llamado de atención sin pánico */
+            --alert-warning-text: #d97706;  /* Amber 600: Urgencia/Vencimiento */
+            --status-active-bg: #ecfdf5;     /* Emerald 50 */
+            --status-active-text: #059669;
+            --btn-danger: #ef4444;           /* Red 500: Salida/Destructivo */
+            --btn-danger-hover: #dc2626;
+        }
+
+        body {
+            background-color: var(--main-bg);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 90px;
+        }
+
+        /* Top Navbar */
+        .navbar-unid {
+            background-color: var(--nav-bg);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-brand-divider {
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            height: 20px;
+            margin: 0 12px;
+        }
+
+        .navbar-brand-sub {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .btn-header-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-header-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .btn-header-danger {
+            background-color: var(--btn-danger);
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn-header-danger:hover {
+            background-color: var(--btn-danger-hover);
+        }
+
+        /* Tarjeta de Alumno */
+        .student-info-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #eff6ff;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .badge-active {
+            background-color: var(--status-active-bg);
+            color: var(--status-active-text);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-value {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Cards KPI */
+        .kpi-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            height: 100%;
+            position: relative;
+        }
+
+        .kpi-card.highlight-blue {
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .kpi-card.highlight-warning {
+            border-left: 4px solid var(--alert-warning-text);
+            background-color: #fffdfa;
+        }
+
+        .kpi-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+        }
+
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 0.3rem;
+        }
+
+        .badge-warning-custom {
+            background-color: var(--alert-warning-bg);
+            color: var(--alert-warning-text);
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 0.4rem;
+            border: 1px solid #fde68a;
+        }
+
+        /* Tabla de Conceptos */
+        .concepts-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            padding: 1.25rem;
+        }
+
+        .table-custom {
+            width: 100%;
+            margin: 0;
+        }
+
+        .table-custom th {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .table-custom td {
+            padding: 1rem;
+            vertical-align: middle;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .period-header-row td {
+            background-color: #f8fafc;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            padding: 0.75rem 1rem;
+        }
+
+        .concept-row {
+            transition: background-color 0.15s;
+        }
+
+        .concept-row:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Sticky Checkout Footer Bar */
+        .checkout-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        .total-amount {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .btn-pay {
+            background-color: var(--btn-pay);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn-pay:hover:not(:disabled) {
+            background-color: var(--btn-pay-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(5, 150, 105, 0.3);
+        }
+
+        .btn-pay:disabled {
+            background-color: #9ca3af;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .footer-portal {
+            background-color: var(--nav-bg);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Modales */
+        .bg-danger-subtle {
+            background-color: #fee2e2 !important;
+        }
+
+        .bg-success-subtle {
+            background-color: #dcfce7 !important;
+        }
+
+        .modal-content {
+            border-radius: 12px;
+        }
+
+        .payment-option-card {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .payment-option-card:hover {
+            border-color: var(--primary-blue);
+            background-color: #f8fafc;
+        }
+
+        .payment-option-card.active {
+            border-color: var(--primary-blue);
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modal Confirmación Cierre de Sesión -->
+    <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center p-4">
+                    <div class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px">
+                        <i class="bi bi-box-arrow-right fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+                    <p class="text-muted small mb-4">Estás a punto de salir del Portal de Alumnos UNID.</p>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">Salir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Procesar Pago (Éxito/Seguridad - Verde/Azul) -->
+    <div class="modal fade" id="modalPayment" tabindex="-1" aria-labelledby="modalPaymentLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4 pb-4 pt-0">
+                    <div class="text-center mb-3">
+                        <div class="rounded-circle bg-success-subtle text-success d-inline-flex align-items-center justify-content-center mb-2" style="width: 56px; height: 56px">
+                            <i class="bi bi-shield-lock-fill fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1" id="modalPaymentLabel">Confirmar y Pagar</h5>
+                        <p class="text-muted small mb-0">Transacción encriptada y 100% segura</p>
+                    </div>
+
+                    <!-- Resumen del Pago -->
+                    <div class="p-3 bg-light rounded-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted small">Conceptos a liquidar:</span>
+                            <span id="modalSelectedCount" class="badge bg-secondary">2 seleccionados</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                            <span class="fw-bold text-dark">Total a pagar:</span>
+                            <strong id="modalTotalPay" class="fs-4 text-success">$880.00 MXN</strong>
+                        </div>
+                    </div>
+
+                    <!-- Selección de Método de Pago -->
+                    <div class="mb-4">
+                        <label class="meta-label mb-2 d-block">MÉTODO DE PAGO</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="payment-option-card active d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-credit-card-2-front fs-5 text-primary"></i>
+                                    <span class="fw-semibold small">Tarjeta de Débito / Crédito</span>
+                                </div>
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                            </div>
+                            <div class="payment-option-card d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-bank fs-5 text-secondary"></i>
+                                    <span class="fw-semibold small">Transferencia SPEI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="btnExecutePay" class="btn btn-pay w-100 py-2 fw-bold">
+                        <i class="bi bi-lock-fill me-1"></i> Proceder al Pago Seguro
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Principal -->
+    <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <span class="navbar-brand-logo">U UNID</span>
+            <span class="navbar-brand-divider"></span>
+            <span class="navbar-brand-sub">Portal de Alumnos</span>
+        </div>
+
+        <div class="navbar-title text-white fw-bold d-none d-md-block fs-6">
+            Estado de cuenta
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-header-outline d-flex align-items-center gap-1">
+                <i class="bi bi-question-circle"></i> Ayuda
+            </button>
+
+            <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+                <i class="bi bi-box-arrow-right"></i> Salir
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container-fluid px-md-5 py-4">
+        
+        <!-- Información del Alumno -->
+        <div class="student-info-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-circle">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div>
+                        <h1 class="h5 fw-bold mb-0">Cesareo López, Marbella</h1>
+                        <span class="text-muted small">Matrícula: <strong>00914664</strong></span>
+                    </div>
+                </div>
+                <span class="badge-active"><i class="bi bi-check-circle-fill me-1"></i> ACTIVO</span>
+            </div>
+
+            <hr class="my-3 text-muted opacity-25">
+
+            <div class="row g-3">
+                <div class="col-12 col-md-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-geo-alt text-primary fs-5"></i>
+                    <div>
+                        <div class="meta-label">CAMPUS</div>
+                        <div class="meta-value">TEJ – Sede Tejupilco</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-award text-primary fs-5"></i>
+                    <div>
+                        <div class="meta-label">BECA VIGENTE</div>
+                        <div class="meta-value">202640 – 45%</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-journal-bookmark text-primary fs-5"></i>
+                    <div>
+                        <div class="meta-label">PROGRAMA</div>
+                        <div class="meta-value">LIC-EJEP-18 – Lic. En Educación</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Métricas KPI -->
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-4">
+                <div class="kpi-card highlight-blue">
+                    <div class="meta-label">SALDO PENDIENTE</div>
+                    <div class="kpi-value">$880.00 <span class="fs-6 text-muted fw-normal">MXN</span></div>
+                    <div class="kpi-icon-box">
+                        <i class="bi bi-wallet2 text-primary"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="kpi-card">
+                    <div class="meta-label">CONCEPTOS PENDIENTES</div>
+                    <div class="kpi-value">2</div>
+                    <div class="kpi-icon-box">
+                        <i class="bi bi-receipt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="kpi-card highlight-warning">
+                    <div class="meta-label">PRÓXIMO VENCIMIENTO</div>
+                    <div class="kpi-value">17 ago 2026</div>
+                    <span class="badge-warning-custom"><i class="bi bi-exclamation-triangle-fill me-1"></i> VENCE HOY</span>
+                    <div class="kpi-icon-box">
+                        <i class="bi bi-calendar-event text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Conceptos -->
+        <div class="mb-2">
+            <h2 class="h5 fw-bold mb-1">Conceptos pendientes</h2>
+            <p class="text-muted small mb-3">Selecciona los cargos que deseas liquidar en esta sesión.</p>
+        </div>
+
+        <div class="concepts-card mb-5">
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th>CÓDIGO</th>
+                            <th>CONCEPTO</th>
+                            <th>PERIODO</th>
+                            <th>MONTO</th>
+                            <th>VENCIMIENTO</th>
+                            <th>ESTADO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sep-Dic 2026 -->
+                        <tr class="period-header-row">
+                            <td colspan="7"><i class="bi bi-calendar3 me-1"></i> Cuatrimestre Sep–Dic 2026</td>
+                        </tr>
+                        <tr class="concept-row">
+                            <td class="text-center">
+                                <input type="checkbox" class="form-check-input concept-checkbox" data-amount="440" checked>
+                            </td>
+                            <td class="fw-bold">CSDE</td>
+                            <td>Cargo servicio por desempleo</td>
+                            <td class="text-muted">Sep–Dic 2026</td>
+                            <td class="fw-bold">$440.00 MXN</td>
+                            <td class="text-muted">30 sep 2026</td>
+                            <td><span class="badge bg-light text-dark border fw-semibold">PENDIENTE</span></td>
+                        </tr>
+
+                        <!-- May-Ago 2026 -->
+                        <tr class="period-header-row">
+                            <td colspan="7"><i class="bi bi-calendar3 me-1"></i> Cuatrimestre May–Ago 2026</td>
+                        </tr>
+                        <tr class="concept-row">
+                            <td class="text-center">
+                                <input type="checkbox" class="form-check-input concept-checkbox" data-amount="440" checked>
+                            </td>
+                            <td class="fw-bold">CSDE</td>
+                            <td>Cargo servicio por desempleo</td>
+                            <td class="text-muted">May–Ago 2026</td>
+                            <td class="fw-bold">$440.00 MXN</td>
+                            <td class="text-muted">17 ago 2026</td>
+                            <td><span class="badge-warning-custom">VENCE HOY</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Barra de Pago Inferior -->
+    <div class="checkout-bar d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+            <div class="text-muted small">Total seleccionado: <span id="totalAmountText" class="total-amount ms-2">$880.00 MXN</span></div>
+            <div id="selectedCountText" class="small fw-semibold text-success">✓ 2 conceptos seleccionados</div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+            <button id="btnContinuePay" class="btn-pay">
+                Pagar Selección <i class="bi bi-arrow-right-short fs-5 align-middle"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-portal d-flex justify-content-between align-items-center">
+        <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos reservados.</span>
+        <div class="d-flex gap-3">
+            <a href="#" class="text-white-50 text-decoration-underline">Aviso de privacidad</a>
+            <span>Versión: 8.8.4.1</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.concept-checkbox');
+            const totalAmountText = document.getElementById('totalAmountText');
+            const selectedCountText = document.getElementById('selectedCountText');
+            const btnContinuePay = document.getElementById('btnContinuePay');
+
+            // Modales Bootstrap
+            const modalLogout = new bootstrap.Modal(document.getElementById("modalLogout"));
+            const modalPayment = new bootstrap.Modal(document.getElementById("modalPayment"));
+
+            // Variables acumuladoras
+            let currentTotal = 880.00;
+            let currentCount = 2;
+
+            function updateTotal() {
+                let total = 0;
+                let count = 0;
+
+                checkboxes.forEach(chk => {
+                    if (chk.checked) {
+                        total += parseFloat(chk.getAttribute('data-amount'));
+                        count++;
+                    }
+                });
+
+                currentTotal = total;
+                currentCount = count;
+
+                totalAmountText.textContent = `$${total.toFixed(2)} MXN`;
+                
+                if (count > 0) {
+                    selectedCountText.textContent = `✓ ${count} concepto${count > 1 ? 's' : ''} seleccionado${count > 1 ? 's' : ''}`;
+                    selectedCountText.className = 'small fw-semibold text-success';
+                    btnContinuePay.disabled = false;
+                } else {
+                    selectedCountText.textContent = 'Ningún concepto seleccionado';
+                    selectedCountText.className = 'small fw-semibold text-muted';
+                    btnContinuePay.disabled = true;
+                }
+            }
+
+            checkboxes.forEach(chk => {
+                chk.addEventListener('change', updateTotal);
+            });
+
+            // Abrir Modal de Pago
+            btnContinuePay.addEventListener('click', () => {
+                document.getElementById('modalSelectedCount').textContent = `${currentCount} seleccionado${currentCount > 1 ? 's' : ''}`;
+                document.getElementById('modalTotalPay').textContent = `$${currentTotal.toFixed(2)} MXN`;
+                modalPayment.show();
+            });
+
+            // Acción del botón interno de pago dentro del modal
+            document.getElementById('btnExecutePay').addEventListener('click', () => {
+                modalPayment.hide();
+                // Lógica de procesamiento de pago
+            });
+
+            // Salir
+            const btnLogout = document.getElementById("btnLogout");
+            if (btnLogout) {
+                btnLogout.addEventListener("click", () => {
+                    modalLogout.show();
+                });
+            }
+
+            const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+            if (btnConfirmLogout) {
+                btnConfirmLogout.addEventListener("click", () => {
+                    history.pushState(null, null, "../index.html");
+                    window.location.href = "../index.html";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
