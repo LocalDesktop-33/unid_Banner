@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNID - Reimpresión de Comprobantes</title>
+    
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            /* Variables de Marca e Identidad */
+            --nav-bg: #0f172a;               /* Slate 900: Autoridad, seguridad y elegancia */
+            --main-bg: #f8fafc;              /* Slate 50: Neutralidad para entornos legibles */
+            --card-bg: #ffffff;
+            --text-main: #1e293b;            /* Slate 800: Alto contraste y lectura cómoda */
+            --text-muted: #64748b;           /* Slate 500: Jerarquía secundaria */
+            --border-color: #e2e8f0;
+            
+            /* Botones y Acciones */
+            --primary-blue: #2563eb;         /* Blue 600: Acción principal / Confianza */
+            --primary-blue-hover: #1d4ed8;
+            --btn-danger: #ef4444;           /* Red 500: Destructivo/Salir */
+            --btn-danger-hover: #dc2626;
+            
+            /* Psicología de Alerta / Error Suave */
+            --warning-soft-bg: #fffbeb;     /* Amber 50 */
+            --warning-soft-border: #fef3c7; /* Amber 100 */
+            --warning-icon-color: #f59e0b;  /* Amber 500 */
+        }
+
+        body {
+            background-color: var(--main-bg);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Principal */
+        .navbar-unid {
+            background-color: var(--nav-bg);
+            padding: 0.75rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-brand-divider {
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            height: 20px;
+            margin: 0 12px;
+        }
+
+        .navbar-brand-sub {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .search-input-group {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            width: 240px;
+            transition: all 0.2s ease;
+        }
+
+        .search-input-group:focus-within {
+            background-color: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .search-input-group .input-group-text {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            padding-right: 0.5rem;
+        }
+
+        .search-input-group .form-control {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 0.85rem;
+        }
+
+        .search-input-group .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-input-group .form-control:focus {
+            box-shadow: none;
+            background: transparent;
+            color: #ffffff;
+        }
+
+        .btn-header-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-header-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .btn-header-danger {
+            background-color: var(--btn-danger);
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn-header-danger:hover {
+            background-color: var(--btn-danger-hover);
+            color: #ffffff;
+        }
+
+        /* Sub-navegación Pestañas */
+        .subnav-tabs {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 2rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .subnav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.85rem 1rem;
+            display: inline-block;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .subnav-link.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .subnav-link:hover:not(.active) {
+            color: var(--text-main);
+        }
+
+        /* Tarjeta de Error con Optimización UX */
+        .error-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            max-width: 580px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            margin: auto;
+        }
+
+        /* Contenedor del Icono de Estado */
+        .error-icon-wrapper {
+            width: 96px;
+            height: 96px;
+            background-color: var(--warning-soft-bg);
+            border: 2px solid var(--warning-soft-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem auto;
+            color: var(--warning-icon-color);
+            font-size: 2.75rem;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+
+        .error-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        .error-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        /* Botones de Acción */
+        .btn-primary-custom {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.65rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--primary-blue-hover);
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary-custom {
+            background-color: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            border-color: #cbd5e1;
+        }
+
+        /* Caja de Soporte */
+        .support-box {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-top: 2rem;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .support-link {
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .support-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer-portal {
+            background-color: var(--nav-bg);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            padding: 1rem 2rem;
+            margin-top: auto;
+        }
+         /* Psicología y Estética del Modal de Salida */
+      .bg-danger-subtle {
+        background-color: #fee2e2 !important;
+      }
+
+      .modal-content {
+        border-radius: 12px;
+      }
+    </style>
+</head>
+<body>
+
+     <!-- modal -->
+    <!-- Modal Confirmación Cierre de Sesión -->
+    <div
+      class="modal fade"
+      id="modalLogout"
+      tabindex="-1"
+      aria-labelledby="modalLogoutLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-body text-center p-4">
+            <div
+              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+              style="width: 60px; height: 60px"
+            >
+              <i class="bi bi-box-arrow-right fs-2"></i>
+            </div>
+            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+            <p class="text-muted small mb-4">
+              Estás a punto de salir del Portal de Alumnos UNID.
+            </p>
+            <div class="d-flex gap-2">
+              <button
+                type="button"
+                class="btn btn-light w-50 fw-semibold"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                id="btnConfirmLogout"
+                class="btn btn-danger w-50 fw-semibold"
+              >
+                Salir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header Principal -->
+    <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <span class="navbar-brand-logo">U UNID</span>
+            <span class="navbar-brand-divider"></span>
+            <span class="navbar-brand-sub">Portal de Alumnos</span>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+            <div class="input-group search-input-group d-none d-md-flex">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control" placeholder="Buscar...">
+            </div>
+            
+            <button class="btn btn-header-outline d-flex align-items-center gap-1">
+                <i class="bi bi-question-circle"></i> Ayuda
+            </button>
+            
+            <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+                <i class="bi bi-box-arrow-right"></i> Salir
+            </button>
+        </div>
+    </nav>
+
+    <!-- Subnavegación de Pestañas -->
+    <div class="subnav-tabs">
+        <a href="../dashboard.html" class="subnav-link active">Inicio</a>
+        <a href="../informacion-personal.html" class="subnav-link">Información Personal</a>
+        <a href="../alumnos-egresados.html" class="subnav-link">Alumnos y Egresados</a>
+    </div>
+
+    <!-- Contenido Principal Centrado -->
+    <main class="container d-flex align-items-center justify-content-center flex-grow-1 py-5">
+        
+        <div class="error-card text-center">
+            <!-- Icono Suave de Advertencia -->
+            <div class="error-icon-wrapper">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+
+            <!-- Título y Mensaje Explicativo -->
+            <h1 class="error-title">No pudimos cargar esta sección</h1>
+            <p class="error-description">
+                Ocurrió un inconveniente temporal al intentar consultar tus comprobantes. Puedes reintentar la carga o volver al menú principal.
+            </p>
+
+            <!-- Acciones de Recuperación -->
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-2 mb-2">
+                <button onclick="window.location.reload();" class="btn btn-secondary-custom">
+                    <i class="bi bi-arrow-clockwise"></i> Reintentar
+                </button>
+                <a href="../dashboard.html" id="btnGoHome" class="btn btn-primary-custom">
+                    <i class="bi bi-house-door-fill"></i> Regresar al inicio
+                </a>
+            </div>
+
+            <!-- Asistencia UX Directa -->
+            <div class="support-box d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-headset fs-5 text-primary"></i>
+                <span>¿El problema continúa? <a href="#" class="support-link">Contactar a Soporte Técnico</a></span>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer-portal d-flex justify-content-between align-items-center">
+        <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos reservados.</span>
+        <span>Versión: 8.8.4.1</span>
+    </footer>
+
+    <!-- Bootstrap 5.3.8 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Lógica JavaScript Vanilla -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const modalLogout = new bootstrap.Modal(
+          document.getElementById("modalLogout"),
+        );
+
+        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+        const btnLogout = document.getElementById("btnLogout");
+        if (btnLogout) {
+          btnLogout.addEventListener("click", () => {
+            modalLogout.show();
+            F;
+          });
+        }
+
+        // Acción al confirmar la salida dentro del modal
+        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+        if (btnConfirmLogout) {
+          btnConfirmLogout.addEventListener("click", () => {
+            // Borrar el historial de navegación para evitar volver atrás
+            history.pushState(null, null, "../index.html");
+            window.location.href = "../index.html";
+          });
+        }
+        });
+    </script>
+</body>
+</html>

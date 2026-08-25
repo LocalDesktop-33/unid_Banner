@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNID - Encuestas UNID</title>
+    
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            /* Colores Institucionales */
+            --nav-bg: #151c2c;
+            --main-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --btn-red: #dc3545;
+            --btn-red-hover: #bb2d3b;
+            --border-color: #e2e8f0;
+            
+            /* Colores Psicológicos de Estado */
+            --primary-blue: #1e40af;
+            --accent-blue-bg: #eff6ff;
+            
+            /* Éxito / Estado Al Día (Verde Esmeralda) */
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            --success-text-title: #065f46;
+            --success-text-body: #047857;
+            --success-icon-bg: #d1fae5;
+            --success-icon-color: #059669;
+        }
+
+        body {
+            background-color: var(--main-bg);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Principal (Intacto) */
+        .navbar-unid {
+            background-color: var(--nav-bg);
+            padding: 0.6rem 2rem;
+        }
+
+        .navbar-brand-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand-divider {
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            height: 20px;
+            margin: 0 12px;
+        }
+
+        .navbar-brand-sub {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .navbar-title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .btn-header-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.38rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .btn-header-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .btn-header-danger {
+            background-color: var(--btn-red);
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 0.38rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-header-danger:hover {
+            background-color: var(--btn-red-hover);
+            color: #ffffff;
+        }
+
+        /* Tarjeta de Información del Alumno Refinada */
+        .student-info-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--accent-blue-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+        }
+
+        /* Banner Horizontal Al Día (Alineado a la Izquierda) */
+        .surveys-empty-banner {
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 0 2px 6px rgba(16, 185, 129, 0.04);
+        }
+
+        .icon-success-box {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            background-color: var(--success-icon-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--success-icon-color);
+            font-size: 1.6rem;
+        }
+
+        .empty-banner-title {
+            color: var(--success-text-title);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .empty-banner-desc {
+            color: var(--success-text-body);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* Footer (Intacto) */
+        .footer-portal {
+            background-color: var(--nav-bg);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            padding: 1rem 2rem;
+            margin-top: auto;
+        }
+
+              /* Psicología y Estética del Modal de Salida */
+      .bg-danger-subtle {
+        background-color: #fee2e2 !important;
+      }
+
+      .modal-content {
+        border-radius: 12px;
+      }
+    </style>
+</head>
+<body>
+     <!-- modal -->
+    <!-- Modal Confirmación Cierre de Sesión -->
+    <div
+      class="modal fade"
+      id="modalLogout"
+      tabindex="-1"
+      aria-labelledby="modalLogoutLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-body text-center p-4">
+            <div
+              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+              style="width: 60px; height: 60px"
+            >
+              <i class="bi bi-box-arrow-right fs-2"></i>
+            </div>
+            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+            <p class="text-muted small mb-4">
+              Estás a punto de salir del Portal de Alumnos UNID.
+            </p>
+            <div class="d-flex gap-2">
+              <button
+                type="button"
+                class="btn btn-light w-50 fw-semibold"
+                data-bs-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                id="btnConfirmLogout"
+                class="btn btn-danger w-50 fw-semibold"
+              >
+                Salir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Header Principal -->
+    <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <span class="navbar-brand-logo">U UNID</span>
+            <span class="navbar-brand-divider"></span>
+            <span class="navbar-brand-sub">Portal de Alumnos</span>
+        </div>
+
+        <div class="navbar-title d-none d-md-block">
+            Encuestas UNID
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-header-outline d-flex align-items-center gap-1">
+                <i class="bi bi-question-circle"></i> Ayuda
+            </button>
+            <button class="btn btn-header-outline d-flex align-items-center gap-1">
+                <i class="bi bi-list"></i> Menú
+            </button>
+            <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+                <i class="bi bi-box-arrow-right"></i> Salir
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container-fluid px-md-5 py-4">
+        
+        <!-- Tarjeta Alumno -->
+        <div class="student-info-card mb-4">
+            <div class="d-flex align-items-center gap-3">
+                <div class="avatar-circle">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <div>
+                    <h1 class="h5 fw-bold mb-0">Cesareo López, Marbella</h1>
+                    <span class="text-muted small">Matrícula: <strong class="text-dark">00914664</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Título de Sección -->
+        <div class="d-flex align-items-center gap-2 mb-3">
+            <h2 class="h4 fw-bold mb-0">Encuestas asignadas</h2>
+            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">0 pendientes</span>
+        </div>
+
+        <!-- Banner Horizontal: Sin Encuestas Pendientes (Alineado a la Izquierda) -->
+        <div class="surveys-empty-banner d-flex align-items-start gap-3 mb-4">
+            <div class="icon-success-box">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div>
+                <h3 class="empty-banner-title">¡Felicidades! No tienes encuestas pendientes</h3>
+                <p class="empty-banner-desc">
+                    Por ahora has completado todas tus evaluaciones requeridas. Tus comentarios nos ayudan a mejorar continuamente la experiencia académica.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Pie de Página -->
+    <footer class="footer-portal d-flex justify-content-between align-items-center">
+        <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos reservados.</span>
+        <div class="d-flex gap-3">
+            <a href="#" class="text-white-50 text-decoration-underline">Aviso de privacidad</a>
+            <span>Versión: 8.8.4.1</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.8 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Lógica JavaScript Vanilla -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const modalLogout = new bootstrap.Modal(
+          document.getElementById("modalLogout"),
+        );
+
+        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+        const btnLogout = document.getElementById("btnLogout");
+        if (btnLogout) {
+          btnLogout.addEventListener("click", () => {
+            modalLogout.show();
+            F;
+          });
+        }
+
+        // Acción al confirmar la salida dentro del modal
+        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+        if (btnConfirmLogout) {
+          btnConfirmLogout.addEventListener("click", () => {
+            // Borrar el historial de navegación para evitar volver atrás
+            history.pushState(null, null, "../index.html");
+            window.location.href = "../index.html";
+          });
+        }
+      });
+    </script>
+</body>
+</html>
