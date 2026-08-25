@@ -191,7 +191,7 @@
       }
 
       /* =======================================================
-           BANNER SALUDO ALUMNO (PSICOLOGÍA VERDE / CRECIMIENTO)
+           BANNER SALUDO ALUMNO (CON IMAGEN DEL LOBO)
         ======================================================= */
       .student-welcome-card {
         background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
@@ -201,18 +201,18 @@
         box-shadow: 0 2px 8px rgba(13, 148, 136, 0.05);
       }
 
-      .student-avatar-icon {
-        width: 50px;
-        height: 50px;
-        background-color: #d1fae5;
-        color: #059669;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-      }
-
+.student-avatar-img {
+  display: block;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover; /* Llena el círculo sin deformar */
+  object-position: top center; /* Ajusta el enfoque hacia la parte superior/cara */
+  border: 2px solid #059669;
+  background-color: #ffffff;
+  padding: 2px;
+  box-sizing: border-box;
+}
       .student-name {
         font-size: 1.15rem;
         font-weight: 700;
@@ -377,7 +377,6 @@
     </style>
   </head>
   <body>
-    <!-- modal -->
     <!-- Modal Confirmación Cierre de Sesión -->
     <div
       class="modal fade"
@@ -420,12 +419,12 @@
       </div>
     </div>
 
-    <!-- Header Principal (EXACTAMENTE IGUAL) -->
+    <!-- Header Principal -->
     <nav
       class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
     >
       <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">U UNID</span>
+        <span class="navbar-brand-logo">UNID</span>
         <span class="navbar-brand-divider"></span>
         <span class="navbar-brand-sub">Portal de Alumnos</span>
       </div>
@@ -470,17 +469,19 @@
         >
       </div>
 
-      <!-- Tarjeta Saludo e Identificación del Alumno -->
+      <!-- Tarjeta Saludo e Identificación del Alumno con Imagen del Lobo -->
       <div
         class="student-welcome-card mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3"
       >
         <div class="d-flex align-items-center gap-3">
-          <div class="student-avatar-icon">
-            <i class="bi bi-person-check-fill"></i>
-          </div>
+          <img
+            src="../img/image_lobo-removebg-preview.png"
+            alt="Mascota Lobo UNID"
+            class="student-avatar-img"
+          />
           <div>
             <div class="student-name">
-              Bienvenido(a), Marbella Cesareo López
+              Bienvenido(a), Juanito Perez de León
             </div>
             <p class="student-meta">
               ID Alumno: 00293847 · Plan de estudios vigente
@@ -650,7 +651,7 @@
       </div>
     </div>
 
-    <!-- Pie de Página (EXACTAMENTE IGUAL) -->
+    <!-- Pie de Página -->
     <footer
       class="footer-portal d-flex justify-content-between align-items-center"
     >
@@ -668,12 +669,11 @@
           document.getElementById("modalLogout"),
         );
 
-        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+        // Botón Salir
         const btnLogout = document.getElementById("btnLogout");
         if (btnLogout) {
           btnLogout.addEventListener("click", () => {
             modalLogout.show();
-            F;
           });
         }
 
@@ -681,7 +681,6 @@
         const btnConfirmLogout = document.getElementById("btnConfirmLogout");
         if (btnConfirmLogout) {
           btnConfirmLogout.addEventListener("click", () => {
-            // Borrar el historial de navegación para evitar volver atrás
             history.pushState(null, null, "../index.html");
             window.location.href = "../index.html";
           });

@@ -187,16 +187,6 @@
         color: #ffffff;
       }
 
-      .btn-header-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 0.9rem;
-        border-radius: 6px;
-        font-weight: 500;
-      }
-
       /* Layout de Contenido */
       .main-content {
         flex: 1 0 auto;
@@ -353,19 +343,28 @@
         color: rgba(255, 255, 255, 0.45);
       }
 
-      /* Psicología y Estética del Modal de Salida */
+      /* Estilos Complementarios para Modales */
       .bg-danger-subtle {
         background-color: #fee2e2 !important;
       }
 
       .modal-content {
-        border-radius: 12px;
+        border-radius: 16px;
+      }
+
+      .modal-header {
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .modal-footer {
+        border-top: 1px solid #f1f5f9;
       }
     </style>
   </head>
   <body>
-    <!-- modal -->
-    <!-- Modal Confirmación Cierre de Sesión -->
+    <!-- MODALES DE LA APLICACIÓN -->
+
+    <!-- Modal 0: Confirmación Cierre de Sesión -->
     <div
       class="modal fade"
       id="modalLogout"
@@ -406,12 +405,396 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal 1: Editar Contacto -->
+    <div
+      class="modal fade"
+      id="modalContacto"
+      tabindex="-1"
+      aria-labelledby="modalContactoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-header-title fw-bold m-0" id="modalContactoLabel">
+              <i class="bi bi-person-vcard-fill text-primary me-2"></i>Editar Datos de Contacto
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="formContacto" onsubmit="return false;">
+              <h6 class="fw-bold text-muted mb-3">Correos Electrónicos</h6>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Correo Institucional</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="00345678@unid.edu.mx"
+                    disabled
+                  />
+                  <div class="form-text">No modificable por el estudiante.</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Correo Personal</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="estudiante.ejemplo@gmail.com"
+                  />
+                </div>
+              </div>
+
+              <h6 class="fw-bold text-muted mb-3">Dirección y Teléfono</h6>
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <label class="form-label small fw-semibold">Calle y Número</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Av. Universidad 405, Int 3B"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label small fw-semibold">Código Postal</label>
+                  <input type="text" class="form-control" value="01010" />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Ciudad / Municipio</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Ciudad de México"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Teléfono Celular</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    value="+52 55 1234 5678"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-light fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Contactos de Emergencia -->
+    <div
+      class="modal fade"
+      id="modalEmergencia"
+      tabindex="-1"
+      aria-labelledby="modalEmergenciaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-header-title fw-bold m-0" id="modalEmergenciaLabel">
+              <i class="bi bi-telephone-plus-fill text-danger me-2"></i>Gestionar Contactos de Emergencia
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <p class="text-muted small mb-4">
+              Indica al menos una persona a la cual llamar en caso de alguna eventualidad dentro del campus.
+            </p>
+            <form id="formEmergencia" onsubmit="return false;">
+              <div class="p-3 bg-light rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-danger-subtle text-danger fw-bold">Contacto Principal</span>
+                  <button type="button" class="btn btn-sm btn-outline-danger border-0">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-5">
+                    <label class="form-label small fw-semibold">Nombre Completo</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      value="María Carmen Gómez"
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label small fw-semibold">Parentesco</label>
+                    <select class="form-select form-select-sm">
+                      <option selected>Madre/Padre</option>
+                      <option>Tutor Legal</option>
+                      <option>Conyuge</option>
+                      <option>Otro</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Teléfono Directo</label>
+                    <input
+                      type="tel"
+                      class="form-control form-control-sm"
+                      value="+52 55 9876 5432"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm fw-semibold w-100"
+              >
+                <i class="bi bi-plus-circle me-1"></i> Añadir Otro Contacto
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-light fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Guardar Contactos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Seguridad y Cuenta -->
+    <div
+      class="modal fade"
+      id="modalSeguridad"
+      tabindex="-1"
+      aria-labelledby="modalSeguridadLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-header-title fw-bold m-0" id="modalSeguridadLabel">
+              <i class="bi bi-shield-lock-fill text-success me-2"></i>Ajustes de Seguridad
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="formSeguridad" onsubmit="return false;">
+              <h6 class="fw-bold text-muted mb-3">Cambio de Contraseña / NIP</h6>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Contraseña Actual</label>
+                <input type="password" class="form-control" value="••••••••" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Nueva Contraseña</label>
+                <input type="password" class="form-control" placeholder="Mínimo 8 caracteres" />
+              </div>
+              <div class="mb-4">
+                <label class="form-label small fw-semibold">Confirmar Nueva Contraseña</label>
+                <input type="password" class="form-control" placeholder="Repite la contraseña" />
+              </div>
+
+              <hr class="my-4" />
+
+              <h6 class="fw-bold text-muted mb-3">Pregunta de Seguridad</h6>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Pregunta Seleccionada</label>
+                <select class="form-select">
+                  <option selected>¿Cuál fue el nombre de tu primera mascota?</option>
+                  <option>¿Nombre de tu ciudad natal?</option>
+                  <option>¿Marca de tu primer auto?</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label class="form-label small fw-semibold">Respuesta Secreta</label>
+                <input type="text" class="form-control" value="Firulais" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-light fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-success fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Actualizar Seguridad
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Perfil y Encuestas -->
+    <div
+      class="modal fade"
+      id="modalPerfil"
+      tabindex="-1"
+      aria-labelledby="modalPerfilLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-header-title fw-bold m-0" id="modalPerfilLabel">
+              <i class="bi bi-person-circle text-purple me-2" style="color: var(--accent-purple);"></i>Perfil y Encuestas Pendientes
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active fw-semibold"
+                  id="pills-perfil-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-perfil"
+                  type="button"
+                  role="tab"
+                >
+                  Perfil General
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link fw-semibold"
+                  id="pills-encuestas-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-encuestas"
+                  type="button"
+                  role="tab"
+                >
+                  Encuestas <span class="badge bg-danger rounded-pill">1</span>
+                </button>
+              </li>
+            </ul>
+
+            <div class="tab-content pt-2" id="pills-tabContent">
+              <!-- Tab 1: Perfil -->
+              <div
+                class="tab-pane fade show active"
+                id="pills-perfil"
+                role="tabpanel"
+              >
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Estado Civil</label>
+                    <select class="form-select">
+                      <option selected>Soltero(a)</option>
+                      <option>Casado(a)</option>
+                      <option>Otro</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Visibilidad en Directorio</label>
+                    <select class="form-select">
+                      <option selected>Público para la comunidad UNID</option>
+                      <option>Privado</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab 2: Encuestas -->
+              <div
+                class="tab-pane fade"
+                id="pills-encuestas"
+                role="tabpanel"
+              >
+                <div class="list-group">
+                  <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+                    <div>
+                      <h6 class="mb-1 fw-bold">Evaluación Docente 2026-1</h6>
+                      <p class="mb-0 text-muted small">Cierre: 15 de Octubre, 2026</p>
+                    </div>
+                    <span class="badge bg-warning text-dark fw-semibold">Pendiente</span>
+                  </div>
+                  <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 opacity-75">
+                    <div>
+                      <h6 class="mb-1 fw-bold">Encuesta de Clima Estudiantil</h6>
+                      <p class="mb-0 text-muted small">Completado el 10/02/2026</p>
+                    </div>
+                    <span class="badge bg-secondary fw-semibold">Finalizada</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-light fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn text-white fw-semibold"
+              style="background-color: var(--accent-purple);"
+              data-bs-dismiss="modal"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Header Principal -->
     <nav
       class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
     >
       <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">U UNID</span>
+        <span class="navbar-brand-logo">UNID</span>
         <span class="navbar-brand-divider"></span>
         <span class="navbar-brand-sub">Portal de Alumnos</span>
       </div>
@@ -434,6 +817,7 @@
         </button>
       </div>
     </nav>
+
     <!-- Sub-Navegación / Tabs -->
     <div class="subnav-tabs-bar">
       <ul class="nav nav-tabs-unid">
@@ -465,7 +849,7 @@
 
       <!-- Grid de Opciones -->
       <div class="row g-4 mb-4">
-        <!-- Tarjeta 1: Datos de Contacto (Azul: Comunicación/Confianza) -->
+        <!-- Tarjeta 1: Datos de Contacto -->
         <div class="col-12 col-md-6">
           <div class="module-card theme-contact">
             <div class="module-card-header">
@@ -479,14 +863,18 @@
               <li>Correos electrónicos.</li>
             </ul>
             <div class="module-card-footer">
-              <button class="btn btn-module-action">
+              <button
+                class="btn btn-module-action"
+                data-bs-toggle="modal"
+                data-bs-target="#modalContacto"
+              >
                 Editar Contacto <i class="bi bi-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Tarjeta 2: Contactos de Emergencia (Coral: Atención/Soporte Vital) -->
+        <!-- Tarjeta 2: Contactos de Emergencia -->
         <div class="col-12 col-md-6">
           <div class="module-card theme-emergency">
             <div class="module-card-header">
@@ -500,14 +888,18 @@
               <li>Relación y Teléfono Directo.</li>
             </ul>
             <div class="module-card-footer">
-              <button class="btn btn-module-action">
+              <button
+                class="btn btn-module-action"
+                data-bs-toggle="modal"
+                data-bs-target="#modalEmergencia"
+              >
                 Gestionar Contactos <i class="bi bi-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Tarjeta 3: Seguridad y Cuenta (Verde: Protección/Tranquilidad) -->
+        <!-- Tarjeta 3: Seguridad y Cuenta -->
         <div class="col-12 col-md-6">
           <div class="module-card theme-security">
             <div class="module-card-header">
@@ -522,14 +914,18 @@
               <li>Firma o PIN</li>
             </ul>
             <div class="module-card-footer">
-              <button class="btn btn-module-action">
+              <button
+                class="btn btn-module-action"
+                data-bs-toggle="modal"
+                data-bs-target="#modalSeguridad"
+              >
                 Ajustes de Seguridad <i class="bi bi-arrow-right"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Tarjeta 4: Perfil y Encuestas (Púrpura: Percepción/Identidad) -->
+        <!-- Tarjeta 4: Perfil y Encuestas -->
         <div class="col-12 col-md-6">
           <div class="module-card theme-profile">
             <div class="module-card-header">
@@ -544,7 +940,11 @@
               <li>Encuestas Generales y Resultados</li>
             </ul>
             <div class="module-card-footer">
-              <button class="btn btn-module-action">
+              <button
+                class="btn btn-module-action"
+                data-bs-toggle="modal"
+                data-bs-target="#modalPerfil"
+              >
                 Ver / Responder <i class="bi bi-arrow-right"></i>
               </button>
             </div>
@@ -575,7 +975,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout"),
+          document.getElementById("modalLogout")
         );
 
         // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
@@ -583,7 +983,6 @@
         if (btnLogout) {
           btnLogout.addEventListener("click", () => {
             modalLogout.show();
-            F;
           });
         }
 
@@ -591,7 +990,6 @@
         const btnConfirmLogout = document.getElementById("btnConfirmLogout");
         if (btnConfirmLogout) {
           btnConfirmLogout.addEventListener("click", () => {
-            // Borrar el historial de navegación para evitar volver atrás
             history.pushState(null, null, "../index.html");
             window.location.href = "../index.html";
           });
