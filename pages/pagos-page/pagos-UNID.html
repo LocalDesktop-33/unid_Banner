@@ -107,16 +107,26 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
+        /* Ajustes optimizados para el Avatar/Mascota */
         .avatar-circle {
-            width: 48px;
-            height: 48px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
-            background-color: #eff6ff;
-            color: var(--primary-blue);
+            background-color: #ffffff;
+            border: 2px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 4px; /* Opcional: crea un margen interno limpio */
+        }
+
+        .student-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Preserva la relación de aspecto sin distorsionar */
+            object-position: center;
         }
 
         .badge-active {
@@ -406,7 +416,7 @@
     <!-- Header Principal -->
     <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <span class="navbar-brand-logo">U UNID</span>
+            <span class="navbar-brand-logo">UNID</span>
             <span class="navbar-brand-divider"></span>
             <span class="navbar-brand-sub">Portal de Alumnos</span>
         </div>
@@ -434,10 +444,10 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar-circle">
-                        <i class="bi bi-person-fill"></i>
+                        <img src="../../img/image_lobo-removebg-preview.png" alt="Avatar del estudiante" class="student-avatar-img">
                     </div>
                     <div>
-                        <h1 class="h5 fw-bold mb-0">Cesareo López, Marbella</h1>
+                        <h1 class="h5 fw-bold mb-0">Juanito Perez de León</h1>
                         <span class="text-muted small">Matrícula: <strong>00914664</strong></span>
                     </div>
                 </div>

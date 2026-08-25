@@ -18,12 +18,12 @@
 
     <style>
       :root {
-        /* Colores de Header / Footer (Intactos) */
+        /* Colores de Header / Footer */
         --nav-bg: #151c2c;
         --btn-red: #dc3545;
         --btn-red-hover: #bb2d3b;
 
-        /* UI Refinada con Psicología del Color */
+        /* UI Refinada */
         --main-bg: #f8fafc;
         --card-bg: #ffffff;
         --text-main: #0f172a;
@@ -56,7 +56,7 @@
         flex-direction: column;
       }
 
-      /* Header Principal (Sin Cambios) */
+      /* Header Principal */
       .navbar-unid {
         background-color: var(--nav-bg);
         padding: 0.6rem 2rem;
@@ -247,7 +247,7 @@
         transform: translateY(-1px);
       }
 
-      /* Footer (Sin Cambios) */
+      /* Footer */
       .footer-portal {
         background-color: var(--nav-bg);
         color: rgba(255, 255, 255, 0.6);
@@ -256,7 +256,7 @@
         margin-top: auto;
       }
 
-           /* Psicología y Estética del Modal de Salida */
+      /* Estilos Complementarios para Modales */
       .bg-danger-subtle {
         background-color: #fee2e2 !important;
       }
@@ -267,6 +267,11 @@
     </style>
   </head>
   <body>
+    <!-- ========================================== -->
+    <!-- MODALES DE LA APLICACIÓN                  -->
+    <!-- ========================================== -->
+
+    <!-- Modal 1: Cerrar Sesión -->
     <div
       class="modal fade"
       id="modalLogout"
@@ -308,26 +313,310 @@
       </div>
     </div>
 
+    <!-- Modal 2: Generar Solicitud de Servicio -->
+    <div
+      class="modal fade"
+      id="modalGenerarSolicitud"
+      tabindex="-1"
+      aria-labelledby="modalGenerarSolicitudLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header border-bottom-0 pb-0">
+            <h5 class="modal-title fw-bold" id="modalGenerarSolicitudLabel">
+              <i class="bi bi-journal-plus text-primary me-2"></i>Nueva Solicitud de Servicio
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="formDummySolicitud" onsubmit="event.preventDefault();">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Tipo de Servicio</label>
+                  <select class="form-select">
+                    <option selected disabled>Selecciona una opción...</option>
+                    <option value="1">Constancia de Estudios</option>
+                    <option value="2">Historial Académico / Kardex</option>
+                    <option value="3">Revisión de Calificaciones</option>
+                    <option value="4">Trámite de Titulación</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Periodo / Ciclo Lectivo</label>
+                  <select class="form-select">
+                    <option selected>2026-1 (Actual)</option>
+                    <option>2025-3</option>
+                    <option>2025-2</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold small">Descripción o Comentarios</label>
+                  <textarea
+                    class="form-rows-3 form-control"
+                    rows="3"
+                    placeholder="Describe los detalles de tu solicitud (ej. motivo, especificaciones requeridas)..."
+                  ></textarea>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold small">Adjuntar Documento de Respaldo (Opcional)</label>
+                  <input class="form-control" type="file" />
+                  <span class="text-muted small">Formatos permitidos: PDF, PNG, JPG. Máx 5MB.</span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer bg-light border-top-0 rounded-bottom-3">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary fw-semibold"
+              data-bs-dismiss="modal"
+            >
+              Enviar Solicitud (Ejemplo)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Ver Estatus del Servicio -->
+    <div
+      class="modal fade"
+      id="modalVerEstatus"
+      tabindex="-1"
+      aria-labelledby="modalVerEstatusLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalVerEstatusLabel">
+              <i class="bi bi-file-earmark-check text-primary me-2"></i>Estatus de Solicitudes
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <p class="text-muted small mb-3">
+              Mostrando el historial de las últimas solicitudes registradas.
+            </p>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th>Folio</th>
+                    <th>Trámite</th>
+                    <th>Fecha</th>
+                    <th>Estatus</th>
+                    <th class="text-end">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="fw-bold">#SOL-9842</td>
+                    <td>Constancia de Estudios</td>
+                    <td>18/02/2026</td>
+                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Completado</span></td>
+                    <td class="text-end">
+                      <button class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">#SOL-9910</td>
+                    <td>Historial Académico</td>
+                    <td>22/02/2026</td>
+                    <td><span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle">En Proceso</span></td>
+                    <td class="text-end">
+                      <button class="btn btn-sm btn-outline-secondary" disabled><i class="bi bi-download"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">#SOL-9120</td>
+                    <td>Revisión de Calificaciones</td>
+                    <td>10/01/2026</td>
+                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Cerrado</span></td>
+                    <td class="text-end">
+                      <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Ayuda y Soporte -->
+    <div
+      class="modal fade"
+      id="modalAyuda"
+      tabindex="-1"
+      aria-labelledby="modalAyudaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalAyudaLabel">
+              <i class="bi bi-question-circle text-primary me-2"></i>Centro de Ayuda
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <div class="d-flex align-items-center gap-3 mb-3 p-3 bg-light rounded-3">
+              <i class="bi bi-headset fs-1 text-primary"></i>
+              <div>
+                <h6 class="fw-bold mb-1">Mesa de Ayuda Académica</h6>
+                <p class="text-muted small mb-0">Atención de Lunes a Viernes de 8:00 a 20:00 hrs.</p>
+              </div>
+            </div>
+            <div class="list-group list-group-flush small">
+              <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-file-text me-2"></i>Preguntas Frecuentes (FAQ)</span>
+                <i class="bi bi-chevron-right text-muted"></i>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-envelope me-2"></i>Enviar correo a Soporte</span>
+                <i class="bi bi-chevron-right text-muted"></i>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-telephone me-2"></i>Contacto Telefónico Campus</span>
+                <i class="bi bi-chevron-right text-muted"></i>
+              </a>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Entendido
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5: Menú / Accesos Rápidos -->
+    <div
+      class="modal fade"
+      id="modalMenu"
+      tabindex="-1"
+      aria-labelledby="modalMenuLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalMenuLabel">
+              <i class="bi bi-grid-3x3-gap text-primary me-2"></i>Menú de Accesos Rápidos
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <div class="row g-3 text-center">
+              <div class="col-6">
+                <a href="#" class="text-decoration-none text-dark d-block p-3 border rounded-3 bg-light hover-shadow">
+                  <i class="bi bi-journal-text fs-2 text-primary d-block mb-1"></i>
+                  <span class="fw-semibold small">Calificaciones</span>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="text-decoration-none text-dark d-block p-3 border rounded-3 bg-light">
+                  <i class="bi bi-calendar-event fs-2 text-primary d-block mb-1"></i>
+                  <span class="fw-semibold small">Horario de Clases</span>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="text-decoration-none text-dark d-block p-3 border rounded-3 bg-light">
+                  <i class="bi bi-credit-card fs-2 text-primary d-block mb-1"></i>
+                  <span class="fw-semibold small">Pagos y Facturación</span>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="text-decoration-none text-dark d-block p-3 border rounded-3 bg-light">
+                  <i class="bi bi-person-badge fs-2 text-primary d-block mb-1"></i>
+                  <span class="fw-semibold small">Perfil de Usuario</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- ESTRUCTURA PRINCIPAL DE LA PÁGINA         -->
+    <!-- ========================================== -->
+
     <!-- Header Principal -->
     <nav
       class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
     >
       <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">U UNID</span>
+        <span class="navbar-brand-logo">UNID</span>
         <span class="navbar-brand-divider"></span>
         <span class="navbar-brand-sub">Portal de Alumnos</span>
       </div>
 
       <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <button
+          class="btn btn-header-outline d-flex align-items-center gap-1"
+          data-bs-toggle="modal"
+          data-bs-target="#modalAyuda"
+        >
           <i class="bi bi-question-circle"></i> Ayuda
         </button>
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <button
+          class="btn btn-header-outline d-flex align-items-center gap-1"
+          data-bs-toggle="modal"
+          data-bs-target="#modalMenu"
+        >
           <i class="bi bi-list"></i> Menú
         </button>
         <button
           id="btnLogout"
           class="btn btn-header-danger d-flex align-items-center gap-1"
+          data-bs-toggle="modal"
+          data-bs-target="#modalLogout"
         >
           <i class="bi bi-box-arrow-right"></i> Salir
         </button>
@@ -362,7 +651,7 @@
             <i class="bi bi-person-fill"></i>
           </div>
           <div>
-            <h2 class="h5 fw-bold mb-0 text-dark">Cesareo López, Marbella</h2>
+            <h2 class="h5 fw-bold mb-0 text-dark">Juanito Perez de León</h2>
             <span class="text-muted small"
               >Matrícula: <strong class="text-dark">00914664</strong></span
             >
@@ -386,7 +675,12 @@
               </div>
             </div>
             <div>
-              <button id="btnGenerarSolicitud" class="btn btn-service-action">
+              <button
+                id="btnGenerarSolicitud"
+                class="btn btn-service-action"
+                data-bs-toggle="modal"
+                data-bs-target="#modalGenerarSolicitud"
+              >
                 Generar Solicitud <i class="bi bi-arrow-right"></i>
               </button>
             </div>
@@ -407,7 +701,12 @@
               </div>
             </div>
             <div>
-              <button id="btnVerEstatus" class="btn btn-service-action">
+              <button
+                id="btnVerEstatus"
+                class="btn btn-service-action"
+                data-bs-toggle="modal"
+                data-bs-target="#modalVerEstatus"
+              >
                 Ver Estatus <i class="bi bi-arrow-right"></i>
               </button>
             </div>
@@ -438,37 +737,6 @@
     <!-- Lógica JavaScript Vanilla -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // Manejo de clicks en botones de acción
-        const btnGenerarSolicitud = document.getElementById(
-          "btnGenerarSolicitud",
-        );
-        const btnVerEstatus = document.getElementById("btnVerEstatus");
-
-        if (btnGenerarSolicitud) {
-          btnGenerarSolicitud.addEventListener("click", () => {
-            console.log("Navegando a Generar Solicitud de Servicio...");
-          });
-        }
-
-        if (btnVerEstatus) {
-          btnVerEstatus.addEventListener("click", () => {
-            console.log("Navegando a Consulta de Estatus de Servicio...");
-          });
-        }
-
-        const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout"),
-        );
-
-        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-            F;
-          });
-        }
-
         // Acción al confirmar la salida dentro del modal
         const btnConfirmLogout = document.getElementById("btnConfirmLogout");
         if (btnConfirmLogout) {
