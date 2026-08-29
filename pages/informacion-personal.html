@@ -1,1000 +1,831 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNID - Información Personal</title>
 
-    <!-- Bootstrap 5.3.8 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNID - Información Personal</title>
 
-    <style>
-      :root {
-        --nav-bg: #0f172a;
-        --main-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --text-main: #0f172a;
-        --text-muted: #64748b;
-        --btn-red: #dc3545;
-        --btn-red-hover: #bb2d3b;
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
 
-        /* Paleta Psicológica de Acentos UI */
-        --accent-blue: #2563eb;
-        --accent-blue-bg: #eff6ff;
+  <style>
+    :root {
+      --nav-bg: #0f172a;
+      --main-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --btn-red: #dc3545;
+      --btn-red-hover: #bb2d3b;
 
-        --accent-coral: #e11d48;
-        --accent-coral-bg: #fff1f2;
+      /* Paleta Psicológica de Acentos UI */
+      --accent-blue: #2563eb;
+      --accent-blue-bg: #eff6ff;
 
-        --accent-green: #059669;
-        --accent-green-bg: #ecfdf5;
+      --accent-coral: #e11d48;
+      --accent-coral-bg: #fff1f2;
 
-        --accent-purple: #7c3aed;
-        --accent-purple-bg: #f5f3ff;
-      }
+      --accent-green: #059669;
+      --accent-green-bg: #ecfdf5;
 
-      html,
-      body {
-        height: 100%;
-      }
+      --accent-purple: #7c3aed;
+      --accent-purple-bg: #f5f3ff;
+    }
 
-      body {
-        background-color: var(--main-bg);
-        font-family:
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          Arial,
-          sans-serif;
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
+    html,
+    body {
+      height: 100%;
+    }
 
-      /* Barra de Navegación Superior */
-      .navbar-unid {
-        background-color: var(--nav-bg);
-        padding: 0.6rem 2rem;
-      }
+    body {
+      background-color: var(--main-bg);
+      font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
 
-      .navbar-brand-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: 1px;
-      }
+    /* Barra de Navegación Superior */
+    .navbar-unid {
+      background-color: var(--nav-bg);
+      padding: 0.6rem 2rem;
+    }
 
-      .navbar-brand-divider {
-        border-left: 1px solid rgba(255, 255, 255, 0.3);
-        height: 20px;
-        margin: 0 12px;
-      }
+    .navbar-brand-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
 
-      .navbar-brand-sub {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
-      }
+    .navbar-brand-divider {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      height: 20px;
+      margin: 0 12px;
+    }
 
-      .btn-header-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 0.9rem;
-        border-radius: 6px;
-        font-weight: 500;
-        transition: all 0.2s ease;
-      }
+    .navbar-brand-sub {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
 
-      .btn-header-outline:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-      }
+    .btn-header-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
 
-      .btn-header-danger {
-        background-color: var(--btn-red);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 1rem;
-        border-radius: 6px;
-        font-weight: 600;
-        border: none;
-        transition: background-color 0.2s ease;
-      }
+    .btn-header-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
 
-      .btn-header-danger:hover {
-        background-color: var(--btn-red-hover);
-        color: #ffffff;
-      }
+    .btn-header-danger {
+      background-color: var(--btn-red);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+      transition: background-color 0.2s ease;
+    }
 
-      /* Sub-Navegación / Tabs */
-      .subnav-tabs-bar {
-        background-color: #ffffff;
-        border-bottom: 1px solid #e2e8f0;
-        padding: 0 2rem;
-      }
+    .btn-header-danger:hover {
+      background-color: var(--btn-red-hover);
+      color: #ffffff;
+    }
 
-      .nav-tabs-unid {
-        border-bottom: none;
-        gap: 1.5rem;
-      }
+    /* Sub-Navegación / Tabs */
+    .subnav-tabs-bar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0 2rem;
+    }
 
-      .nav-tabs-unid .nav-link {
-        border: none;
-        color: var(--text-muted);
-        font-weight: 600;
-        font-size: 0.9rem;
-        padding: 0.85rem 0.2rem;
-        position: relative;
-        background: transparent;
-      }
+    .nav-tabs-unid {
+      border-bottom: none;
+      gap: 1.5rem;
+    }
 
-      .nav-tabs-unid .nav-link.active {
-        color: var(--accent-blue);
-        background: transparent;
-      }
+    .nav-tabs-unid .nav-link {
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.85rem 0.2rem;
+      position: relative;
+      background: transparent;
+    }
 
-      .nav-tabs-unid .nav-link.active::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: var(--accent-blue);
-        border-radius: 3px 3px 0 0;
-      }
+    .nav-tabs-unid .nav-link.active {
+      color: var(--accent-blue);
+      background: transparent;
+    }
 
-      /* Buscador Superior */
-      .search-input-group {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        border: none;
-        overflow: hidden;
-        width: 260px;
-      }
+    .nav-tabs-unid .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: var(--accent-blue);
+      border-radius: 3px 3px 0 0;
+    }
 
-      .search-input-group .input-group-text {
-        background: transparent;
-        border: none;
-        color: rgba(255, 255, 255, 0.6);
-        padding-right: 0.5rem;
-      }
+    /* Buscador Superior */
+    .search-input-group {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      border: none;
+      overflow: hidden;
+      width: 260px;
+    }
 
-      .search-input-group .form-control {
-        background: transparent;
-        border: none;
-        color: #ffffff;
-        font-size: 0.88rem;
-      }
+    .search-input-group .input-group-text {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      padding-right: 0.5rem;
+    }
 
-      .search-input-group .form-control::placeholder {
-        color: rgba(255, 255, 255, 0.6);
-      }
+    .search-input-group .form-control {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 0.88rem;
+    }
 
-      .search-input-group .form-control:focus {
-        box-shadow: none;
-        background: transparent;
-        color: #ffffff;
-      }
+    .search-input-group .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
-      /* Layout de Contenido */
-      .main-content {
-        flex: 1 0 auto;
-      }
+    .search-input-group .form-control:focus {
+      box-shadow: none;
+      background: transparent;
+      color: #ffffff;
+    }
 
-      .badge-institution {
-        background-color: #e0f2fe;
-        color: #0369a1;
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
-        border: 1px solid #bae6fd;
-      }
+    /* Layout de Contenido */
+    .main-content {
+      flex: 1 0 auto;
+    }
 
-      /* Tarjetas de Módulo con Elevación */
-      .module-card {
-        background-color: var(--card-bg);
-        border-radius: 16px;
-        padding: 1.75rem;
-        border: 1px solid #f1f5f9;
-        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
+    .badge-institution {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #bae6fd;
+    }
 
-      .module-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
-      }
+    /* Tarjetas de Módulo con Elevación */
+    .module-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.75rem;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
-      .module-card-header {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        margin-bottom: 1.25rem;
-      }
+    .module-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
+    }
 
-      /* Iconos Temáticos con Código de Color */
-      .module-icon-box {
-        width: 48px;
-        height: 48px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.35rem;
-        flex-shrink: 0;
-      }
+    .module-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
 
-      /* Variaciones según Categoría Psicológica */
-      .theme-contact .module-icon-box {
-        background-color: var(--accent-blue-bg);
-        color: var(--accent-blue);
-      }
-      .theme-contact .btn-module-action {
-        background-color: var(--accent-blue);
-      }
+    /* Iconos Temáticos con Código de Color */
+    .module-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
 
-      .theme-emergency .module-icon-box {
-        background-color: var(--accent-coral-bg);
-        color: var(--accent-coral);
-      }
-      .theme-emergency .btn-module-action {
-        background-color: var(--accent-coral);
-      }
+    /* Variaciones según Categoría Psicológica */
+    .theme-contact .module-icon-box {
+      background-color: var(--accent-blue-bg);
+      color: var(--accent-blue);
+    }
 
-      .theme-security .module-icon-box {
-        background-color: var(--accent-green-bg);
-        color: var(--accent-green);
-      }
-      .theme-security .btn-module-action {
-        background-color: var(--accent-green);
-      }
+    .theme-contact .btn-module-action {
+      background-color: var(--accent-blue);
+    }
 
-      .theme-profile .module-icon-box {
-        background-color: var(--accent-purple-bg);
-        color: var(--accent-purple);
-      }
-      .theme-profile .btn-module-action {
-        background-color: var(--accent-purple);
-      }
+    .theme-emergency .module-icon-box {
+      background-color: var(--accent-coral-bg);
+      color: var(--accent-coral);
+    }
 
-      .module-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--text-main);
-        margin: 0;
-      }
+    .theme-emergency .btn-module-action {
+      background-color: var(--accent-coral);
+    }
 
-      .module-list {
-        list-style-type: disc;
-        padding-left: 1.25rem;
-        margin-bottom: 2rem;
-        color: var(--text-muted);
-        font-size: 0.88rem;
-        line-height: 1.6;
-      }
+    .theme-security .module-icon-box {
+      background-color: var(--accent-green-bg);
+      color: var(--accent-green);
+    }
 
-      .module-list li {
-        margin-bottom: 0.25rem;
-      }
+    .theme-security .btn-module-action {
+      background-color: var(--accent-green);
+    }
 
-      .module-card-footer {
-        margin-top: auto;
-        display: flex;
-        justify-content: flex-end;
-      }
+    .theme-profile .module-icon-box {
+      background-color: var(--accent-purple-bg);
+      color: var(--accent-purple);
+    }
 
-      .btn-module-action {
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 0.88rem;
-        padding: 0.65rem 1.35rem;
-        border-radius: 10px;
-        border: none;
-        transition:
-          opacity 0.15s ease,
-          transform 0.15s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
+    .theme-profile .btn-module-action {
+      background-color: var(--accent-purple);
+    }
 
-      .btn-module-action:hover {
-        opacity: 0.9;
-        color: #ffffff;
-        transform: translateX(2px);
-      }
+    .module-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0;
+    }
 
-      /* Footer Oscuro */
-      .footer-portal {
-        background-color: var(--nav-bg);
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.8rem;
-        padding: 1rem clamp(1.5rem, 5vw, 4rem);
-        margin-top: auto;
-      }
+    .module-list {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
 
-      .footer-portal a {
-        color: rgba(255, 255, 255, 0.85);
-        text-decoration: underline;
-      }
+    .module-list li {
+      margin-bottom: 0.25rem;
+    }
 
-      .footer-portal a:hover {
-        color: #ffffff;
-      }
+    .module-card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+    }
 
-      .footer-version {
-        color: rgba(255, 255, 255, 0.45);
-      }
+    .btn-module-action {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: 10px;
+      border: none;
+      transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
 
-      /* Estilos Complementarios para Modales */
-      .bg-danger-subtle {
-        background-color: #fee2e2 !important;
-      }
+    .btn-module-action:hover {
+      opacity: 0.9;
+      color: #ffffff;
+      transform: translateX(2px);
+    }
 
-      .modal-content {
-        border-radius: 16px;
-      }
+    /* Footer Oscuro */
+    .footer-portal {
+      background-color: var(--nav-bg);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.8rem;
+      padding: 1rem clamp(1.5rem, 5vw, 4rem);
+      margin-top: auto;
+    }
 
-      .modal-header {
-        border-bottom: 1px solid #f1f5f9;
-      }
+    .footer-portal a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: underline;
+    }
 
-      .modal-footer {
-        border-top: 1px solid #f1f5f9;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- MODALES DE LA APLICACIÓN -->
+    .footer-portal a:hover {
+      color: #ffffff;
+    }
 
-    <!-- Modal 0: Confirmación Cierre de Sesión -->
-    <div
-      class="modal fade"
-      id="modalLogout"
-      tabindex="-1"
-      aria-labelledby="modalLogoutLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-body text-center p-4">
-            <div
-              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 60px; height: 60px"
-            >
-              <i class="bi bi-box-arrow-right fs-2"></i>
-            </div>
-            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
-            <p class="text-muted small mb-4">
-              Estás a punto de salir del Portal de Alumnos UNID.
-            </p>
-            <div class="d-flex gap-2">
-              <button
-                type="button"
-                class="btn btn-light w-50 fw-semibold"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                id="btnConfirmLogout"
-                class="btn btn-danger w-50 fw-semibold"
-              >
-                Salir
-              </button>
-            </div>
+    .footer-version {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* Estilos Complementarios para Modales */
+    .bg-danger-subtle {
+      background-color: #fee2e2 !important;
+    }
+
+    .modal-content {
+      border-radius: 16px;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .modal-footer {
+      border-top: 1px solid #f1f5f9;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- MODALES DE LA APLICACIÓN -->
+
+  <!-- Modal 0: Confirmación Cierre de Sesión -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-4">
+          <div
+            class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+            style="width: 60px; height: 60px">
+            <i class="bi bi-box-arrow-right fs-2"></i>
+          </div>
+          <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+          <p class="text-muted small mb-4">
+            Estás a punto de salir del Portal de Alumnos UNID.
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">
+              Salir
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Modal 1: Editar Contacto -->
-    <div
-      class="modal fade"
-      id="modalContacto"
-      tabindex="-1"
-      aria-labelledby="modalContactoLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 shadow">
-          <div class="modal-header">
-            <h5 class="modal-header-title fw-bold m-0" id="modalContactoLabel">
-              <i class="bi bi-person-vcard-fill text-primary me-2"></i>Editar Datos de Contacto
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body p-4">
-            <form id="formContacto" onsubmit="return false;">
-              <h6 class="fw-bold text-muted mb-3">Correos Electrónicos</h6>
-              <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                  <label class="form-label small fw-semibold">Correo Institucional</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    value="00345678@unid.edu.mx"
-                    disabled
-                  />
-                  <div class="form-text">No modificable por el estudiante.</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label small fw-semibold">Correo Personal</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    value="estudiante.ejemplo@gmail.com"
-                  />
-                </div>
+  <!-- Modal 1: Editar Contacto -->
+  <div class="modal fade" id="modalContacto" tabindex="-1" aria-labelledby="modalContactoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-header-title fw-bold m-0" id="modalContactoLabel">
+            <i class="bi bi-person-vcard-fill text-primary me-2"></i>Editar Datos de Contacto
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="formContacto" onsubmit="return false;">
+            <h6 class="fw-bold text-muted mb-3">Correos Electrónicos</h6>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Correo Institucional</label>
+                <input type="email" class="form-control" value="00345678@unid.edu.mx" disabled />
+                <div class="form-text">No modificable por el estudiante.</div>
               </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Correo Personal</label>
+                <input type="email" class="form-control" value="estudiante.ejemplo@gmail.com" />
+              </div>
+            </div>
 
-              <h6 class="fw-bold text-muted mb-3">Dirección y Teléfono</h6>
+            <h6 class="fw-bold text-muted mb-3">Dirección y Teléfono</h6>
+            <div class="row g-3">
+              <div class="col-md-8">
+                <label class="form-label small fw-semibold">Calle y Número</label>
+                <input type="text" class="form-control" value="Av. Universidad 405, Int 3B" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-semibold">Código Postal</label>
+                <input type="text" class="form-control" value="01010" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Ciudad / Municipio</label>
+                <input type="text" class="form-control" value="Ciudad de México" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Teléfono Celular</label>
+                <input type="tel" class="form-control" value="+52 55 1234 5678" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light fw-semibold" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary fw-semibold" data-bs-dismiss="modal">
+            Guardar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Contactos de Emergencia -->
+  <div class="modal fade" id="modalEmergencia" tabindex="-1" aria-labelledby="modalEmergenciaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-header-title fw-bold m-0" id="modalEmergenciaLabel">
+            <i class="bi bi-telephone-plus-fill text-danger me-2"></i>Gestionar Contactos de Emergencia
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="text-muted small mb-4">
+            Indica al menos una persona a la cual llamar en caso de alguna eventualidad dentro del campus.
+          </p>
+          <form id="formEmergencia" onsubmit="return false;">
+            <div class="p-3 bg-light rounded-3 mb-3 border">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-danger-subtle text-danger fw-bold">Contacto Principal</span>
+                <button type="button" class="btn btn-sm btn-outline-danger border-0">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
               <div class="row g-3">
-                <div class="col-md-8">
-                  <label class="form-label small fw-semibold">Calle y Número</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="Av. Universidad 405, Int 3B"
-                  />
+                <div class="col-md-5">
+                  <label class="form-label small fw-semibold">Nombre Completo</label>
+                  <input type="text" class="form-control form-control-sm" value="María Carmen Gómez" />
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label small fw-semibold">Parentesco</label>
+                  <select class="form-select form-select-sm">
+                    <option selected>Madre/Padre</option>
+                    <option>Tutor Legal</option>
+                    <option>Conyuge</option>
+                    <option>Otro</option>
+                  </select>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label small fw-semibold">Código Postal</label>
-                  <input type="text" class="form-control" value="01010" />
+                  <label class="form-label small fw-semibold">Teléfono Directo</label>
+                  <input type="tel" class="form-control form-control-sm" value="+52 55 9876 5432" />
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold w-100">
+              <i class="bi bi-plus-circle me-1"></i> Añadir Otro Contacto
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light fw-semibold" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+            Guardar Contactos
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Seguridad y Cuenta -->
+  <div class="modal fade" id="modalSeguridad" tabindex="-1" aria-labelledby="modalSeguridadLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-header-title fw-bold m-0" id="modalSeguridadLabel">
+            <i class="bi bi-shield-lock-fill text-success me-2"></i>Ajustes de Seguridad
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="formSeguridad" onsubmit="return false;">
+            <h6 class="fw-bold text-muted mb-3">Cambio de Contraseña / NIP</h6>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Contraseña Actual</label>
+              <input type="password" class="form-control" value="••••••••" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Nueva Contraseña</label>
+              <input type="password" class="form-control" placeholder="Mínimo 8 caracteres" />
+            </div>
+            <div class="mb-4">
+              <label class="form-label small fw-semibold">Confirmar Nueva Contraseña</label>
+              <input type="password" class="form-control" placeholder="Repite la contraseña" />
+            </div>
+
+            <hr class="my-4" />
+
+            <h6 class="fw-bold text-muted mb-3">Pregunta de Seguridad</h6>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Pregunta Seleccionada</label>
+              <select class="form-select">
+                <option selected>¿Cuál fue el nombre de tu primera mascota?</option>
+                <option>¿Nombre de tu ciudad natal?</option>
+                <option>¿Marca de tu primer auto?</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label class="form-label small fw-semibold">Respuesta Secreta</label>
+              <input type="text" class="form-control" value="Firulais" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light fw-semibold" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-success fw-semibold" data-bs-dismiss="modal">
+            Actualizar Seguridad
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Perfil y Encuestas -->
+  <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <h5 class="modal-header-title fw-bold m-0" id="modalPerfilLabel">
+            <i class="bi bi-person-circle text-purple me-2" style="color: var(--accent-purple);"></i>Perfil y Encuestas
+            Pendientes
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active fw-semibold" id="pills-perfil-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-perfil" type="button" role="tab">
+                Perfil General
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link fw-semibold" id="pills-encuestas-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-encuestas" type="button" role="tab">
+                Encuestas <span class="badge bg-danger rounded-pill">1</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content pt-2" id="pills-tabContent">
+            <!-- Tab 1: Perfil -->
+            <div class="tab-pane fade show active" id="pills-perfil" role="tabpanel">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold">Estado Civil</label>
+                  <select class="form-select">
+                    <option selected>Soltero(a)</option>
+                    <option>Casado(a)</option>
+                    <option>Otro</option>
+                  </select>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label small fw-semibold">Ciudad / Municipio</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="Ciudad de México"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label small fw-semibold">Teléfono Celular</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    value="+52 55 1234 5678"
-                  />
+                  <label class="form-label small fw-semibold">Visibilidad en Directorio</label>
+                  <select class="form-select">
+                    <option selected>Público para la comunidad UNID</option>
+                    <option>Privado</option>
+                  </select>
                 </div>
               </div>
-            </form>
+            </div>
+
+            <!-- Tab 2: Encuestas -->
+            <div class="tab-pane fade" id="pills-encuestas" role="tabpanel">
+              <div class="list-group">
+                <div
+                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+                  <div>
+                    <h6 class="mb-1 fw-bold">Evaluación Docente 2026-1</h6>
+                    <p class="mb-0 text-muted small">Cierre: 15 de Octubre, 2026</p>
+                  </div>
+                  <span class="badge bg-warning text-dark fw-semibold">Pendiente</span>
+                </div>
+                <div
+                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 opacity-75">
+                  <div>
+                    <h6 class="mb-1 fw-bold">Encuesta de Clima Estudiantil</h6>
+                    <p class="mb-0 text-muted small">Completado el 10/02/2026</p>
+                  </div>
+                  <span class="badge bg-secondary fw-semibold">Finalizada</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-light fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light fw-semibold" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button type="button" class="btn text-white fw-semibold" style="background-color: var(--accent-purple);"
+            data-bs-dismiss="modal">
+            Guardar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <span class="navbar-brand-logo">UNID</span>
+      <span class="navbar-brand-divider"></span>
+      <span class="navbar-brand-sub">Portal de Alumnos</span>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <div class="input-group search-input-group d-none d-md-flex">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Buscar..." />
+      </div>
+
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-question-circle"></i> Ayuda
+      </button>
+
+      <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+        <i class="bi bi-box-arrow-right"></i> Salir
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sub-Navegación / Tabs -->
+  <div class="subnav-tabs-bar">
+    <ul class="nav nav-tabs-unid">
+      <li class="nav-item">
+        <a class="nav-link" href="./dashboard.html">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="./informacion-personal.html">Información Personal</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./alumnos-egresados.html">Alumnos y Egresados</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Contenido Principal -->
+  <main class="main-content container-fluid px-md-5 py-4">
+    <!-- Encabezado de Sección y Badge Institución -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 fw-bold mb-0">Información Personal</h1>
+      <span class="badge-institution">Institución: <strong>UNID</strong></span>
+    </div>
+
+    <!-- Grid de Opciones -->
+    <div class="row g-4 mb-4">
+      <!-- Tarjeta 1: Datos de Contacto -->
+      <div class="col-12 col-md-6">
+        <div class="module-card theme-contact">
+          <div class="module-card-header">
+            <div class="module-icon-box">
+              <i class="bi bi-person-vcard-fill"></i>
+            </div>
+            <h2 class="module-title">Datos de Contacto</h2>
+          </div>
+          <ul class="module-list">
+            <li>Direcciones y Teléfonos.</li>
+            <li>Correos electrónicos.</li>
+          </ul>
+          <div class="module-card-footer">
+            <button class="btn btn-module-action" data-bs-toggle="modal" data-bs-target="#modalContacto">
+              Editar Contacto <i class="bi bi-arrow-right"></i>
             </button>
-            <button
-              type="button"
-              class="btn btn-primary fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Guardar Cambios
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Contactos de Emergencia -->
+      <div class="col-12 col-md-6">
+        <div class="module-card theme-emergency">
+          <div class="module-card-header">
+            <div class="module-icon-box">
+              <i class="bi bi-telephone-plus-fill"></i>
+            </div>
+            <h2 class="module-title">Contactos de Emergencia</h2>
+          </div>
+          <ul class="module-list">
+            <li>Personas de Contacto.</li>
+            <li>Relación y Teléfono Directo.</li>
+          </ul>
+          <div class="module-card-footer">
+            <button class="btn btn-module-action" data-bs-toggle="modal" data-bs-target="#modalEmergencia">
+              Gestionar Contactos <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Seguridad y Cuenta -->
+      <div class="col-12 col-md-6">
+        <div class="module-card theme-security">
+          <div class="module-card-header">
+            <div class="module-icon-box">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <h2 class="module-title">Seguridad y Cuenta</h2>
+          </div>
+          <ul class="module-list">
+            <li>Cambiar Pregunta de Seguridad.</li>
+            <li>Cambiar NIP / Contraseña.</li>
+            <li>Firma o PIN</li>
+          </ul>
+          <div class="module-card-footer">
+            <button class="btn btn-module-action" data-bs-toggle="modal" data-bs-target="#modalSeguridad">
+              Ajustes de Seguridad <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4: Perfil y Encuestas -->
+      <div class="col-12 col-md-6">
+        <div class="module-card theme-profile">
+          <div class="module-card-header">
+            <div class="module-icon-box">
+              <i class="bi bi-person-circle"></i>
+            </div>
+            <h2 class="module-title">Perfil y Encuestas</h2>
+          </div>
+          <ul class="module-list">
+            <li>Perfil de Directorio</li>
+            <li>Estado Civil</li>
+            <li>Encuestas Generales y Resultados</li>
+          </ul>
+          <div class="module-card-footer">
+            <button class="btn btn-module-action" data-bs-toggle="modal" data-bs-target="#modalPerfil">
+              Ver / Responder <i class="bi bi-arrow-right"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- Modal 2: Contactos de Emergencia -->
-    <div
-      class="modal fade"
-      id="modalEmergencia"
-      tabindex="-1"
-      aria-labelledby="modalEmergenciaLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 shadow">
-          <div class="modal-header">
-            <h5 class="modal-header-title fw-bold m-0" id="modalEmergenciaLabel">
-              <i class="bi bi-telephone-plus-fill text-danger me-2"></i>Gestionar Contactos de Emergencia
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body p-4">
-            <p class="text-muted small mb-4">
-              Indica al menos una persona a la cual llamar en caso de alguna eventualidad dentro del campus.
-            </p>
-            <form id="formEmergencia" onsubmit="return false;">
-              <div class="p-3 bg-light rounded-3 mb-3 border">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span class="badge bg-danger-subtle text-danger fw-bold">Contacto Principal</span>
-                  <button type="button" class="btn btn-sm btn-outline-danger border-0">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </div>
-                <div class="row g-3">
-                  <div class="col-md-5">
-                    <label class="form-label small fw-semibold">Nombre Completo</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      value="María Carmen Gómez"
-                    />
-                  </div>
-                  <div class="col-md-3">
-                    <label class="form-label small fw-semibold">Parentesco</label>
-                    <select class="form-select form-select-sm">
-                      <option selected>Madre/Padre</option>
-                      <option>Tutor Legal</option>
-                      <option>Conyuge</option>
-                      <option>Otro</option>
-                    </select>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label small fw-semibold">Teléfono Directo</label>
-                    <input
-                      type="tel"
-                      class="form-control form-control-sm"
-                      value="+52 55 9876 5432"
-                    />
-                  </div>
-                </div>
-              </div>
+  <!-- Footer Oscuro Estático -->
+  <footer class="footer-portal d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
+      reservados.</span>
 
-              <button
-                type="button"
-                class="btn btn-outline-secondary btn-sm fw-semibold w-100"
-              >
-                <i class="bi bi-plus-circle me-1"></i> Añadir Otro Contacto
-              </button>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-light fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
-            </button>
-            <button
-              type="button"
-              class="btn btn-danger fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Guardar Contactos
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="d-flex align-items-center gap-3">
+      <a href="#">Aviso de privacidad</a>
+      <span class="footer-version">Versión: 8.8.4.1</span>
     </div>
+  </footer>
 
-    <!-- Modal 3: Seguridad y Cuenta -->
-    <div
-      class="modal fade"
-      id="modalSeguridad"
-      tabindex="-1"
-      aria-labelledby="modalSeguridadLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow">
-          <div class="modal-header">
-            <h5 class="modal-header-title fw-bold m-0" id="modalSeguridadLabel">
-              <i class="bi bi-shield-lock-fill text-success me-2"></i>Ajustes de Seguridad
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body p-4">
-            <form id="formSeguridad" onsubmit="return false;">
-              <h6 class="fw-bold text-muted mb-3">Cambio de Contraseña / NIP</h6>
-              <div class="mb-3">
-                <label class="form-label small fw-semibold">Contraseña Actual</label>
-                <input type="password" class="form-control" value="••••••••" />
-              </div>
-              <div class="mb-3">
-                <label class="form-label small fw-semibold">Nueva Contraseña</label>
-                <input type="password" class="form-control" placeholder="Mínimo 8 caracteres" />
-              </div>
-              <div class="mb-4">
-                <label class="form-label small fw-semibold">Confirmar Nueva Contraseña</label>
-                <input type="password" class="form-control" placeholder="Repite la contraseña" />
-              </div>
+  <!-- Bootstrap 5.3.8 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-              <hr class="my-4" />
+  <!-- Lógica JavaScript Vanilla -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modalLogout = new bootstrap.Modal(
+        document.getElementById("modalLogout")
+      );
 
-              <h6 class="fw-bold text-muted mb-3">Pregunta de Seguridad</h6>
-              <div class="mb-3">
-                <label class="form-label small fw-semibold">Pregunta Seleccionada</label>
-                <select class="form-select">
-                  <option selected>¿Cuál fue el nombre de tu primera mascota?</option>
-                  <option>¿Nombre de tu ciudad natal?</option>
-                  <option>¿Marca de tu primer auto?</option>
-                </select>
-              </div>
-              <div class="mb-2">
-                <label class="form-label small fw-semibold">Respuesta Secreta</label>
-                <input type="text" class="form-control" value="Firulais" />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-light fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
-            </button>
-            <button
-              type="button"
-              class="btn btn-success fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Actualizar Seguridad
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+      // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+      const btnLogout = document.getElementById("btnLogout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+          modalLogout.show();
+        });
+      }
 
-    <!-- Modal 4: Perfil y Encuestas -->
-    <div
-      class="modal fade"
-      id="modalPerfil"
-      tabindex="-1"
-      aria-labelledby="modalPerfilLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 shadow">
-          <div class="modal-header">
-            <h5 class="modal-header-title fw-bold m-0" id="modalPerfilLabel">
-              <i class="bi bi-person-circle text-purple me-2" style="color: var(--accent-purple);"></i>Perfil y Encuestas Pendientes
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body p-4">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active fw-semibold"
-                  id="pills-perfil-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-perfil"
-                  type="button"
-                  role="tab"
-                >
-                  Perfil General
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link fw-semibold"
-                  id="pills-encuestas-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-encuestas"
-                  type="button"
-                  role="tab"
-                >
-                  Encuestas <span class="badge bg-danger rounded-pill">1</span>
-                </button>
-              </li>
-            </ul>
+      // Acción al confirmar la salida dentro del modal
+      const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+      if (btnConfirmLogout) {
+        btnConfirmLogout.addEventListener("click", () => {
+          // Detecta el nombre de tu repositorio dinámicamente
+          const repoName = window.location.pathname.split('/')[1];
+          window.location.href = `/${repoName}/index.html`;
+        });
+      }
+    });
+  </script>
+</body>
 
-            <div class="tab-content pt-2" id="pills-tabContent">
-              <!-- Tab 1: Perfil -->
-              <div
-                class="tab-pane fade show active"
-                id="pills-perfil"
-                role="tabpanel"
-              >
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label small fw-semibold">Estado Civil</label>
-                    <select class="form-select">
-                      <option selected>Soltero(a)</option>
-                      <option>Casado(a)</option>
-                      <option>Otro</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-semibold">Visibilidad en Directorio</label>
-                    <select class="form-select">
-                      <option selected>Público para la comunidad UNID</option>
-                      <option>Privado</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tab 2: Encuestas -->
-              <div
-                class="tab-pane fade"
-                id="pills-encuestas"
-                role="tabpanel"
-              >
-                <div class="list-group">
-                  <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
-                    <div>
-                      <h6 class="mb-1 fw-bold">Evaluación Docente 2026-1</h6>
-                      <p class="mb-0 text-muted small">Cierre: 15 de Octubre, 2026</p>
-                    </div>
-                    <span class="badge bg-warning text-dark fw-semibold">Pendiente</span>
-                  </div>
-                  <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 opacity-75">
-                    <div>
-                      <h6 class="mb-1 fw-bold">Encuesta de Clima Estudiantil</h6>
-                      <p class="mb-0 text-muted small">Completado el 10/02/2026</p>
-                    </div>
-                    <span class="badge bg-secondary fw-semibold">Finalizada</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-light fw-semibold"
-              data-bs-dismiss="modal"
-            >
-              Cerrar
-            </button>
-            <button
-              type="button"
-              class="btn text-white fw-semibold"
-              style="background-color: var(--accent-purple);"
-              data-bs-dismiss="modal"
-            >
-              Guardar Cambios
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Header Principal -->
-    <nav
-      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
-    >
-      <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">UNID</span>
-        <span class="navbar-brand-divider"></span>
-        <span class="navbar-brand-sub">Portal de Alumnos</span>
-      </div>
-
-      <div class="d-flex align-items-center gap-3">
-        <div class="input-group search-input-group d-none d-md-flex">
-          <span class="input-group-text"><i class="bi bi-search"></i></span>
-          <input type="text" class="form-control" placeholder="Buscar..." />
-        </div>
-
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-question-circle"></i> Ayuda
-        </button>
-
-        <button
-          id="btnLogout"
-          class="btn btn-header-danger d-flex align-items-center gap-1"
-        >
-          <i class="bi bi-box-arrow-right"></i> Salir
-        </button>
-      </div>
-    </nav>
-
-    <!-- Sub-Navegación / Tabs -->
-    <div class="subnav-tabs-bar">
-      <ul class="nav nav-tabs-unid">
-        <li class="nav-item">
-          <a class="nav-link" href="./dashboard.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="./informacion-personal.html"
-            >Información Personal</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./alumnos-egresados.html"
-            >Alumnos y Egresados</a
-          >
-        </li>
-      </ul>
-    </div>
-
-    <!-- Contenido Principal -->
-    <main class="main-content container-fluid px-md-5 py-4">
-      <!-- Encabezado de Sección y Badge Institución -->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3 fw-bold mb-0">Información Personal</h1>
-        <span class="badge-institution"
-          >Institución: <strong>UNID</strong></span
-        >
-      </div>
-
-      <!-- Grid de Opciones -->
-      <div class="row g-4 mb-4">
-        <!-- Tarjeta 1: Datos de Contacto -->
-        <div class="col-12 col-md-6">
-          <div class="module-card theme-contact">
-            <div class="module-card-header">
-              <div class="module-icon-box">
-                <i class="bi bi-person-vcard-fill"></i>
-              </div>
-              <h2 class="module-title">Datos de Contacto</h2>
-            </div>
-            <ul class="module-list">
-              <li>Direcciones y Teléfonos.</li>
-              <li>Correos electrónicos.</li>
-            </ul>
-            <div class="module-card-footer">
-              <button
-                class="btn btn-module-action"
-                data-bs-toggle="modal"
-                data-bs-target="#modalContacto"
-              >
-                Editar Contacto <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tarjeta 2: Contactos de Emergencia -->
-        <div class="col-12 col-md-6">
-          <div class="module-card theme-emergency">
-            <div class="module-card-header">
-              <div class="module-icon-box">
-                <i class="bi bi-telephone-plus-fill"></i>
-              </div>
-              <h2 class="module-title">Contactos de Emergencia</h2>
-            </div>
-            <ul class="module-list">
-              <li>Personas de Contacto.</li>
-              <li>Relación y Teléfono Directo.</li>
-            </ul>
-            <div class="module-card-footer">
-              <button
-                class="btn btn-module-action"
-                data-bs-toggle="modal"
-                data-bs-target="#modalEmergencia"
-              >
-                Gestionar Contactos <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tarjeta 3: Seguridad y Cuenta -->
-        <div class="col-12 col-md-6">
-          <div class="module-card theme-security">
-            <div class="module-card-header">
-              <div class="module-icon-box">
-                <i class="bi bi-shield-lock-fill"></i>
-              </div>
-              <h2 class="module-title">Seguridad y Cuenta</h2>
-            </div>
-            <ul class="module-list">
-              <li>Cambiar Pregunta de Seguridad.</li>
-              <li>Cambiar NIP / Contraseña.</li>
-              <li>Firma o PIN</li>
-            </ul>
-            <div class="module-card-footer">
-              <button
-                class="btn btn-module-action"
-                data-bs-toggle="modal"
-                data-bs-target="#modalSeguridad"
-              >
-                Ajustes de Seguridad <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tarjeta 4: Perfil y Encuestas -->
-        <div class="col-12 col-md-6">
-          <div class="module-card theme-profile">
-            <div class="module-card-header">
-              <div class="module-icon-box">
-                <i class="bi bi-person-circle"></i>
-              </div>
-              <h2 class="module-title">Perfil y Encuestas</h2>
-            </div>
-            <ul class="module-list">
-              <li>Perfil de Directorio</li>
-              <li>Estado Civil</li>
-              <li>Encuestas Generales y Resultados</li>
-            </ul>
-            <div class="module-card-footer">
-              <button
-                class="btn btn-module-action"
-                data-bs-toggle="modal"
-                data-bs-target="#modalPerfil"
-              >
-                Ver / Responder <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer Oscuro Estático -->
-    <footer
-      class="footer-portal d-flex justify-content-between align-items-center flex-wrap gap-2"
-    >
-      <span
-        >© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
-        reservados.</span
-      >
-
-      <div class="d-flex align-items-center gap-3">
-        <a href="#">Aviso de privacidad</a>
-        <span class="footer-version">Versión: 8.8.4.1</span>
-      </div>
-    </footer>
-
-    <!-- Bootstrap 5.3.8 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Lógica JavaScript Vanilla -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout")
-        );
-
-        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-          });
-        }
-
-        // Acción al confirmar la salida dentro del modal
-        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
-        if (btnConfirmLogout) {
-          btnConfirmLogout.addEventListener("click", () => {
-            history.pushState(null, null, "./index.html");
-            window.location.href = "index.html";
-          });
-        }
-      });
-    </script>
-  </body>
 </html>

@@ -1,691 +1,667 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNID - Menú Principal</title>
 
-    <!-- Bootstrap 5.3.8 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNID - Menú Principal</title>
 
-    <style>
-      :root {
-        /* =======================================================
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+
+  <style>
+    :root {
+      /* =======================================================
                1. COLORES FUNCIONALES DEL HEADER Y FOOTER (NO TOCADOS)
             ======================================================= */
-        --nav-bg: #151c2c;
-        --btn-red: #dc3545;
-        --btn-red-hover: #bb2d3b;
+      --nav-bg: #151c2c;
+      --btn-red: #dc3545;
+      --btn-red-hover: #bb2d3b;
 
-        /* =======================================================
+      /* =======================================================
                2. PALETA INTERIOR - PSICOLOGÍA DEL COLOR APLICADA
             ======================================================= */
-        --main-bg: #f4f6f9; /* Fondo gris claro, descansado para la vista */
-        --card-bg: #ffffff;
-        --text-main: #1e293b; /* Texto principal legible y profesional */
-        --text-muted: #64748b;
-        --border-color: #e2e8f0;
+      --main-bg: #f4f6f9;
+      /* Fondo gris claro, descansado para la vista */
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      /* Texto principal legible y profesional */
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
 
-        /* Pestaña Activa y Acentos Académicos */
-        --active-blue: #0f4c81; /* Azul Institucional (Confianza y Autoridad) */
+      /* Pestaña Activa y Acentos Académicos */
+      --active-blue: #0f4c81;
+      /* Azul Institucional (Confianza y Autoridad) */
 
-        /* Colores Temáticos por Categoría */
-        --academic-color: #0f4c81; /* Azul: Aprendizaje y Concentración */
-        --academic-bg: #eff6ff;
+      /* Colores Temáticos por Categoría */
+      --academic-color: #0f4c81;
+      /* Azul: Aprendizaje y Concentración */
+      --academic-bg: #eff6ff;
 
-        --finance-color: #0d9488; /* Verde Esmeralda: Cuentas, Finanzas y Crecimiento */
-        --finance-bg: #ccfbf1;
+      --finance-color: #0d9488;
+      /* Verde Esmeralda: Cuentas, Finanzas y Crecimiento */
+      --finance-bg: #ccfbf1;
 
-        --services-color: #7c3aed; /* Violeta: Sabiduría, Servicios y Biblioteca */
-        --services-bg: #f3e8ff;
+      --services-color: #7c3aed;
+      /* Violeta: Sabiduría, Servicios y Biblioteca */
+      --services-bg: #f3e8ff;
 
-        --tramites-color: #d97706; /* Ámbar: Acción, Trámites y Gestión */
-        --tramites-bg: #fef3c7;
+      --tramites-color: #d97706;
+      /* Ámbar: Acción, Trámites y Gestión */
+      --tramites-bg: #fef3c7;
 
-        --info-color: #2563eb; /* Azul Detección: Información y Comunicación */
-        --info-bg: #dbeafe;
-      }
+      --info-color: #2563eb;
+      /* Azul Detección: Información y Comunicación */
+      --info-bg: #dbeafe;
+    }
 
-      body {
-        background-color: var(--main-bg);
-        font-family:
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          Arial,
-          sans-serif;
-        color: var(--text-main);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+    body {
+      background-color: var(--main-bg);
+      font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-      /* =======================================================
+    /* =======================================================
            ESTILOS EXACTOS DEL HEADER (SIN MODIFICACIONES)
         ======================================================= */
-      .navbar-unid {
-        background-color: var(--nav-bg);
-        padding: 0.6rem 2rem;
-      }
+    .navbar-unid {
+      background-color: var(--nav-bg);
+      padding: 0.6rem 2rem;
+    }
 
-      .navbar-brand-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: 1px;
-      }
+    .navbar-brand-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
 
-      .navbar-brand-divider {
-        border-left: 1px solid rgba(255, 255, 255, 0.3);
-        height: 20px;
-        margin: 0 12px;
-      }
+    .navbar-brand-divider {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      height: 20px;
+      margin: 0 12px;
+    }
 
-      .navbar-brand-sub {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
-      }
+    .navbar-brand-sub {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
 
-      /* Buscador Superior */
-      .search-input-group {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 6px;
-        border: none;
-        overflow: hidden;
-        width: 260px;
-      }
+    /* Buscador Superior */
+    .search-input-group {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      border: none;
+      overflow: hidden;
+      width: 260px;
+    }
 
-      .search-input-group .input-group-text {
-        background: transparent;
-        border: none;
-        color: rgba(255, 255, 255, 0.6);
-        padding-right: 0.5rem;
-      }
+    .search-input-group .input-group-text {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      padding-right: 0.5rem;
+    }
 
-      .search-input-group .form-control {
-        background: transparent;
-        border: none;
-        color: #ffffff;
-        font-size: 0.88rem;
-      }
+    .search-input-group .form-control {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 0.88rem;
+    }
 
-      .search-input-group .form-control::placeholder {
-        color: rgba(255, 255, 255, 0.6);
-      }
+    .search-input-group .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
-      .search-input-group .form-control:focus {
-        box-shadow: none;
-        background: transparent;
-        color: #ffffff;
-      }
+    .search-input-group .form-control:focus {
+      box-shadow: none;
+      background: transparent;
+      color: #ffffff;
+    }
 
-      .btn-header-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 0.9rem;
-        border-radius: 6px;
-        font-weight: 500;
-      }
+    .btn-header-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
 
-      .btn-header-outline:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-      }
+    .btn-header-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
 
-      .btn-header-danger {
-        background-color: var(--btn-red);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 1rem;
-        border-radius: 6px;
-        font-weight: 600;
-        border: none;
-      }
+    .btn-header-danger {
+      background-color: var(--btn-red);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+    }
 
-      .btn-header-danger:hover {
-        background-color: var(--btn-red-hover);
-        color: #ffffff;
-      }
+    .btn-header-danger:hover {
+      background-color: var(--btn-red-hover);
+      color: #ffffff;
+    }
 
-      /* =======================================================
+    /* =======================================================
            SUB-NAVEGACIÓN DE PESTAÑAS (REDISEÑADA INTERIORMENTE)
         ======================================================= */
-      .subnav-tabs {
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--border-color);
-        padding: 0 2rem;
-      }
+    .subnav-tabs {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 2rem;
+    }
 
-      .subnav-link {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.92rem;
-        font-weight: 600;
-        padding: 0.85rem 1rem;
-        display: inline-block;
-        border-bottom: 3px solid transparent;
-        transition:
-          color 0.2s ease,
-          border-color 0.2s ease;
-      }
+    .subnav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.85rem 1rem;
+      display: inline-block;
+      border-bottom: 3px solid transparent;
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
 
-      .subnav-link.active {
-        color: var(--active-blue);
-        border-bottom-color: var(--active-blue);
-      }
+    .subnav-link.active {
+      color: var(--active-blue);
+      border-bottom-color: var(--active-blue);
+    }
 
-      .subnav-link:hover:not(.active) {
-        color: var(--text-main);
-      }
+    .subnav-link:hover:not(.active) {
+      color: var(--text-main);
+    }
 
-      /* =======================================================
+    /* =======================================================
            BANNER SALUDO ALUMNO (CON IMAGEN DEL LOBO)
         ======================================================= */
-      .student-welcome-card {
-        background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
-        border-radius: 12px;
-        padding: 1.25rem 1.5rem;
-        border: 1px solid #dcfce7;
-        box-shadow: 0 2px 8px rgba(13, 148, 136, 0.05);
-      }
+    .student-welcome-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid #dcfce7;
+      box-shadow: 0 2px 8px rgba(13, 148, 136, 0.05);
+    }
 
-.student-avatar-img {
-  display: block;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  object-fit: cover; /* Llena el círculo sin deformar */
-  object-position: top center; /* Ajusta el enfoque hacia la parte superior/cara */
-  border: 2px solid #059669;
-  background-color: #ffffff;
-  padding: 2px;
-  box-sizing: border-box;
-}
-      .student-name {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--text-main);
-        margin-bottom: 0.1rem;
-      }
+    .student-avatar-img {
+      display: block;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      object-fit: cover;
+      /* Llena el círculo sin deformar */
+      object-position: top center;
+      /* Ajusta el enfoque hacia la parte superior/cara */
+      border: 2px solid #059669;
+      background-color: #ffffff;
+      padding: 2px;
+      box-sizing: border-box;
+    }
 
-      .student-meta {
-        font-size: 0.82rem;
-        color: var(--text-muted);
-        margin: 0;
-      }
+    .student-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.1rem;
+    }
 
-      /* =======================================================
+    .student-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* =======================================================
            TARJETAS DE MÓDULOS (CATEGORIZACIÓN POR COLOR)
         ======================================================= */
-      .module-card {
-        background-color: #ffffff;
-        border-radius: 12px;
-        padding: 1.25rem;
-        height: 100%;
-        border: 1px solid var(--border-color);
-        border-top: 4px solid var(--card-accent-color, #0f4c81);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
+    .module-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      height: 100%;
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--card-accent-color, #0f4c81);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
-      .module-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-      }
+    .module-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
 
-      /* Asignación de colores acento por módulo */
-      .module-card.academic {
-        --card-accent-color: var(--academic-color);
-        --icon-bg: var(--academic-bg);
-      }
-      .module-card.finance {
-        --card-accent-color: var(--finance-color);
-        --icon-bg: var(--finance-bg);
-      }
-      .module-card.services {
-        --card-accent-color: var(--services-color);
-        --icon-bg: var(--services-bg);
-      }
-      .module-card.tramites {
-        --card-accent-color: var(--tramites-color);
-        --icon-bg: var(--tramites-bg);
-      }
-      .module-card.info {
-        --card-accent-color: var(--info-color);
-        --icon-bg: var(--info-bg);
-      }
+    /* Asignación de colores acento por módulo */
+    .module-card.academic {
+      --card-accent-color: var(--academic-color);
+      --icon-bg: var(--academic-bg);
+    }
 
-      .module-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-      }
+    .module-card.finance {
+      --card-accent-color: var(--finance-color);
+      --icon-bg: var(--finance-bg);
+    }
 
-      .module-header-icon-wrapper {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        background-color: var(--icon-bg);
-        color: var(--card-accent-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.3rem;
-      }
+    .module-card.services {
+      --card-accent-color: var(--services-color);
+      --icon-bg: var(--services-bg);
+    }
 
-      .module-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin: 0;
-        color: var(--text-main);
-      }
+    .module-card.tramites {
+      --card-accent-color: var(--tramites-color);
+      --icon-bg: var(--tramites-bg);
+    }
 
-      /* Lista de Opciones e Ítems */
-      .module-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.7rem 0.9rem;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        margin-bottom: 0.5rem;
-        text-decoration: none;
-        color: var(--text-main);
-        font-size: 0.88rem;
-        font-weight: 500;
-        background-color: #ffffff;
-        transition: all 0.2s ease;
-      }
+    .module-card.info {
+      --card-accent-color: var(--info-color);
+      --icon-bg: var(--info-bg);
+    }
 
-      .module-item:last-child {
-        margin-bottom: 0;
-      }
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
 
-      .module-item:hover {
-        background-color: var(--icon-bg);
-        border-color: var(--card-accent-color);
-        color: var(--card-accent-color);
-        padding-left: 1.1rem;
-      }
+    .module-header-icon-wrapper {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: var(--icon-bg);
+      color: var(--card-accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
 
-      .module-item-left {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
+    .module-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-main);
+    }
 
-      .module-item-icon {
-        color: var(--card-accent-color);
-        font-size: 1rem;
-      }
+    /* Lista de Opciones e Ítems */
+    .module-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 500;
+      background-color: #ffffff;
+      transition: all 0.2s ease;
+    }
 
-      .module-item-arrow {
-        color: var(--text-muted);
-        font-size: 0.8rem;
-        transition: transform 0.2s ease;
-      }
+    .module-item:last-child {
+      margin-bottom: 0;
+    }
 
-      .module-item:hover .module-item-arrow {
-        color: var(--card-accent-color);
-        transform: translateX(3px);
-      }
+    .module-item:hover {
+      background-color: var(--icon-bg);
+      border-color: var(--card-accent-color);
+      color: var(--card-accent-color);
+      padding-left: 1.1rem;
+    }
 
-      .badge-institution {
-        background-color: #e0f2fe;
-        color: #0369a1;
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
-        border: 1px solid #bae6fd;
-      }
+    .module-item-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
 
-      /* =======================================================
+    .module-item-icon {
+      color: var(--card-accent-color);
+      font-size: 1rem;
+    }
+
+    .module-item-arrow {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+
+    .module-item:hover .module-item-arrow {
+      color: var(--card-accent-color);
+      transform: translateX(3px);
+    }
+
+    .badge-institution {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #bae6fd;
+    }
+
+    /* =======================================================
            ESTILOS EXACTOS DEL FOOTER (SIN MODIFICACIONES)
         ======================================================= */
-      .footer-portal {
-        background-color: var(--nav-bg);
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.8rem;
-        padding: 1rem 2rem;
-        margin-top: auto;
-      }
+    .footer-portal {
+      background-color: var(--nav-bg);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
+      padding: 1rem 2rem;
+      margin-top: auto;
+    }
 
-      /* Psicología y Estética del Modal de Salida */
-      .bg-danger-subtle {
-        background-color: #fee2e2 !important;
-      }
+    /* Psicología y Estética del Modal de Salida */
+    .bg-danger-subtle {
+      background-color: #fee2e2 !important;
+    }
 
-      .modal-content {
-        border-radius: 12px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Modal Confirmación Cierre de Sesión -->
-    <div
-      class="modal fade"
-      id="modalLogout"
-      tabindex="-1"
-      aria-labelledby="modalLogoutLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-body text-center p-4">
-            <div
-              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 60px; height: 60px"
-            >
-              <i class="bi bi-box-arrow-right fs-2"></i>
-            </div>
-            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
-            <p class="text-muted small mb-4">
-              Estás a punto de salir del Portal de Alumnos UNID.
-            </p>
-            <div class="d-flex gap-2">
-              <button
-                type="button"
-                class="btn btn-light w-50 fw-semibold"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                id="btnConfirmLogout"
-                class="btn btn-danger w-50 fw-semibold"
-              >
-                Salir
-              </button>
-            </div>
+    .modal-content {
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Modal Confirmación Cierre de Sesión -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-4">
+          <div
+            class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+            style="width: 60px; height: 60px">
+            <i class="bi bi-box-arrow-right fs-2"></i>
+          </div>
+          <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+          <p class="text-muted small mb-4">
+            Estás a punto de salir del Portal de Alumnos UNID.
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">
+              Salir
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Header Principal -->
-    <nav
-      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
-    >
-      <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">UNID</span>
-        <span class="navbar-brand-divider"></span>
-        <span class="navbar-brand-sub">Portal de Alumnos</span>
+  <!-- Header Principal -->
+  <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <span class="navbar-brand-logo">UNID</span>
+      <span class="navbar-brand-divider"></span>
+      <span class="navbar-brand-sub">Portal de Alumnos</span>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <div class="input-group search-input-group d-none d-md-flex">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Buscar..." />
       </div>
 
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-question-circle"></i> Ayuda
+      </button>
+
+      <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+        <i class="bi bi-box-arrow-right"></i> Salir
+      </button>
+    </div>
+  </nav>
+
+  <!-- Subnavegación de Pestañas -->
+  <div class="subnav-tabs">
+    <a href="./dashboard.html" class="subnav-link active">Inicio</a>
+    <a href="./informacion-personal.html" class="subnav-link">Información Personal</a>
+    <a href="./alumnos-egresados.html" class="subnav-link">Alumnos y Egresados</a>
+  </div>
+
+  <!-- Contenido Principal (Interior) -->
+  <div class="container-fluid px-md-5 py-4">
+    <!-- Encabezado de Sección -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold fs-3 m-0">Menú principal</h2>
+      <span class="badge-institution">Institución: <strong>UNID</strong></span>
+    </div>
+
+    <!-- Tarjeta Saludo e Identificación del Alumno con Imagen del Lobo -->
+    <div class="student-welcome-card mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
       <div class="d-flex align-items-center gap-3">
-        <div class="input-group search-input-group d-none d-md-flex">
-          <span class="input-group-text"><i class="bi bi-search"></i></span>
-          <input type="text" class="form-control" placeholder="Buscar..." />
-        </div>
-
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-question-circle"></i> Ayuda
-        </button>
-
-        <button
-          id="btnLogout"
-          class="btn btn-header-danger d-flex align-items-center gap-1"
-        >
-          <i class="bi bi-box-arrow-right"></i> Salir
-        </button>
-      </div>
-    </nav>
-
-    <!-- Subnavegación de Pestañas -->
-    <div class="subnav-tabs">
-      <a href="./dashboard.html" class="subnav-link active">Inicio</a>
-      <a href="./informacion-personal.html" class="subnav-link"
-        >Información Personal</a
-      >
-      <a href="./alumnos-egresados.html" class="subnav-link"
-        >Alumnos y Egresados</a
-      >
-    </div>
-
-    <!-- Contenido Principal (Interior) -->
-    <div class="container-fluid px-md-5 py-4">
-      <!-- Encabezado de Sección -->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold fs-3 m-0">Menú principal</h2>
-        <span class="badge-institution"
-          >Institución: <strong>UNID</strong></span
-        >
-      </div>
-
-      <!-- Tarjeta Saludo e Identificación del Alumno con Imagen del Lobo -->
-      <div
-        class="student-welcome-card mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3"
-      >
-        <div class="d-flex align-items-center gap-3">
-          <img
-            src="../img/image_lobo-removebg-preview.png"
-            alt="Mascota Lobo UNID"
-            class="student-avatar-img"
-          />
-          <div>
-            <div class="student-name">
-              Bienvenido(a), Juanito Perez de León
-            </div>
-            <p class="student-meta">
-              ID Alumno: 00293847 · Plan de estudios vigente
-            </p>
+        <img src="../img/image_lobo-removebg-preview.png" alt="Mascota Lobo UNID" class="student-avatar-img" />
+        <div>
+          <div class="student-name">
+            Bienvenido(a), Juanito Perez de León
           </div>
-        </div>
-        <div class="text-muted small d-flex align-items-center gap-1">
-          <i class="bi bi-clock"></i> Último acceso: 16 Ago 2026 · 04:38 PM
+          <p class="student-meta">
+            ID Alumno: 00293847 · Plan de estudios vigente
+          </p>
         </div>
       </div>
-
-      <!-- Cuadrícula de Módulos (Categorizada por Psicología del Color) -->
-      <div class="row g-4 mb-4">
-        <!-- Módulo 1: Académico (Azul) -->
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="module-card academic">
-            <div class="module-header">
-              <div class="module-header-icon-wrapper">
-                <i class="bi bi-journal-bookmark"></i>
-              </div>
-              <h3 class="module-title">Académico</h3>
-            </div>
-            <a href="./academico-page/reglamento.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-file-earmark-text module-item-icon"></i>
-                <span>Reglamento</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./academico-page/calendario.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-calendar-event module-item-icon"></i>
-                <span>Calendario</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./academico-page/guia_alumnos.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-file-earmark-code module-item-icon"></i>
-                <span>Manuales</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Módulo 2: Pagos (Verde Esmeralda) -->
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="module-card finance">
-            <div class="module-header">
-              <div class="module-header-icon-wrapper">
-                <i class="bi bi-credit-card"></i>
-              </div>
-              <h3 class="module-title">Pagos</h3>
-            </div>
-            <a href="./pagos-page/pagos-UNID.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-wallet2 module-item-icon"></i>
-                <span>Pagos UNID</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./pagos-page/remipresiones.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-printer module-item-icon"></i>
-                <span>Reimpresiones</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./pagos-page/becas.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-award module-item-icon"></i>
-                <span>Becas</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Módulo 3: Servicios (Violeta) -->
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="module-card services">
-            <div class="module-header">
-              <div class="module-header-icon-wrapper">
-                <i class="bi bi-grid-3x3-gap"></i>
-              </div>
-              <h3 class="module-title">Servicios</h3>
-            </div>
-            <a href="./servicios-page/facturas.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-receipt module-item-icon"></i>
-                <span>Mis facturas</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./servicios-page/menu-servicios.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-layers module-item-icon"></i>
-                <span>Menú de Servicios</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./servicios-page/biblioteca.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-book module-item-icon"></i>
-                <span>Biblioteca</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Módulo 4: Trámites (Ámbar) -->
-        <div class="col-12 col-md-6 col-lg-6">
-          <div class="module-card tramites">
-            <div class="module-header">
-              <div class="module-header-icon-wrapper">
-                <i class="bi bi-pencil-square"></i>
-              </div>
-              <h3 class="module-title">Trámites</h3>
-            </div>
-            <a href="./tramites-page/encuestas.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-clipboard-check module-item-icon"></i>
-                <span>Encuestas</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a href="./tramites-page/ficha-pago.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-file-earmark-pdf module-item-icon"></i>
-                <span>Ficha de pago</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Módulo 5: Información (Azul Informativo) -->
-        <div class="col-12 col-md-6 col-lg-6">
-          <div class="module-card info">
-            <div class="module-header">
-              <div class="module-header-icon-wrapper">
-                <i class="bi bi-info-circle"></i>
-              </div>
-              <h3 class="module-title">Información</h3>
-            </div>
-            <a href="./servicios-page/biblioteca.html" class="module-item">
-              <div class="module-item-left">
-                <i class="bi bi-megaphone module-item-icon"></i>
-                <span>Circulares</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-            <a
-              href="./servicios-page/biblioteca_digital.html"
-              class="module-item"
-            >
-              <div class="module-item-left">
-                <i class="bi bi-collection module-item-icon"></i>
-                <span>Biblioteca digital</span>
-              </div>
-              <i class="bi bi-chevron-right module-item-arrow"></i>
-            </a>
-          </div>
-        </div>
+      <div class="text-muted small d-flex align-items-center gap-1">
+        <i class="bi bi-clock"></i> Último acceso: 16 Ago 2026 · 04:38 PM
       </div>
     </div>
 
-    <!-- Pie de Página -->
-    <footer
-      class="footer-portal d-flex justify-content-between align-items-center"
-    >
-      <span>© 2026 Ellucian Company L.P. y sus afiliadas.</span>
-      <span>Versión: 8.8.43</span>
-    </footer>
+    <!-- Cuadrícula de Módulos (Categorizada por Psicología del Color) -->
+    <div class="row g-4 mb-4">
+      <!-- Módulo 1: Académico (Azul) -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="module-card academic">
+          <div class="module-header">
+            <div class="module-header-icon-wrapper">
+              <i class="bi bi-journal-bookmark"></i>
+            </div>
+            <h3 class="module-title">Académico</h3>
+          </div>
+          <a href="./academico-page/reglamento.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-file-earmark-text module-item-icon"></i>
+              <span>Reglamento</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./academico-page/calendario.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-calendar-event module-item-icon"></i>
+              <span>Calendario</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./academico-page/guia_alumnos.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-file-earmark-code module-item-icon"></i>
+              <span>Manuales</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+        </div>
+      </div>
 
-    <!-- Bootstrap 5.3.8 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Módulo 2: Pagos (Verde Esmeralda) -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="module-card finance">
+          <div class="module-header">
+            <div class="module-header-icon-wrapper">
+              <i class="bi bi-credit-card"></i>
+            </div>
+            <h3 class="module-title">Pagos</h3>
+          </div>
+          <a href="./pagos-page/pagos-UNID.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-wallet2 module-item-icon"></i>
+              <span>Pagos UNID</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./pagos-page/remipresiones.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-printer module-item-icon"></i>
+              <span>Reimpresiones</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./pagos-page/becas.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-award module-item-icon"></i>
+              <span>Becas</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+        </div>
+      </div>
 
-    <!-- Lógica JavaScript Vanilla -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout"),
-        );
+      <!-- Módulo 3: Servicios (Violeta) -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="module-card services">
+          <div class="module-header">
+            <div class="module-header-icon-wrapper">
+              <i class="bi bi-grid-3x3-gap"></i>
+            </div>
+            <h3 class="module-title">Servicios</h3>
+          </div>
+          <a href="./servicios-page/facturas.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-receipt module-item-icon"></i>
+              <span>Mis facturas</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./servicios-page/menu-servicios.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-layers module-item-icon"></i>
+              <span>Menú de Servicios</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./servicios-page/biblioteca.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-book module-item-icon"></i>
+              <span>Biblioteca</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+        </div>
+      </div>
 
-        // Botón Salir
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-          });
-        }
+      <!-- Módulo 4: Trámites (Ámbar) -->
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="module-card tramites">
+          <div class="module-header">
+            <div class="module-header-icon-wrapper">
+              <i class="bi bi-pencil-square"></i>
+            </div>
+            <h3 class="module-title">Trámites</h3>
+          </div>
+          <a href="./tramites-page/encuestas.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-clipboard-check module-item-icon"></i>
+              <span>Encuestas</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./tramites-page/ficha-pago.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-file-earmark-pdf module-item-icon"></i>
+              <span>Ficha de pago</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+        </div>
+      </div>
 
-        // Acción al confirmar la salida dentro del modal
-        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
-        if (btnConfirmLogout) {
-          btnConfirmLogout.addEventListener("click", () => {
-            history.pushState(null, null, "../index.html");
-            window.location.href = "../index.html";
-          });
-        }
-      });
-    </script>
-  </body>
+      <!-- Módulo 5: Información (Azul Informativo) -->
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="module-card info">
+          <div class="module-header">
+            <div class="module-header-icon-wrapper">
+              <i class="bi bi-info-circle"></i>
+            </div>
+            <h3 class="module-title">Información</h3>
+          </div>
+          <a href="./servicios-page/biblioteca.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-megaphone module-item-icon"></i>
+              <span>Circulares</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+          <a href="./servicios-page/biblioteca_digital.html" class="module-item">
+            <div class="module-item-left">
+              <i class="bi bi-collection module-item-icon"></i>
+              <span>Biblioteca digital</span>
+            </div>
+            <i class="bi bi-chevron-right module-item-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer class="footer-portal d-flex justify-content-between align-items-center">
+    <span>© 2026 Ellucian Company L.P. y sus afiliadas.</span>
+    <span>Versión: 8.8.43</span>
+  </footer>
+
+  <!-- Bootstrap 5.3.8 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Lógica JavaScript Vanilla -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modalLogout = new bootstrap.Modal(
+        document.getElementById("modalLogout"),
+      );
+
+      // Botón Salir
+      const btnLogout = document.getElementById("btnLogout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+          modalLogout.show();
+        });
+      }
+
+      // Acción al confirmar la salida dentro del modal
+      const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+      if (btnConfirmLogout) {
+        btnConfirmLogout.addEventListener("click", () => {
+          // Detecta el nombre de tu repositorio dinámicamente
+          const repoName = window.location.pathname.split('/')[1];
+          window.location.href = `/${repoName}/index.html`;
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>
