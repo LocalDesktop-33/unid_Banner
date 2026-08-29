@@ -1,649 +1,606 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNID - Mis Facturas</title>
 
-    <!-- Bootstrap 5.3.8 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNID - Mis Facturas</title>
 
-    <style>
-      :root {
-        /* Colores de Header / Footer (Intactos) */
-        --nav-bg: #151c2c;
-        --btn-red: #dc3545;
-        --btn-red-hover: #bb2d3b;
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
 
-        /* UI Refinada con Psicología del Color */
-        --main-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --text-main: #0f172a;
-        --text-muted: #64748b;
-        --border-color: #e2e8f0;
+  <style>
+    :root {
+      /* Colores de Header / Footer (Intactos) */
+      --nav-bg: #151c2c;
+      --btn-red: #dc3545;
+      --btn-red-hover: #bb2d3b;
 
-        /* Primarios: Seguridad y Claridad */
-        --primary-blue: #1e40af;
-        --primary-blue-hover: #1e3a8a;
-        --accent-blue-bg: #eff6ff;
+      /* UI Refinada con Psicología del Color */
+      --main-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
 
-        /* Éxito / Acción: Verde Esmeralda */
-        --success-green: #059669;
-        --success-green-hover: #047857;
-        --success-bg-subtle: #d1fae5;
+      /* Primarios: Seguridad y Claridad */
+      --primary-blue: #1e40af;
+      --primary-blue-hover: #1e3a8a;
+      --accent-blue-bg: #eff6ff;
 
-        --table-row-hover: #f1f5f9;
-      }
+      /* Éxito / Acción: Verde Esmeralda */
+      --success-green: #059669;
+      --success-green-hover: #047857;
+      --success-bg-subtle: #d1fae5;
 
-      body {
-        background-color: var(--main-bg);
-        font-family:
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          Arial,
-          sans-serif;
-        color: var(--text-main);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+      --table-row-hover: #f1f5f9;
+    }
 
-      /* Header Principal (Sin Cambios) */
-      .navbar-unid {
-        background-color: var(--nav-bg);
-        padding: 0.6rem 2rem;
-      }
+    body {
+      background-color: var(--main-bg);
+      font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-      .navbar-brand-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: 1px;
-      }
+    /* Header Principal (Sin Cambios) */
+    .navbar-unid {
+      background-color: var(--nav-bg);
+      padding: 0.6rem 2rem;
+    }
 
-      .navbar-brand-divider {
-        border-left: 1px solid rgba(255, 255, 255, 0.3);
-        height: 20px;
-        margin: 0 12px;
-      }
+    .navbar-brand-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
 
-      .navbar-brand-sub {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
-      }
+    .navbar-brand-divider {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      height: 20px;
+      margin: 0 12px;
+    }
 
-      .navbar-title {
-        color: #ffffff;
-        font-size: 1.1rem;
-        font-weight: 700;
-      }
+    .navbar-brand-sub {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
 
-      .btn-header-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 0.9rem;
-        border-radius: 6px;
-        font-weight: 500;
-      }
+    .navbar-title {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
 
-      .btn-header-outline:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-      }
+    .btn-header-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
 
-      .btn-header-danger {
-        background-color: var(--btn-red);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 1rem;
-        border-radius: 6px;
-        font-weight: 600;
-        border: none;
-      }
+    .btn-header-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
 
-      .btn-header-danger:hover {
-        background-color: var(--btn-red-hover);
-        color: #ffffff;
-      }
+    .btn-header-danger {
+      background-color: var(--btn-red);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+    }
 
-      /* Tarjeta de Información del Alumno */
-      .student-info-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        padding: 1.25rem 1.5rem;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-      }
+    .btn-header-danger:hover {
+      background-color: var(--btn-red-hover);
+      color: #ffffff;
+    }
 
-      .avatar-circle {
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        background-color: #ffffff;
-        border: 2px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        padding: 4px; /* Opcional: crea un margen interno limpio */
-      }
+    /* Tarjeta de Información del Alumno */
+    .student-info-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
 
-      .avatar-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Preserva la relación de aspecto sin distorsionar */
-        object-position: center;
-      }
-      /* Tarjetas de Acción de Facturación */
-      .action-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        padding: 1.5rem;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-        height: 100%;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        position: relative;
-      }
+    .avatar-circle {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      padding: 4px;
+      /* Opcional: crea un margen interno limpio */
+    }
 
-      .action-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-        border-color: #cbd5e1;
-      }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* Preserva la relación de aspecto sin distorsionar */
+      object-position: center;
+    }
 
-      .action-card.active-card {
-        border: 2px solid var(--primary-blue);
-        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      }
+    /* Tarjetas de Acción de Facturación */
+    .action-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      height: 100%;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+    }
 
-      .action-card-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text-main);
-        margin-bottom: 0.35rem;
-      }
+    .action-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      border-color: #cbd5e1;
+    }
 
-      .action-card-sub {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-        margin: 0;
-        line-height: 1.4;
-      }
+    .action-card.active-card {
+      border: 2px solid var(--primary-blue);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
 
-      .action-card-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 10px;
-        background-color: var(--accent-blue-bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        color: var(--primary-blue);
-        flex-shrink: 0;
-      }
+    .action-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
 
-      .badge-count {
-        background-color: #dbeafe;
-        color: var(--primary-blue);
-        font-weight: 700;
-        padding: 0.2rem 0.5rem;
-        border-radius: 6px;
-      }
+    .action-card-sub {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
 
-      /* Botón Descargar General */
-      .btn-green-action {
-        background-color: var(--success-green);
-        color: #ffffff;
-        font-weight: 600;
-        font-size: 0.875rem;
-        padding: 0.5rem 1.25rem;
-        border-radius: 8px;
-        border: none;
-        box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
-        transition: all 0.15s ease;
-      }
+    .action-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background-color: var(--accent-blue-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--primary-blue);
+      flex-shrink: 0;
+    }
 
-      .btn-green-action:hover {
-        background-color: var(--success-green-hover);
-        color: #ffffff;
-        box-shadow: 0 4px 8px rgba(5, 150, 105, 0.3);
-      }
+    .badge-count {
+      background-color: #dbeafe;
+      color: var(--primary-blue);
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
 
-      /* Tabla de Facturas Emitidas */
-      .invoices-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-        padding: 1.25rem;
-      }
+    /* Botón Descargar General */
+    .btn-green-action {
+      background-color: var(--success-green);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+      transition: all 0.15s ease;
+    }
 
-      .table-invoices {
-        width: 100%;
-        margin: 0;
-        border-collapse: separate;
-        border-spacing: 0 0.5rem;
-      }
+    .btn-green-action:hover {
+      background-color: var(--success-green-hover);
+      color: #ffffff;
+      box-shadow: 0 4px 8px rgba(5, 150, 105, 0.3);
+    }
 
-      .table-invoices th {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--text-muted);
-        font-weight: 700;
-        padding: 0.5rem 1rem;
-        border: none;
-      }
+    /* Tabla de Facturas Emitidas */
+    .invoices-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 1.25rem;
+    }
 
-      .table-invoices tbody tr {
-        background-color: #ffffff;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        transition: all 0.15s ease;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-      }
+    .table-invoices {
+      width: 100%;
+      margin: 0;
+      border-collapse: separate;
+      border-spacing: 0 0.5rem;
+    }
 
-      .table-invoices tbody tr:hover {
-        background-color: var(--table-row-hover);
-        transform: scale(1.001);
-      }
+    .table-invoices th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border: none;
+    }
 
-      .table-invoices td {
-        padding: 1rem;
-        vertical-align: middle;
-        font-size: 0.875rem;
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-      }
+    .table-invoices tbody tr {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
 
-      .table-invoices td:first-child {
-        border-left: 1px solid var(--border-color);
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-      }
+    .table-invoices tbody tr:hover {
+      background-color: var(--table-row-hover);
+      transform: scale(1.001);
+    }
 
-      .table-invoices td:last-child {
-        border-right: 1px solid var(--border-color);
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-      }
+    .table-invoices td {
+      padding: 1rem;
+      vertical-align: middle;
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
 
-      .status-badge {
-        background-color: var(--success-bg-subtle);
-        color: var(--success-green);
-        font-size: 0.75rem;
-        font-weight: 700;
-        padding: 0.25rem 0.6rem;
-        border-radius: 20px;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-      }
+    .table-invoices td:first-child {
+      border-left: 1px solid var(--border-color);
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
 
-      .btn-download-sm {
-        background-color: #f1f5f9;
-        color: var(--text-main);
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding: 0.35rem 0.9rem;
-        border-radius: 6px;
-        border: 1px solid var(--border-color);
-        transition: all 0.15s ease;
-      }
+    .table-invoices td:last-child {
+      border-right: 1px solid var(--border-color);
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
 
-      .btn-download-sm:hover {
-        background-color: var(--primary-blue);
-        color: #ffffff;
-        border-color: var(--primary-blue);
-      }
+    .status-badge {
+      background-color: var(--success-bg-subtle);
+      color: var(--success-green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-      /* Footer (Sin Cambios) */
-      .footer-portal {
-        background-color: var(--nav-bg);
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.8rem;
-        padding: 1rem 2rem;
-        margin-top: auto;
-      }
-      /* Psicología y Estética del Modal de Salida */
-      .bg-danger-subtle {
-        background-color: #fee2e2 !important;
-      }
+    .btn-download-sm {
+      background-color: #f1f5f9;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      transition: all 0.15s ease;
+    }
 
-      .modal-content {
-        border-radius: 12px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- modal -->
-    <!-- Modal Confirmación Cierre de Sesión -->
-    <div
-      class="modal fade"
-      id="modalLogout"
-      tabindex="-1"
-      aria-labelledby="modalLogoutLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-body text-center p-4">
-            <div
-              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 60px; height: 60px"
-            >
-              <i class="bi bi-box-arrow-right fs-2"></i>
-            </div>
-            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
-            <p class="text-muted small mb-4">
-              Estás a punto de salir del Portal de Alumnos UNID.
-            </p>
-            <div class="d-flex gap-2">
-              <button
-                type="button"
-                class="btn btn-light w-50 fw-semibold"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                id="btnConfirmLogout"
-                class="btn btn-danger w-50 fw-semibold"
-              >
-                Salir
-              </button>
-            </div>
+    .btn-download-sm:hover {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      border-color: var(--primary-blue);
+    }
+
+    /* Footer (Sin Cambios) */
+    .footer-portal {
+      background-color: var(--nav-bg);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
+      padding: 1rem 2rem;
+      margin-top: auto;
+    }
+
+    /* Psicología y Estética del Modal de Salida */
+    .bg-danger-subtle {
+      background-color: #fee2e2 !important;
+    }
+
+    .modal-content {
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- modal -->
+  <!-- Modal Confirmación Cierre de Sesión -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-4">
+          <div
+            class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+            style="width: 60px; height: 60px">
+            <i class="bi bi-box-arrow-right fs-2"></i>
+          </div>
+          <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+          <p class="text-muted small mb-4">
+            Estás a punto de salir del Portal de Alumnos UNID.
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">
+              Salir
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Header Principal -->
-    <nav
-      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
-    >
-      <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">UNID</span>
-        <span class="navbar-brand-divider"></span>
-        <span class="navbar-brand-sub">Portal de Alumnos</span>
-      </div>
+  <!-- Header Principal -->
+  <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <span class="navbar-brand-logo">UNID</span>
+      <span class="navbar-brand-divider"></span>
+      <span class="navbar-brand-sub">Portal de Alumnos</span>
+    </div>
 
-      <div class="navbar-title d-none d-md-block">Mis Facturas</div>
+    <div class="navbar-title d-none d-md-block">Mis Facturas</div>
 
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-question-circle"></i> Ayuda
-        </button>
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-list"></i> Menú
-        </button>
-        <button
-          id="btnLogout"
-          class="btn btn-header-danger d-flex align-items-center gap-1"
-        >
-          <i class="bi bi-box-arrow-right"></i> Salir
-        </button>
-      </div>
-    </nav>
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-question-circle"></i> Ayuda
+      </button>
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-list"></i> Menú
+      </button>
+      <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+        <i class="bi bi-box-arrow-right"></i> Salir
+      </button>
+    </div>
+  </nav>
 
-    <!-- Contenido Principal -->
-    <div class="container-fluid px-md-5 py-4">
-      <!-- Tarjeta Alumno -->
-      <!-- Tarjeta Alumno -->
-      <div class="student-info-card mb-4">
-        <div class="d-flex align-items-center gap-3">
-          <div class="avatar-circle">
-            <img
-              src="../../img/image_lobo-removebg-preview.png"
-              alt="Foto de perfil de Juanito Perez"
-              class="avatar-img"
-            />
-          </div>
-          <div>
-            <h1 class="h5 fw-bold mb-0 text-dark">Juanito Perez de León</h1>
-            <span class="text-muted small">
-              Matrícula: <strong class="text-dark">00914664</strong>
-            </span>
-          </div>
+  <!-- Contenido Principal -->
+  <div class="container-fluid px-md-5 py-4">
+    <!-- Tarjeta Alumno -->
+    <!-- Tarjeta Alumno -->
+    <div class="student-info-card mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <div class="avatar-circle">
+          <img src="../../img/image_lobo-removebg-preview.png" alt="Foto de perfil de Juanito Perez"
+            class="avatar-img" />
         </div>
-      </div>
-
-      <!-- Tarjetas de Acción de Facturación -->
-      <div class="row g-3 mb-4">
-        <div class="col-12 col-md-6">
-          <div
-            class="action-card active-card d-flex justify-content-between align-items-center"
-          >
-            <div>
-              <div class="action-card-title">Nueva Factura</div>
-              <p class="action-card-sub">
-                Emitir comprobantes de tus pagos realizados. Tienes
-                <span class="badge-count">3</span> pagos disponibles.
-              </p>
-            </div>
-            <div class="action-card-icon ms-3">
-              <i class="bi bi-receipt-cutoff"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-          <div
-            class="action-card d-flex justify-content-between align-items-center"
-          >
-            <div>
-              <div class="action-card-title">Datos Fiscales</div>
-              <p class="action-card-sub">
-                Actualiza o valida tu RFC y domicilio fiscal para la correcta
-                emisión de tus facturas.
-              </p>
-            </div>
-            <div class="action-card-icon ms-3">
-              <i class="bi bi-building"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sección de Emitidas -->
-      <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-          <h2 class="h4 fw-bold mb-0">Facturas Emitidas</h2>
-          <span class="text-muted small"
-            >Histórico de comprobantes fiscales generados</span
-          >
-        </div>
-        <button
-          id="btnDownloadAll"
-          class="btn btn-green-action d-flex align-items-center gap-2"
-        >
-          <i class="bi bi-file-earmark-zip-fill"></i> Descargar Todas
-        </button>
-      </div>
-
-      <!-- Tabla de Facturas -->
-      <div class="invoices-card mb-4">
-        <div class="table-responsive">
-          <table class="table-invoices">
-            <thead>
-              <tr>
-                <th>Fecha de Pago</th>
-                <th>Ticket</th>
-                <th>Emisor</th>
-                <th>Receptor</th>
-                <th>Monto</th>
-                <th>Estado</th>
-                <th class="text-end">Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="fw-bold text-dark">
-                  <i class="bi bi-calendar-event me-1 text-muted"></i>
-                  2026-08-04
-                </td>
-                <td class="font-monospace text-primary fw-semibold">
-                  2026-0000349828
-                </td>
-                <td class="text-muted">UTM010711E2A</td>
-                <td class="text-muted">XAXX010101000</td>
-                <td class="fw-bold text-dark">$1,554.00</td>
-                <td>
-                  <span class="status-badge"
-                    ><i class="bi bi-check-circle-fill"></i> Emitida</span
-                  >
-                </td>
-                <td class="text-end">
-                  <button
-                    class="btn btn-download-sm btn-download-single"
-                    data-ticket="2026-0000349828"
-                  >
-                    <i class="bi bi-download me-1"></i> PDF / XML
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="fw-bold text-dark">
-                  <i class="bi bi-calendar-event me-1 text-muted"></i>
-                  2026-07-15
-                </td>
-                <td class="font-monospace text-primary fw-semibold">
-                  2026-0000320538
-                </td>
-                <td class="text-muted">UTM010711E2A</td>
-                <td class="text-muted">XAXX010101000</td>
-                <td class="fw-bold text-dark">$2,144.00</td>
-                <td>
-                  <span class="status-badge"
-                    ><i class="bi bi-check-circle-fill"></i> Emitida</span
-                  >
-                </td>
-                <td class="text-end">
-                  <button
-                    class="btn btn-download-sm btn-download-single"
-                    data-ticket="2026-0000320538"
-                  >
-                    <i class="bi bi-download me-1"></i> PDF / XML
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="fw-bold text-dark">
-                  <i class="bi bi-calendar-event me-1 text-muted"></i>
-                  2026-06-10
-                </td>
-                <td class="font-monospace text-primary fw-semibold">
-                  2026-0000298110
-                </td>
-                <td class="text-muted">UTM010711E2A</td>
-                <td class="text-muted">XAXX010101000</td>
-                <td class="fw-bold text-dark">$1,554.00</td>
-                <td>
-                  <span class="status-badge"
-                    ><i class="bi bi-check-circle-fill"></i> Emitida</span
-                  >
-                </td>
-                <td class="text-end">
-                  <button
-                    class="btn btn-download-sm btn-download-single"
-                    data-ticket="2026-0000298110"
-                  >
-                    <i class="bi bi-download me-1"></i> PDF / XML
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <h1 class="h5 fw-bold mb-0 text-dark">Juanito Perez de León</h1>
+          <span class="text-muted small">
+            Matrícula: <strong class="text-dark">00914664</strong>
+          </span>
         </div>
       </div>
     </div>
 
-    <!-- Pie de Página -->
-    <footer
-      class="footer-portal d-flex justify-content-between align-items-center"
-    >
-      <span
-        >© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
-        reservados.</span
-      >
-      <div class="d-flex gap-3">
-        <a href="#" class="text-white-50 text-decoration-underline"
-          >Aviso de privacidad</a
-        >
-        <span>Versión: 8.8.4.1</span>
+    <!-- Tarjetas de Acción de Facturación -->
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-6">
+        <div class="action-card active-card d-flex justify-content-between align-items-center">
+          <div>
+            <div class="action-card-title">Nueva Factura</div>
+            <p class="action-card-sub">
+              Emitir comprobantes de tus pagos realizados. Tienes
+              <span class="badge-count">3</span> pagos disponibles.
+            </p>
+          </div>
+          <div class="action-card-icon ms-3">
+            <i class="bi bi-receipt-cutoff"></i>
+          </div>
+        </div>
       </div>
-    </footer>
 
-    <!-- Bootstrap 5.3.8 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="col-12 col-md-6">
+        <div class="action-card d-flex justify-content-between align-items-center">
+          <div>
+            <div class="action-card-title">Datos Fiscales</div>
+            <p class="action-card-sub">
+              Actualiza o valida tu RFC y domicilio fiscal para la correcta
+              emisión de tus facturas.
+            </p>
+          </div>
+          <div class="action-card-icon ms-3">
+            <i class="bi bi-building"></i>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Lógica JavaScript Vanilla -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Manejo de descargas individuales
-        const singleDownloadBtns = document.querySelectorAll(
-          ".btn-download-single",
-        );
-        singleDownloadBtns.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const ticket = e.currentTarget.getAttribute("data-ticket");
-            console.log(
-              `Iniciando descarga de factura para el ticket: ${ticket}`,
-            );
-          });
+    <!-- Sección de Emitidas -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h2 class="h4 fw-bold mb-0">Facturas Emitidas</h2>
+        <span class="text-muted small">Histórico de comprobantes fiscales generados</span>
+      </div>
+      <button id="btnDownloadAll" class="btn btn-green-action d-flex align-items-center gap-2">
+        <i class="bi bi-file-earmark-zip-fill"></i> Descargar Todas
+      </button>
+    </div>
+
+    <!-- Tabla de Facturas -->
+    <div class="invoices-card mb-4">
+      <div class="table-responsive">
+        <table class="table-invoices">
+          <thead>
+            <tr>
+              <th>Fecha de Pago</th>
+              <th>Ticket</th>
+              <th>Emisor</th>
+              <th>Receptor</th>
+              <th>Monto</th>
+              <th>Estado</th>
+              <th class="text-end">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-calendar-event me-1 text-muted"></i>
+                2026-08-04
+              </td>
+              <td class="font-monospace text-primary fw-semibold">
+                2026-0000349828
+              </td>
+              <td class="text-muted">UTM010711E2A</td>
+              <td class="text-muted">XAXX010101000</td>
+              <td class="fw-bold text-dark">$1,554.00</td>
+              <td>
+                <span class="status-badge"><i class="bi bi-check-circle-fill"></i> Emitida</span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-download-sm btn-download-single" data-ticket="2026-0000349828">
+                  <i class="bi bi-download me-1"></i> PDF / XML
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-calendar-event me-1 text-muted"></i>
+                2026-07-15
+              </td>
+              <td class="font-monospace text-primary fw-semibold">
+                2026-0000320538
+              </td>
+              <td class="text-muted">UTM010711E2A</td>
+              <td class="text-muted">XAXX010101000</td>
+              <td class="fw-bold text-dark">$2,144.00</td>
+              <td>
+                <span class="status-badge"><i class="bi bi-check-circle-fill"></i> Emitida</span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-download-sm btn-download-single" data-ticket="2026-0000320538">
+                  <i class="bi bi-download me-1"></i> PDF / XML
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-dark">
+                <i class="bi bi-calendar-event me-1 text-muted"></i>
+                2026-06-10
+              </td>
+              <td class="font-monospace text-primary fw-semibold">
+                2026-0000298110
+              </td>
+              <td class="text-muted">UTM010711E2A</td>
+              <td class="text-muted">XAXX010101000</td>
+              <td class="fw-bold text-dark">$1,554.00</td>
+              <td>
+                <span class="status-badge"><i class="bi bi-check-circle-fill"></i> Emitida</span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-download-sm btn-download-single" data-ticket="2026-0000298110">
+                  <i class="bi bi-download me-1"></i> PDF / XML
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer class="footer-portal d-flex justify-content-between align-items-center">
+    <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
+      reservados.</span>
+    <div class="d-flex gap-3">
+      <a href="#" class="text-white-50 text-decoration-underline">Aviso de privacidad</a>
+      <span>Versión: 8.8.4.1</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3.8 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Lógica JavaScript Vanilla -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Manejo de descargas individuales
+      const singleDownloadBtns = document.querySelectorAll(
+        ".btn-download-single",
+      );
+      singleDownloadBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const ticket = e.currentTarget.getAttribute("data-ticket");
+          console.log(
+            `Iniciando descarga de factura para el ticket: ${ticket}`,
+          );
         });
-
-        // Manejo de descarga masiva
-        const btnDownloadAll = document.getElementById("btnDownloadAll");
-        if (btnDownloadAll) {
-          btnDownloadAll.addEventListener("click", () => {
-            console.log(
-              "Iniciando descarga comprimida (ZIP) de todas las facturas emitidas...",
-            );
-          });
-        }
-
-        const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout"),
-        );
-
-        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-            F;
-          });
-        }
-
-        // Acción al confirmar la salida dentro del modal
-        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
-        if (btnConfirmLogout) {
-          btnConfirmLogout.addEventListener("click", () => {
-            // Borrar el historial de navegación para evitar volver atrás
-            history.pushState(null, null, "../index.html");
-            window.location.href = "../index.html";
-          });
-        }
       });
-    </script>
-  </body>
+
+      // Manejo de descarga masiva
+      const btnDownloadAll = document.getElementById("btnDownloadAll");
+      if (btnDownloadAll) {
+        btnDownloadAll.addEventListener("click", () => {
+          console.log(
+            "Iniciando descarga comprimida (ZIP) de todas las facturas emitidas...",
+          );
+        });
+      }
+
+      const modalLogout = new bootstrap.Modal(
+        document.getElementById("modalLogout"),
+      );
+
+      // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+      const btnLogout = document.getElementById("btnLogout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+          modalLogout.show();
+          F;
+        });
+      }
+
+      // Acción al confirmar la salida dentro del modal
+      const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+      if (btnConfirmLogout) {
+        btnConfirmLogout.addEventListener("click", () => {
+          // Extrae la ruta base del repositorio (e.g., "/unid_Banner/")
+          const pathSegments = window.location.pathname.split('/');
+
+          // Si el sitio corre en GitHub Pages (ej: localdesktop-33.github.io/unid_Banner/...)
+          // pathSegments[1] siempre será "unid_Banner"
+          if (window.location.hostname.includes("github.io")) {
+            const repoName = pathSegments[1];
+            window.location.href = `${window.location.origin}/${repoName}/index.html`;
+          } else {
+            // Para cuando pruebas localmente en VS Code (Live Server)
+            window.location.href = "/index.html";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNID - Reimpresión de Comprobantes</title>
-    
+
     <!-- Bootstrap 5.3.8 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    
+
     <style>
         :root {
             /* Variables de Marca e Identidad */
-            --nav-bg: #0f172a;               /* Slate 900: Autoridad, seguridad y elegancia */
-            --main-bg: #f8fafc;              /* Slate 50: Neutralidad para entornos legibles */
+            --nav-bg: #0f172a;
+            /* Slate 900: Autoridad, seguridad y elegancia */
+            --main-bg: #f8fafc;
+            /* Slate 50: Neutralidad para entornos legibles */
             --card-bg: #ffffff;
-            --text-main: #1e293b;            /* Slate 800: Alto contraste y lectura cómoda */
-            --text-muted: #64748b;           /* Slate 500: Jerarquía secundaria */
+            --text-main: #1e293b;
+            /* Slate 800: Alto contraste y lectura cómoda */
+            --text-muted: #64748b;
+            /* Slate 500: Jerarquía secundaria */
             --border-color: #e2e8f0;
-            
+
             /* Botones y Acciones */
-            --primary-blue: #2563eb;         /* Blue 600: Acción principal / Confianza */
+            --primary-blue: #2563eb;
+            /* Blue 600: Acción principal / Confianza */
             --primary-blue-hover: #1d4ed8;
-            --btn-danger: #ef4444;           /* Red 500: Destructivo/Salir */
+            --btn-danger: #ef4444;
+            /* Red 500: Destructivo/Salir */
             --btn-danger-hover: #dc2626;
-            
+
             /* Psicología de Alerta / Error Suave */
-            --warning-soft-bg: #fffbeb;     /* Amber 50 */
-            --warning-soft-border: #fef3c7; /* Amber 100 */
-            --warning-icon-color: #f59e0b;  /* Amber 500 */
+            --warning-soft-bg: #fffbeb;
+            /* Amber 50 */
+            --warning-soft-border: #fef3c7;
+            /* Amber 100 */
+            --warning-icon-color: #f59e0b;
+            /* Amber 500 */
         }
 
         body {
@@ -282,59 +292,45 @@
             padding: 1rem 2rem;
             margin-top: auto;
         }
-         /* Psicología y Estética del Modal de Salida */
-      .bg-danger-subtle {
-        background-color: #fee2e2 !important;
-      }
 
-      .modal-content {
-        border-radius: 12px;
-      }
+        /* Psicología y Estética del Modal de Salida */
+        .bg-danger-subtle {
+            background-color: #fee2e2 !important;
+        }
+
+        .modal-content {
+            border-radius: 12px;
+        }
     </style>
 </head>
+
 <body>
 
-     <!-- modal -->
+    <!-- modal -->
     <!-- Modal Confirmación Cierre de Sesión -->
-    <div
-      class="modal fade"
-      id="modalLogout"
-      tabindex="-1"
-      aria-labelledby="modalLogoutLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-body text-center p-4">
-            <div
-              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 60px; height: 60px"
-            >
-              <i class="bi bi-box-arrow-right fs-2"></i>
+    <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center p-4">
+                    <div class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 60px; height: 60px">
+                        <i class="bi bi-box-arrow-right fs-2"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+                    <p class="text-muted small mb-4">
+                        Estás a punto de salir del Portal de Alumnos UNID.
+                    </p>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+                        <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">
+                            Salir
+                        </button>
+                    </div>
+                </div>
             </div>
-            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
-            <p class="text-muted small mb-4">
-              Estás a punto de salir del Portal de Alumnos UNID.
-            </p>
-            <div class="d-flex gap-2">
-              <button
-                type="button"
-                class="btn btn-light w-50 fw-semibold"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                id="btnConfirmLogout"
-                class="btn btn-danger w-50 fw-semibold"
-              >
-                Salir
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Header Principal -->
@@ -350,11 +346,11 @@
                 <span class="input-group-text"><i class="bi bi-search"></i></span>
                 <input type="text" class="form-control" placeholder="Buscar...">
             </div>
-            
+
             <button class="btn btn-header-outline d-flex align-items-center gap-1">
                 <i class="bi bi-question-circle"></i> Ayuda
             </button>
-            
+
             <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
                 <i class="bi bi-box-arrow-right"></i> Salir
             </button>
@@ -370,7 +366,7 @@
 
     <!-- Contenido Principal Centrado -->
     <main class="container d-flex align-items-center justify-content-center flex-grow-1 py-5">
-        
+
         <div class="error-card text-center">
             <!-- Icono Suave de Advertencia -->
             <div class="error-icon-wrapper">
@@ -380,7 +376,8 @@
             <!-- Título y Mensaje Explicativo -->
             <h1 class="error-title">No pudimos cargar esta sección</h1>
             <p class="error-description">
-                Ocurrió un inconveniente temporal al intentar consultar tus comprobantes. Puedes reintentar la carga o volver al menú principal.
+                Ocurrió un inconveniente temporal al intentar consultar tus comprobantes. Puedes reintentar la carga o
+                volver al menú principal.
             </p>
 
             <!-- Acciones de Recuperación -->
@@ -414,29 +411,39 @@
     <!-- Lógica JavaScript Vanilla -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-             const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout"),
-        );
+            const modalLogout = new bootstrap.Modal(
+                document.getElementById("modalLogout"),
+            );
 
-        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-            F;
-          });
-        }
+            // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+            const btnLogout = document.getElementById("btnLogout");
+            if (btnLogout) {
+                btnLogout.addEventListener("click", () => {
+                    modalLogout.show();
+                    F;
+                });
+            }
 
-        // Acción al confirmar la salida dentro del modal
-        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
-        if (btnConfirmLogout) {
-          btnConfirmLogout.addEventListener("click", () => {
-            // Borrar el historial de navegación para evitar volver atrás
-            history.pushState(null, null, "../index.html");
-            window.location.href = "../index.html";
-          });
-        }
+            // Acción al confirmar la salida dentro del modal
+            const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+            if (btnConfirmLogout) {
+                btnConfirmLogout.addEventListener("click", () => {
+                    // Extrae la ruta base del repositorio (e.g., "/unid_Banner/")
+                    const pathSegments = window.location.pathname.split('/');
+
+                    // Si el sitio corre en GitHub Pages (ej: localdesktop-33.github.io/unid_Banner/...)
+                    // pathSegments[1] siempre será "unid_Banner"
+                    if (window.location.hostname.includes("github.io")) {
+                        const repoName = pathSegments[1];
+                        window.location.href = `${window.location.origin}/${repoName}/index.html`;
+                    } else {
+                        // Para cuando pruebas localmente en VS Code (Live Server)
+                        window.location.href = "/index.html";
+                    }
+                });
+            }
         });
     </script>
 </body>
+
 </html>

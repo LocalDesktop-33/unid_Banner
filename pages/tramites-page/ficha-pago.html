@@ -1,686 +1,615 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNID - Ficha de Servicios</title>
 
-    <!-- Bootstrap 5.3.3 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNID - Ficha de Servicios</title>
 
-    <style>
-      :root {
-        --nav-bg: #151c2c;
-        --main-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --text-main: #1e293b;
-        --text-muted: #64748b;
-        --btn-red: #dc3545;
-        --btn-red-hover: #bb2d3b;
-        --border-color: #cbd5e1;
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-        /* Colores de Psicología Visual y Accesibilidad */
-        --primary-blue: #1e40af; /* Seriedad / Confianza Institucional */
-        --accent-green: #15803d; /* Finanzas / Confirmación de Pago */
-        --accent-green-hover: #166534;
-        --input-addon-bg: #f1f5f9;
-      }
+  <style>
+    :root {
+      --nav-bg: #151c2c;
+      --main-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --btn-red: #dc3545;
+      --btn-red-hover: #bb2d3b;
+      --border-color: #cbd5e1;
 
-      html,
-      body {
-        height: 100%;
-      }
+      /* Colores de Psicología Visual y Accesibilidad */
+      --primary-blue: #1e40af;
+      /* Seriedad / Confianza Institucional */
+      --accent-green: #15803d;
+      /* Finanzas / Confirmación de Pago */
+      --accent-green-hover: #166534;
+      --input-addon-bg: #f1f5f9;
+    }
 
-      body {
-        background-color: var(--main-bg);
-        font-family:
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          Arial,
-          sans-serif;
-        color: var(--text-main);
-        display: flex;
-        flex-direction: column;
-      }
+    html,
+    body {
+      height: 100%;
+    }
 
-      /* Barra de Navegación Superior */
-      .navbar-unid {
-        background-color: var(--nav-bg);
-        padding: 0.6rem 2rem;
-      }
+    body {
+      background-color: var(--main-bg);
+      font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
 
-      .navbar-brand-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: 1px;
-      }
+    /* Barra de Navegación Superior */
+    .navbar-unid {
+      background-color: var(--nav-bg);
+      padding: 0.6rem 2rem;
+    }
 
-      .navbar-brand-divider {
-        border-left: 1px solid rgba(255, 255, 255, 0.3);
-        height: 20px;
-        margin: 0 12px;
-      }
+    .navbar-brand-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
 
-      .navbar-brand-sub {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
-      }
+    .navbar-brand-divider {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      height: 20px;
+      margin: 0 12px;
+    }
 
-      .navbar-title {
-        color: #ffffff;
-        font-size: 1.1rem;
-        font-weight: 700;
-      }
+    .navbar-brand-sub {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
 
-      .btn-header-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 0.9rem;
-        border-radius: 6px;
-        font-weight: 500;
-      }
+    .navbar-title {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
 
-      .btn-header-outline:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-      }
+    .btn-header-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
 
-      .btn-header-danger {
-        background-color: var(--btn-red);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 1rem;
-        border-radius: 6px;
-        font-weight: 600;
-        border: none;
-      }
+    .btn-header-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
 
-      .btn-header-danger:hover {
-        background-color: var(--btn-red-hover);
-        color: #ffffff;
-      }
+    .btn-header-danger {
+      background-color: var(--btn-red);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+    }
 
-      /* Contenedor Principal flexible */
-      .main-content {
-        flex: 1 0 auto;
-      }
+    .btn-header-danger:hover {
+      background-color: var(--btn-red-hover);
+      color: #ffffff;
+    }
 
-      /* Tarjeta de Información del Alumno */
-      .student-info-card {
-        background-color: var(--card-bg);
-        border-radius: 10px;
-        padding: 1.25rem 1.5rem;
-        border: 1px solid var(--border-color);
-        border-left: 5px solid var(--primary-blue);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-      }
+    /* Contenedor Principal flexible */
+    .main-content {
+      flex: 1 0 auto;
+    }
+
+    /* Tarjeta de Información del Alumno */
+    .student-info-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--primary-blue);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
 
 
-      .avatar-circle {
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        background-color: #ffffff;
-        border: 2px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        padding: 4px; /* Opcional: crea un margen interno limpio */
-      }
+    .avatar-circle {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      padding: 4px;
+      /* Opcional: crea un margen interno limpio */
+    }
 
-      .avatar-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Preserva la relación de aspecto sin distorsionar */
-        object-position: center;
-      }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* Preserva la relación de aspecto sin distorsionar */
+      object-position: center;
+    }
 
-      /* Formulario y Campos */
-      .form-label-custom {
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: var(--text-main);
-        margin-bottom: 0.4rem;
-      }
+    /* Formulario y Campos */
+    .form-label-custom {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
 
-      .input-group-custom .input-group-text {
-        background-color: var(--input-addon-bg);
-        border: 1.5px solid var(--border-color);
-        border-right: none;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        color: var(--primary-blue);
-        font-size: 1.05rem;
-        padding: 0.65rem 0.9rem;
-      }
+    .input-group-custom .input-group-text {
+      background-color: var(--input-addon-bg);
+      border: 1.5px solid var(--border-color);
+      border-right: none;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      color: var(--primary-blue);
+      font-size: 1.05rem;
+      padding: 0.65rem 0.9rem;
+    }
 
-      .input-group-custom .form-control,
-      .input-group-custom .form-select {
-        border: 1.5px solid var(--border-color);
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-        padding: 0.65rem 1rem;
-        font-size: 0.92rem;
-        color: var(--text-main);
-        background-color: #ffffff;
-      }
+    .input-group-custom .form-control,
+    .input-group-custom .form-select {
+      border: 1.5px solid var(--border-color);
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      padding: 0.65rem 1rem;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      background-color: #ffffff;
+    }
 
-      .input-group-custom .form-control:focus,
-      .input-group-custom .form-select:focus {
-        border-color: var(--primary-blue);
-        box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.12);
-        z-index: 3;
-      }
+    .input-group-custom .form-control:focus,
+    .input-group-custom .form-select:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.12);
+      z-index: 3;
+    }
 
-      /* Estructura Inferior Unificada */
-      .bottom-sticky-wrapper {
-        margin-top: auto;
-        position: sticky;
-        bottom: 0;
-        width: 100%;
-        z-index: 100;
-        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-      }
+    /* Estructura Inferior Unificada */
+    .bottom-sticky-wrapper {
+      margin-top: auto;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    }
 
-      /* Barra Blanca de Pago */
-      .action-pay-bar {
-        background-color: #ffffff;
-        border-top: 1px solid var(--border-color);
-        padding: 1.1rem clamp(1.5rem, 5vw, 4rem);
-      }
+    /* Barra Blanca de Pago */
+    .action-pay-bar {
+      background-color: #ffffff;
+      border-top: 1px solid var(--border-color);
+      padding: 1.1rem clamp(1.5rem, 5vw, 4rem);
+    }
 
-      .total-amount-label {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
+    .total-amount-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
 
-      .total-amount-val {
-        color: var(--accent-green);
-        font-size: clamp(1.6rem, 3vw, 1.95rem);
-        font-weight: 800;
-        margin-left: 0.5rem;
-      }
+    .total-amount-val {
+      color: var(--accent-green);
+      font-size: clamp(1.6rem, 3vw, 1.95rem);
+      font-weight: 800;
+      margin-left: 0.5rem;
+    }
 
-      .btn-generate-pay {
-        background-color: var(--accent-green);
-        color: #ffffff;
-        font-weight: 700;
-        font-size: 0.95rem;
-        padding: 0.7rem 1.75rem;
-        border-radius: 8px;
-        border: none;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 4px rgba(21, 128, 61, 0.2);
-      }
+    .btn-generate-pay {
+      background-color: var(--accent-green);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.75rem;
+      border-radius: 8px;
+      border: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(21, 128, 61, 0.2);
+    }
 
-      .btn-generate-pay:hover {
-        background-color: var(--accent-green-hover);
-        color: #ffffff;
-        box-shadow: 0 4px 8px rgba(21, 128, 61, 0.3);
-      }
+    .btn-generate-pay:hover {
+      background-color: var(--accent-green-hover);
+      color: #ffffff;
+      box-shadow: 0 4px 8px rgba(21, 128, 61, 0.3);
+    }
 
-      /* Footer Oscuro */
-      .footer-portal {
-        background-color: var(--nav-bg);
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.8rem;
-        padding: 1rem clamp(1.5rem, 5vw, 4rem);
-      }
+    /* Footer Oscuro */
+    .footer-portal {
+      background-color: var(--nav-bg);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.8rem;
+      padding: 1rem clamp(1.5rem, 5vw, 4rem);
+    }
 
-      .footer-portal a {
-        color: rgba(255, 255, 255, 0.85);
-        text-decoration: underline;
-      }
+    .footer-portal a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: underline;
+    }
 
-      .footer-portal a:hover {
-        color: #ffffff;
-      }
+    .footer-portal a:hover {
+      color: #ffffff;
+    }
 
-      .footer-version {
-        color: rgba(255, 255, 255, 0.45);
-      }
+    .footer-version {
+      color: rgba(255, 255, 255, 0.45);
+    }
 
-      /* Modales */
-      .bg-danger-subtle {
-        background-color: #fee2e2 !important;
-      }
+    /* Modales */
+    .bg-danger-subtle {
+      background-color: #fee2e2 !important;
+    }
 
-      .bg-success-subtle {
-        background-color: #dcfce7 !important;
-      }
+    .bg-success-subtle {
+      background-color: #dcfce7 !important;
+    }
 
-      .modal-content {
-        border-radius: 12px;
-      }
+    .modal-content {
+      border-radius: 12px;
+    }
 
-      .summary-box {
-        background-color: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Modal Confirmación Cierre de Sesión -->
-    <div
-      class="modal fade"
-      id="modalLogout"
-      tabindex="-1"
-      aria-labelledby="modalLogoutLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-body text-center p-4">
-            <div
-              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 60px; height: 60px"
-            >
-              <i class="bi bi-box-arrow-right fs-2"></i>
-            </div>
-            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
-            <p class="text-muted small mb-4">
-              Estás a punto de salir del Portal de Alumnos UNID.
-            </p>
-            <div class="d-flex gap-2">
-              <button
-                type="button"
-                class="btn btn-light w-50 fw-semibold"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                id="btnConfirmLogout"
-                class="btn btn-danger w-50 fw-semibold"
-              >
-                Salir
-              </button>
-            </div>
+    .summary-box {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Modal Confirmación Cierre de Sesión -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-4">
+          <div
+            class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+            style="width: 60px; height: 60px">
+            <i class="bi bi-box-arrow-right fs-2"></i>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal Confirmar y Generar Ficha de Pago -->
-    <div
-      class="modal fade"
-      id="modalFicha"
-      tabindex="-1"
-      aria-labelledby="modalFichaLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-header border-0 pb-0">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body px-4 pb-4 pt-0">
-            <div class="text-center mb-3">
-              <div
-                class="rounded-circle bg-success-subtle text-success d-inline-flex align-items-center justify-content-center mb-2"
-                style="width: 56px; height: 56px"
-              >
-                <i class="bi bi-file-earmark-pdf-fill fs-2"></i>
-              </div>
-              <h5 class="fw-bold mb-1" id="modalFichaLabel">
-                Generar Ficha de Pago
-              </h5>
-              <p class="text-muted small mb-0">
-                Verifica los detalles del trámite antes de descargar.
-              </p>
-            </div>
-
-            <!-- Resumen de Ficha -->
-            <div class="summary-box mb-3">
-              <div class="mb-2">
-                <span class="text-muted small d-block">CONCEPTO SELECCIONADO</span>
-                <strong id="modalConceptoText" class="text-dark small"
-                  >Título TSU 202660</strong
-                >
-              </div>
-              <div class="row g-2 mb-2 border-top pt-2">
-                <div class="col-6">
-                  <span class="text-muted small d-block">PERIODO</span>
-                  <span id="modalPeriodoText" class="fw-semibold small text-dark"
-                    >Sep-Dic 2026</span
-                  >
-                </div>
-                <div class="col-6">
-                  <span class="text-muted small d-block">NÚMERO DE PAGOS</span>
-                  <span id="modalPagosText" class="fw-semibold small text-dark"
-                    >1</span
-                  >
-                </div>
-              </div>
-              <div class="row g-2 border-top pt-2">
-                <div class="col-6">
-                  <span class="text-muted small d-block">VIGENCIA HASTA</span>
-                  <span id="modalVigenciaText" class="fw-semibold small text-dark"
-                    >31/12/2026</span
-                  >
-                </div>
-                <div class="col-6">
-                  <span class="text-muted small d-block">MONTO TOTAL</span>
-                  <strong id="modalMontoText" class="text-success fs-6"
-                    >$3,968.00 MXN</strong
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="alert alert-info border-0 bg-light text-secondary small mb-4 d-flex align-items-center gap-2">
-              <i class="bi bi-info-circle-fill text-primary fs-5"></i>
-              <span>El documento generado incluirá la línea de captura requerida para pagos en ventanilla bancaria.</span>
-            </div>
-
-            <button
-              type="button"
-              id="btnConfirmDownload"
-              class="btn btn-generate-pay w-100 py-2 fw-bold"
-            >
-              <i class="bi bi-download me-1"></i> Descargar Ficha PDF
+          <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+          <p class="text-muted small mb-4">
+            Estás a punto de salir del Portal de Alumnos UNID.
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">
+              Salir
             </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Header Principal -->
-    <nav
-      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
-    >
-      <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">UNID</span>
-        <span class="navbar-brand-divider"></span>
-        <span class="navbar-brand-sub">Portal de Alumnos</span>
-      </div>
-
-      <div class="navbar-title d-none d-md-block">Ficha de Servicios</div>
-
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-question-circle"></i> Ayuda
-        </button>
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-list"></i> Menú
-        </button>
-        <button
-          id="btnLogout"
-          class="btn btn-header-danger d-flex align-items-center gap-1"
-        >
-          <i class="bi bi-box-arrow-right"></i> Salir
-        </button>
-      </div>
-    </nav>
-
-    <!-- Contenido Principal -->
-    <main class="main-content container-fluid px-md-5 py-4">
-      <!-- Tarjeta Alumno -->
-      <div class="student-info-card mb-4">
-        <div class="d-flex align-items-center gap-3">
-          <div class="avatar-circle">
-            <img
-              src="../../img/image_lobo-removebg-preview.png"
-              alt="Foto de perfil de Juanito Perez"
-              class="avatar-img"
-            />
-          </div>
-          <div>
-            <h1 class="h5 fw-bold mb-0 text-dark">Juanito Perez de León</h1>
-            <span class="text-muted small">
-              Matrícula: <strong class="text-dark">00914664</strong>
-            </span>
-          </div>
+  <!-- Modal Confirmar y Generar Ficha de Pago -->
+  <div class="modal fade" id="modalFicha" tabindex="-1" aria-labelledby="modalFichaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
-      <!-- Formulario Ficha de Servicios -->
-      <form id="formFichaServicios">
-        <div class="row g-4 mb-4">
-          <!-- Concepto TEJ -->
-          <div class="col-12 col-md-6">
-            <label for="selectConcepto" class="form-label-custom"
-              >* Concepto TEJ</label
-            >
-            <div class="input-group input-group-custom">
-              <span class="input-group-text"
-                ><i class="bi bi-journal-check"></i
-              ></span>
-              <select id="selectConcepto" class="form-select">
-                <option value="titulo_tsu_202660" selected>
-                  Título TSU 202660
-                </option>
-                <option value="constancia_estudios">
-                  Constancia de Estudios
-                </option>
-                <option value="historial_academico">
-                  Historial Académico Oficial
-                </option>
-                <option value="credencial_reposicion">
-                  Reposición de Credencial
-                </option>
-              </select>
+        <div class="modal-body px-4 pb-4 pt-0">
+          <div class="text-center mb-3">
+            <div
+              class="rounded-circle bg-success-subtle text-success d-inline-flex align-items-center justify-content-center mb-2"
+              style="width: 56px; height: 56px">
+              <i class="bi bi-file-earmark-pdf-fill fs-2"></i>
+            </div>
+            <h5 class="fw-bold mb-1" id="modalFichaLabel">
+              Generar Ficha de Pago
+            </h5>
+            <p class="text-muted small mb-0">
+              Verifica los detalles del trámite antes de descargar.
+            </p>
+          </div>
+
+          <!-- Resumen de Ficha -->
+          <div class="summary-box mb-3">
+            <div class="mb-2">
+              <span class="text-muted small d-block">CONCEPTO SELECCIONADO</span>
+              <strong id="modalConceptoText" class="text-dark small">Título TSU 202660</strong>
+            </div>
+            <div class="row g-2 mb-2 border-top pt-2">
+              <div class="col-6">
+                <span class="text-muted small d-block">PERIODO</span>
+                <span id="modalPeriodoText" class="fw-semibold small text-dark">Sep-Dic 2026</span>
+              </div>
+              <div class="col-6">
+                <span class="text-muted small d-block">NÚMERO DE PAGOS</span>
+                <span id="modalPagosText" class="fw-semibold small text-dark">1</span>
+              </div>
+            </div>
+            <div class="row g-2 border-top pt-2">
+              <div class="col-6">
+                <span class="text-muted small d-block">VIGENCIA HASTA</span>
+                <span id="modalVigenciaText" class="fw-semibold small text-dark">31/12/2026</span>
+              </div>
+              <div class="col-6">
+                <span class="text-muted small d-block">MONTO TOTAL</span>
+                <strong id="modalMontoText" class="text-success fs-6">$3,968.00 MXN</strong>
+              </div>
             </div>
           </div>
 
-          <!-- Periodo -->
-          <div class="col-12 col-md-6">
-            <label for="selectPeriodo" class="form-label-custom"
-              >* Periodo</label
-            >
-            <div class="input-group input-group-custom">
-              <span class="input-group-text"
-                ><i class="bi bi-calendar3"></i
-              ></span>
-              <select id="selectPeriodo" class="form-select">
-                <option value="202660" selected>
-                  202660 - Cuatrimestre Sep-Dic 2026
-                </option>
-                <option value="202640">
-                  202640 - Cuatrimestre May-Ago 2026
-                </option>
-                <option value="202620">
-                  202620 - Cuatrimestre Ene-Abr 2026
-                </option>
-              </select>
-            </div>
+          <div class="alert alert-info border-0 bg-light text-secondary small mb-4 d-flex align-items-center gap-2">
+            <i class="bi bi-info-circle-fill text-primary fs-5"></i>
+            <span>El documento generado incluirá la línea de captura requerida para pagos en ventanilla bancaria.</span>
           </div>
 
-          <!-- Número pagos -->
-          <div class="col-12 col-md-6">
-            <label for="inputNumPagos" class="form-label-custom"
-              >* Número pagos</label
-            >
-            <div class="input-group input-group-custom">
-              <span class="input-group-text"><i class="bi bi-hash"></i></span>
-              <input
-                type="number"
-                id="inputNumPagos"
-                class="form-control"
-                value="1"
-                min="1"
-                max="12"
-              />
-            </div>
-          </div>
-
-          <!-- Vigencia (dd/mm/yyyy) -->
-          <div class="col-12 col-md-6">
-            <label for="inputVigencia" class="form-label-custom"
-              >* Vigencia (dd/mm/yyyy)</label
-            >
-            <div class="input-group input-group-custom">
-              <span class="input-group-text"
-                ><i class="bi bi-clock-history"></i
-              ></span>
-              <input
-                type="text"
-                id="inputVigencia"
-                class="form-control"
-                value="31/12/2026"
-              />
-            </div>
-          </div>
+          <button type="button" id="btnConfirmDownload" class="btn btn-generate-pay w-100 py-2 fw-bold">
+            <i class="bi bi-download me-1"></i> Descargar Ficha PDF
+          </button>
         </div>
-      </form>
-    </main>
-
-    <!-- Contenedor Unificado: Barra de Pago + Footer Oscuro -->
-    <div class="bottom-sticky-wrapper">
-      <!-- Barra de Pago (Blanca) -->
-      <div
-        class="action-pay-bar d-flex justify-content-between align-items-center flex-wrap gap-3"
-      >
-        <div class="d-flex align-items-baseline">
-          <span class="total-amount-label">Monto Total a Pagar:</span>
-          <span id="montoTotalText" class="total-amount-val"
-            >$3,968.00 MXN</span
-          >
-        </div>
-
-        <button id="btnGenerarFicha" class="btn-generate-pay">
-          <i class="bi bi-file-earmark-pdf-fill me-1"></i>
-          Generar Ficha de Pago
-          <i class="bi bi-arrow-right ms-1"></i>
-        </button>
       </div>
+    </div>
+  </div>
 
-      <!-- Footer (Oscuro) -->
-      <footer
-        class="footer-portal d-flex justify-content-between align-items-center flex-wrap gap-2"
-      >
-        <span
-          >© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
-          reservados.</span
-        >
-
-        <div class="d-flex align-items-center gap-3">
-          <a href="#">Aviso de privacidad</a>
-          <span class="footer-version">Versión: 8.8.4.1</span>
-        </div>
-      </footer>
+  <!-- Header Principal -->
+  <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <span class="navbar-brand-logo">UNID</span>
+      <span class="navbar-brand-divider"></span>
+      <span class="navbar-brand-sub">Portal de Alumnos</span>
     </div>
 
-    <!-- Bootstrap 5.3.3 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="navbar-title d-none d-md-block">Ficha de Servicios</div>
 
-    <!-- Lógica JavaScript Vanilla -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const selectConcepto = document.getElementById("selectConcepto");
-        const selectPeriodo = document.getElementById("selectPeriodo");
-        const inputNumPagos = document.getElementById("inputNumPagos");
-        const inputVigencia = document.getElementById("inputVigencia");
-        const montoTotalText = document.getElementById("montoTotalText");
-        const btnGenerarFicha = document.getElementById("btnGenerarFicha");
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-question-circle"></i> Ayuda
+      </button>
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-list"></i> Menú
+      </button>
+      <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+        <i class="bi bi-box-arrow-right"></i> Salir
+      </button>
+    </div>
+  </nav>
 
-        // Elementos del Modal Ficha
-        const modalConceptoText = document.getElementById("modalConceptoText");
-        const modalPeriodoText = document.getElementById("modalPeriodoText");
-        const modalPagosText = document.getElementById("modalPagosText");
-        const modalVigenciaText = document.getElementById("modalVigenciaText");
-        const modalMontoText = document.getElementById("modalMontoText");
-        const btnConfirmDownload = document.getElementById("btnConfirmDownload");
+  <!-- Contenido Principal -->
+  <main class="main-content container-fluid px-md-5 py-4">
+    <!-- Tarjeta Alumno -->
+    <div class="student-info-card mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <div class="avatar-circle">
+          <img src="../../img/image_lobo-removebg-preview.png" alt="Foto de perfil de Juanito Perez"
+            class="avatar-img" />
+        </div>
+        <div>
+          <h1 class="h5 fw-bold mb-0 text-dark">Juanito Perez de León</h1>
+          <span class="text-muted small">
+            Matrícula: <strong class="text-dark">00914664</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- Formulario Ficha de Servicios -->
+    <form id="formFichaServicios">
+      <div class="row g-4 mb-4">
+        <!-- Concepto TEJ -->
+        <div class="col-12 col-md-6">
+          <label for="selectConcepto" class="form-label-custom">* Concepto TEJ</label>
+          <div class="input-group input-group-custom">
+            <span class="input-group-text"><i class="bi bi-journal-check"></i></span>
+            <select id="selectConcepto" class="form-select">
+              <option value="titulo_tsu_202660" selected>
+                Título TSU 202660
+              </option>
+              <option value="constancia_estudios">
+                Constancia de Estudios
+              </option>
+              <option value="historial_academico">
+                Historial Académico Oficial
+              </option>
+              <option value="credencial_reposicion">
+                Reposición de Credencial
+              </option>
+            </select>
+          </div>
+        </div>
 
-        // Modales Bootstrap
-        const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout")
-        );
-        const modalFicha = new bootstrap.Modal(
-          document.getElementById("modalFicha")
-        );
+        <!-- Periodo -->
+        <div class="col-12 col-md-6">
+          <label for="selectPeriodo" class="form-label-custom">* Periodo</label>
+          <div class="input-group input-group-custom">
+            <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+            <select id="selectPeriodo" class="form-select">
+              <option value="202660" selected>
+                202660 - Cuatrimestre Sep-Dic 2026
+              </option>
+              <option value="202640">
+                202640 - Cuatrimestre May-Ago 2026
+              </option>
+              <option value="202620">
+                202620 - Cuatrimestre Ene-Abr 2026
+              </option>
+            </select>
+          </div>
+        </div>
 
-        // Precios según concepto
-        const precios = {
-          titulo_tsu_202660: 3968.0,
-          constancia_estudios: 250.0,
-          historial_academico: 450.0,
-          credencial_reposicion: 180.0,
-        };
+        <!-- Número pagos -->
+        <div class="col-12 col-md-6">
+          <label for="inputNumPagos" class="form-label-custom">* Número pagos</label>
+          <div class="input-group input-group-custom">
+            <span class="input-group-text"><i class="bi bi-hash"></i></span>
+            <input type="number" id="inputNumPagos" class="form-control" value="1" min="1" max="12" />
+          </div>
+        </div>
 
-        function calcularMonto() {
-          const concepto = selectConcepto.value;
-          const basePrice = precios[concepto] || 0;
-          const numPagos = parseInt(inputNumPagos.value, 10) || 1;
+        <!-- Vigencia (dd/mm/yyyy) -->
+        <div class="col-12 col-md-6">
+          <label for="inputVigencia" class="form-label-custom">* Vigencia (dd/mm/yyyy)</label>
+          <div class="input-group input-group-custom">
+            <span class="input-group-text"><i class="bi bi-clock-history"></i></span>
+            <input type="text" id="inputVigencia" class="form-control" value="31/12/2026" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
 
-          const total = basePrice * numPagos;
-          return total;
-        }
+  <!-- Contenedor Unificado: Barra de Pago + Footer Oscuro -->
+  <div class="bottom-sticky-wrapper">
+    <!-- Barra de Pago (Blanca) -->
+    <div class="action-pay-bar d-flex justify-content-between align-items-center flex-wrap gap-3">
+      <div class="d-flex align-items-baseline">
+        <span class="total-amount-label">Monto Total a Pagar:</span>
+        <span id="montoTotalText" class="total-amount-val">$3,968.00 MXN</span>
+      </div>
 
-        function actualizarVistaMonto() {
-          const total = calcularMonto();
-          montoTotalText.textContent = `$${total.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} MXN`;
-        }
+      <button id="btnGenerarFicha" class="btn-generate-pay">
+        <i class="bi bi-file-earmark-pdf-fill me-1"></i>
+        Generar Ficha de Pago
+        <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>
 
-        selectConcepto.addEventListener("change", actualizarVistaMonto);
-        inputNumPagos.addEventListener("input", actualizarVistaMonto);
+    <!-- Footer (Oscuro) -->
+    <footer class="footer-portal d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
+        reservados.</span>
 
-        // Abrir Modal con Desglose
-        btnGenerarFicha.addEventListener("click", () => {
-          const conceptoText =
-            selectConcepto.options[selectConcepto.selectedIndex].text;
-          const periodoText =
-            selectPeriodo.options[selectPeriodo.selectedIndex].text;
-          const numPagos = inputNumPagos.value || "1";
-          const vigencia = inputVigencia.value || "N/A";
-          const totalFormatted = montoTotalText.textContent;
+      <div class="d-flex align-items-center gap-3">
+        <a href="#">Aviso de privacidad</a>
+        <span class="footer-version">Versión: 8.8.4.1</span>
+      </div>
+    </footer>
+  </div>
 
-          modalConceptoText.textContent = conceptoText;
-          modalPeriodoText.textContent = periodoText;
-          modalPagosText.textContent = numPagos;
-          modalVigenciaText.textContent = vigencia;
-          modalMontoText.textContent = totalFormatted;
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-          modalFicha.show();
-        });
+  <!-- Lógica JavaScript Vanilla -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const selectConcepto = document.getElementById("selectConcepto");
+      const selectPeriodo = document.getElementById("selectPeriodo");
+      const inputNumPagos = document.getElementById("inputNumPagos");
+      const inputVigencia = document.getElementById("inputVigencia");
+      const montoTotalText = document.getElementById("montoTotalText");
+      const btnGenerarFicha = document.getElementById("btnGenerarFicha");
 
-        // Simular descarga desde el Modal
-        btnConfirmDownload.addEventListener("click", () => {
-          modalFicha.hide();
-          alert("Descargando Ficha de Pago en formato PDF...");
-        });
+      // Elementos del Modal Ficha
+      const modalConceptoText = document.getElementById("modalConceptoText");
+      const modalPeriodoText = document.getElementById("modalPeriodoText");
+      const modalPagosText = document.getElementById("modalPagosText");
+      const modalVigenciaText = document.getElementById("modalVigenciaText");
+      const modalMontoText = document.getElementById("modalMontoText");
+      const btnConfirmDownload = document.getElementById("btnConfirmDownload");
 
-        // Botón Salir
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-          });
-        }
+      // Modales Bootstrap
+      const modalLogout = new bootstrap.Modal(
+        document.getElementById("modalLogout")
+      );
+      const modalFicha = new bootstrap.Modal(
+        document.getElementById("modalFicha")
+      );
 
-        // Acción al confirmar la salida dentro del modal
-        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
-        if (btnConfirmLogout) {
-          btnConfirmLogout.addEventListener("click", () => {
-            history.pushState(null, null, "../index.html");
-            window.location.href = "../index.html";
-          });
-        }
+      // Precios según concepto
+      const precios = {
+        titulo_tsu_202660: 3968.0,
+        constancia_estudios: 250.0,
+        historial_academico: 450.0,
+        credencial_reposicion: 180.0,
+      };
+
+      function calcularMonto() {
+        const concepto = selectConcepto.value;
+        const basePrice = precios[concepto] || 0;
+        const numPagos = parseInt(inputNumPagos.value, 10) || 1;
+
+        const total = basePrice * numPagos;
+        return total;
+      }
+
+      function actualizarVistaMonto() {
+        const total = calcularMonto();
+        montoTotalText.textContent = `$${total.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})} MXN`;
+      }
+
+      selectConcepto.addEventListener("change", actualizarVistaMonto);
+      inputNumPagos.addEventListener("input", actualizarVistaMonto);
+
+      // Abrir Modal con Desglose
+      btnGenerarFicha.addEventListener("click", () => {
+        const conceptoText =
+          selectConcepto.options[selectConcepto.selectedIndex].text;
+        const periodoText =
+          selectPeriodo.options[selectPeriodo.selectedIndex].text;
+        const numPagos = inputNumPagos.value || "1";
+        const vigencia = inputVigencia.value || "N/A";
+        const totalFormatted = montoTotalText.textContent;
+
+        modalConceptoText.textContent = conceptoText;
+        modalPeriodoText.textContent = periodoText;
+        modalPagosText.textContent = numPagos;
+        modalVigenciaText.textContent = vigencia;
+        modalMontoText.textContent = totalFormatted;
+
+        modalFicha.show();
       });
-    </script>
-  </body>
+
+      // Simular descarga desde el Modal
+      btnConfirmDownload.addEventListener("click", () => {
+        modalFicha.hide();
+        alert("Descargando Ficha de Pago en formato PDF...");
+      });
+
+      // Botón Salir
+      const btnLogout = document.getElementById("btnLogout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+          modalLogout.show();
+        });
+      }
+
+      // Acción al confirmar la salida dentro del modal
+      // Acción al confirmar la salida dentro del modal
+      const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+      if (btnConfirmLogout) {
+        btnConfirmLogout.addEventListener("click", () => {
+          // Extrae la ruta base del repositorio (e.g., "/unid_Banner/")
+          const pathSegments = window.location.pathname.split('/');
+
+          // Si el sitio corre en GitHub Pages (ej: localdesktop-33.github.io/unid_Banner/...)
+          // pathSegments[1] siempre será "unid_Banner"
+          if (window.location.hostname.includes("github.io")) {
+            const repoName = pathSegments[1];
+            window.location.href = `${window.location.origin}/${repoName}/index.html`;
+          } else {
+            // Para cuando pruebas localmente en VS Code (Live Server)
+            window.location.href = "/index.html";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

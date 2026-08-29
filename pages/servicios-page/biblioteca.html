@@ -1,558 +1,515 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UNID - Circulares Informativas</title>
 
-    <!-- Bootstrap 5.3.8 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNID - Circulares Informativas</title>
 
-    <style>
-      :root {
-        /* Colores de Header / Footer (Intactos) */
-        --nav-bg: #151c2c;
-        --btn-red: #dc3545;
-        --btn-red-hover: #bb2d3b;
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
 
-        /* UI Refinada */
-        --main-bg: #f8fafc;
-        --card-bg: #ffffff;
-        --text-main: #0f172a;
-        --text-muted: #64748b;
-        --border-color: #e2e8f0;
+  <style>
+    :root {
+      /* Colores de Header / Footer (Intactos) */
+      --nav-bg: #151c2c;
+      --btn-red: #dc3545;
+      --btn-red-hover: #bb2d3b;
 
-        /* Colores Institucionales */
-        --primary-blue: #1e40af;
-        --primary-blue-hover: #1e3a8a;
-        --accent-blue-bg: #eff6ff;
+      /* UI Refinada */
+      --main-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
 
-        /* Alertas */
-        --alert-yellow-bg: #fffbeb;
-        --alert-yellow-border: #fef3c7;
-        --alert-yellow-text: #b45309;
-      }
+      /* Colores Institucionales */
+      --primary-blue: #1e40af;
+      --primary-blue-hover: #1e3a8a;
+      --accent-blue-bg: #eff6ff;
 
-      body {
-        background-color: var(--main-bg);
-        font-family:
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          Arial,
-          sans-serif;
-        color: var(--text-main);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+      /* Alertas */
+      --alert-yellow-bg: #fffbeb;
+      --alert-yellow-border: #fef3c7;
+      --alert-yellow-text: #b45309;
+    }
 
-      /* Header Principal (Sin Cambios) */
-      .navbar-unid {
-        background-color: var(--nav-bg);
-        padding: 0.6rem 2rem;
-      }
+    body {
+      background-color: var(--main-bg);
+      font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-      .navbar-brand-logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        letter-spacing: 1px;
-      }
+    /* Header Principal (Sin Cambios) */
+    .navbar-unid {
+      background-color: var(--nav-bg);
+      padding: 0.6rem 2rem;
+    }
 
-      .navbar-brand-divider {
-        border-left: 1px solid rgba(255, 255, 255, 0.3);
-        height: 20px;
-        margin: 0 12px;
-      }
+    .navbar-brand-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
 
-      .navbar-brand-sub {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
-      }
+    .navbar-brand-divider {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      height: 20px;
+      margin: 0 12px;
+    }
 
-      .navbar-title {
-        color: #ffffff;
-        font-size: 1.1rem;
-        font-weight: 700;
-      }
+    .navbar-brand-sub {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
 
-      .btn-header-outline {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 0.9rem;
-        border-radius: 6px;
-        font-weight: 500;
-      }
+    .navbar-title {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
 
-      .btn-header-outline:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-      }
+    .btn-header-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 0.9rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
 
-      .btn-header-danger {
-        background-color: var(--btn-red);
-        color: #ffffff;
-        font-size: 0.85rem;
-        padding: 0.38rem 1rem;
-        border-radius: 6px;
-        font-weight: 600;
-        border: none;
-      }
+    .btn-header-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
 
-      .btn-header-danger:hover {
-        background-color: var(--btn-red-hover);
-        color: #ffffff;
-      }
+    .btn-header-danger {
+      background-color: var(--btn-red);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 0.38rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+    }
 
-      /* Barra de Pestañas / Filtro Superior */
-      .filter-tabs-bar {
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--border-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-      }
+    .btn-header-danger:hover {
+      background-color: var(--btn-red-hover);
+      color: #ffffff;
+    }
 
-      .tab-filter-btn {
-        background: transparent;
-        border: none;
-        border-right: 1px solid var(--border-color);
-        padding: 1rem 2.5rem;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text-muted);
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        transition: all 0.2s ease;
-        position: relative;
-      }
+    /* Barra de Pestañas / Filtro Superior */
+    .filter-tabs-bar {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
 
-      .tab-filter-btn:first-child {
-        border-left: 1px solid var(--border-color);
-      }
+    .tab-filter-btn {
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border-color);
+      padding: 1rem 2.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
 
-      .tab-filter-btn:hover {
-        color: var(--primary-blue);
-        background-color: var(--accent-blue-bg);
-      }
+    .tab-filter-btn:first-child {
+      border-left: 1px solid var(--border-color);
+    }
 
-      .tab-filter-btn.active {
-        color: var(--primary-blue);
-        background-color: #ffffff;
-      }
+    .tab-filter-btn:hover {
+      color: var(--primary-blue);
+      background-color: var(--accent-blue-bg);
+    }
 
-      .tab-filter-btn.active::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: var(--primary-blue);
-      }
+    .tab-filter-btn.active {
+      color: var(--primary-blue);
+      background-color: #ffffff;
+    }
 
-      /* Tarjeta Estado Vacío */
-      .empty-state-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-        padding: 4rem 2rem;
-        text-align: center;
-        max-width: 800px;
-        margin: 2rem auto 0 auto;
-      }
+    .tab-filter-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: var(--primary-blue);
+    }
 
-      .icon-circle-box {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background-color: var(--accent-blue-bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1.5rem auto;
-        color: var(--primary-blue);
-        font-size: 2.2rem;
-      }
+    /* Tarjeta Estado Vacío */
+    .empty-state-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 2rem auto 0 auto;
+    }
 
-      .empty-state-title {
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: var(--text-main);
-        margin-bottom: 0.5rem;
-      }
+    .icon-circle-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--accent-blue-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+      color: var(--primary-blue);
+      font-size: 2.2rem;
+    }
 
-      .empty-state-desc {
-        font-size: 0.92rem;
-        color: var(--text-muted);
-        max-width: 500px;
-        margin: 0 auto 1.5rem auto;
-        line-height: 1.5;
-      }
+    .empty-state-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
 
-      .info-pill-alert {
-        background-color: var(--alert-yellow-bg);
-        border: 1px solid var(--alert-yellow-border);
-        color: var(--alert-yellow-text);
-        font-size: 0.85rem;
-        font-weight: 600;
-        padding: 0.5rem 1.25rem;
-        border-radius: 8px;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
+    .empty-state-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 1.5rem auto;
+      line-height: 1.5;
+    }
 
-      /* Visor de PDF (Licenciatura) */
-      .pdf-viewer-container {
-        background: #ffffff;
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      }
+    .info-pill-alert {
+      background-color: var(--alert-yellow-bg);
+      border: 1px solid var(--alert-yellow-border);
+      color: var(--alert-yellow-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-      .pdf-toolbar {
-        background-color: #1e293b;
-        color: white;
-        padding: 0.75rem 1.25rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    /* Visor de PDF (Licenciatura) */
+    .pdf-viewer-container {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
 
-      .pdf-frame {
-        width: 100%;
-        height: 650px;
-        border: none;
-      }
+    .pdf-toolbar {
+      background-color: #1e293b;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      /* Tarjetas de Contenido (Ejecutivas y Maestría) */
-      .content-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        padding: 1.5rem;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
+    .pdf-frame {
+      width: 100%;
+      height: 650px;
+      border: none;
+    }
 
-      .content-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
-      }
+    /* Tarjetas de Contenido (Ejecutivas y Maestría) */
+    .content-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
-      /* Footer (Sin Cambios) */
-      .footer-portal {
-        background-color: var(--nav-bg);
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.8rem;
-        padding: 1rem 2rem;
-        margin-top: auto;
-      }
-      /* Psicología y Estética del Modal de Salida */
-      .bg-danger-subtle {
-        background-color: #fee2e2 !important;
-      }
+    .content-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+    }
 
-      .modal-content {
-        border-radius: 12px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- modal -->
-    <!-- Modal Confirmación Cierre de Sesión -->
-    <div
-      class="modal fade"
-      id="modalLogout"
-      tabindex="-1"
-      aria-labelledby="modalLogoutLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content border-0 shadow-lg">
-          <div class="modal-body text-center p-4">
-            <div
-              class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
-              style="width: 60px; height: 60px"
-            >
-              <i class="bi bi-box-arrow-right fs-2"></i>
-            </div>
-            <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
-            <p class="text-muted small mb-4">
-              Estás a punto de salir del Portal de Alumnos UNID.
-            </p>
-            <div class="d-flex gap-2">
-              <button
-                type="button"
-                class="btn btn-light w-50 fw-semibold"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button
-                type="button"
-                id="btnConfirmLogout"
-                class="btn btn-danger w-50 fw-semibold"
-              >
-                Salir
-              </button>
-            </div>
+    /* Footer (Sin Cambios) */
+    .footer-portal {
+      background-color: var(--nav-bg);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
+      padding: 1rem 2rem;
+      margin-top: auto;
+    }
+
+    /* Psicología y Estética del Modal de Salida */
+    .bg-danger-subtle {
+      background-color: #fee2e2 !important;
+    }
+
+    .modal-content {
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- modal -->
+  <!-- Modal Confirmación Cierre de Sesión -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-4">
+          <div
+            class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center mb-3"
+            style="width: 60px; height: 60px">
+            <i class="bi bi-box-arrow-right fs-2"></i>
+          </div>
+          <h5 class="fw-bold mb-2" id="modalLogoutLabel">¿Cerrar sesión?</h5>
+          <p class="text-muted small mb-4">
+            Estás a punto de salir del Portal de Alumnos UNID.
+          </p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-light w-50 fw-semibold" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" id="btnConfirmLogout" class="btn btn-danger w-50 fw-semibold">
+              Salir
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Header Principal -->
-    <nav
-      class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center"
-    >
-      <div class="d-flex align-items-center">
-        <span class="navbar-brand-logo">UNID</span>
-        <span class="navbar-brand-divider"></span>
-        <span class="navbar-brand-sub">Portal de Alumnos</span>
-      </div>
-
-      <div class="navbar-title d-none d-md-block">Circulares Informativas</div>
-
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-question-circle"></i> Ayuda
-        </button>
-        <button class="btn btn-header-outline d-flex align-items-center gap-1">
-          <i class="bi bi-list"></i> Menú
-        </button>
-        <button
-          id="btnLogout"
-          class="btn btn-header-danger d-flex align-items-center gap-1"
-        >
-          <i class="bi bi-box-arrow-right"></i> Salir
-        </button>
-      </div>
-    </nav>
-
-    <!-- Filtros Superiores por Nivel Académico -->
-    <div class="filter-tabs-bar">
-      <button class="tab-filter-btn" data-level="licenciatura">
-        <i class="bi bi-mortarboard"></i> Licenciatura
-      </button>
-      <button class="tab-filter-btn" data-level="ejecutivas">
-        <i class="bi bi-briefcase"></i> Ejecutivas
-      </button>
-      <button class="tab-filter-btn" data-level="maestria">
-        <i class="bi bi-book"></i> Maestría
-      </button>
+  <!-- Header Principal -->
+  <nav class="navbar navbar-unid navbar-expand-lg d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <span class="navbar-brand-logo">UNID</span>
+      <span class="navbar-brand-divider"></span>
+      <span class="navbar-brand-sub">Portal de Alumnos</span>
     </div>
 
-    <!-- Contenido Principal -->
-    <div class="container-fluid px-md-5 py-4">
-      <!-- Estado Vacío Inicial -->
-      <div id="section-empty" class="empty-state-card">
-        <div class="icon-circle-box">
-          <i class="bi bi-file-earmark-text"></i>
-        </div>
+    <div class="navbar-title d-none d-md-block">Circulares Informativas</div>
 
-        <h1 class="empty-state-title">Por favor selecciona una opción</h1>
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-question-circle"></i> Ayuda
+      </button>
+      <button class="btn btn-header-outline d-flex align-items-center gap-1">
+        <i class="bi bi-list"></i> Menú
+      </button>
+      <button id="btnLogout" class="btn btn-header-danger d-flex align-items-center gap-1">
+        <i class="bi bi-box-arrow-right"></i> Salir
+      </button>
+    </div>
+  </nav>
 
-        <p class="empty-state-desc">
-          Elige un nivel académico para consultar las circulares y avisos
-          oficiales disponibles para tu plan de estudios.
-        </p>
+  <!-- Filtros Superiores por Nivel Académico -->
+  <div class="filter-tabs-bar">
+    <button class="tab-filter-btn" data-level="licenciatura">
+      <i class="bi bi-mortarboard"></i> Licenciatura
+    </button>
+    <button class="tab-filter-btn" data-level="ejecutivas">
+      <i class="bi bi-briefcase"></i> Ejecutivas
+    </button>
+    <button class="tab-filter-btn" data-level="maestria">
+      <i class="bi bi-book"></i> Maestría
+    </button>
+  </div>
 
-        <div class="info-pill-alert">
-          <i class="bi bi-info-circle"></i> Usa los botones superiores para
-          filtrar la información
-        </div>
+  <!-- Contenido Principal -->
+  <div class="container-fluid px-md-5 py-4">
+    <!-- Estado Vacío Inicial -->
+    <div id="section-empty" class="empty-state-card">
+      <div class="icon-circle-box">
+        <i class="bi bi-file-earmark-text"></i>
       </div>
 
-      <!-- Sección 1: Licenciatura (Muestra visor PDF) -->
-      <div id="section-licenciatura" class="d-none">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="h4 fw-bold mb-0">Circular Oficial - Licenciaturas 2026</h2>
-          <span class="badge bg-primary px-3 py-2">Actualizado</span>
-        </div>
-        <div class="pdf-viewer-container">
-          <div class="pdf-toolbar">
-            <span class="small fw-semibold"
-              ><i class="bi bi-file-earmark-pdf me-1"></i>
-              unid.circular_infomativa.licenciatura.pdf</span
-            >
-            <div class="d-flex gap-2">
-              <a
-                href="../../doc/unid.circular_infomativa.licenciatura.pdf"
-                target="_blank"
-                class="btn btn-sm btn-outline-light"
-              >
-                <i class="bi bi-download"></i> Descargar PDF
-              </a>
-            </div>
-          </div>
-          <!-- Simulación de renderizado PDF -->
-          <iframe
-            class="pdf-frame"
-            src="../../doc/unid.circular_infomativa.licenciatura.pdf"
-          ></iframe>
-        </div>
-      </div>
+      <h1 class="empty-state-title">Por favor selecciona una opción</h1>
 
-      <!-- Sección 2: Ejecutivas -->
-      <div id="section-ejecutivas" class="d-none">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="h4 fw-bold mb-0">
-            Circulares para Licenciaturas Ejecutivas
-          </h2>
-          <span class="badge bg-primary px-3 py-2">Actualizado</span>
-        </div>
-        <div class="pdf-viewer-container">
-          <div class="pdf-toolbar">
-            <span class="small fw-semibold"
-              ><i class="bi bi-file-earmark-pdf me-1"></i>
-              unid.circular_infomativa.licenciatura_ejecutiva.pdf</span
-            >
-            <div class="d-flex gap-2">
-              <a
-                href="../../doc/unid.circular_infomativa.licenciatura_ejecutiva.pdf"
-                target="_blank"
-                class="btn btn-sm btn-outline-light"
-              >
-                <i class="bi bi-download"></i> Descargar PDF
-              </a>
-            </div>
-          </div>
-          <!-- Simulación de renderizado PDF -->
-          <iframe
-            class="pdf-frame"
-            src="../../doc/unid.circular_infomativa.licenciatura_ejecutiva.pdf"
-          ></iframe>
-        </div>
-      </div>
+      <p class="empty-state-desc">
+        Elige un nivel académico para consultar las circulares y avisos
+        oficiales disponibles para tu plan de estudios.
+      </p>
 
-      <!-- Sección 3: Maestría -->
-      <div id="section-maestria" class="d-none">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="h4 fw-bold mb-0">Circulares para Maestrías</h2>
-          <span class="badge bg-primary px-3 py-2">Actualizado</span>
-        </div>
-        <div class="pdf-viewer-container">
-          <div class="pdf-toolbar">
-            <span class="small fw-semibold"
-              ><i class="bi bi-file-earmark-pdf me-1"></i>
-              unid.circular_infomativa.maestria.pdf</span
-            >
-            <div class="d-flex gap-2">
-              <a
-                href="../../doc/unid.circular_infomativa.maestria.pdf"
-                target="_blank"
-                class="btn btn-sm btn-outline-light"
-              >
-                <i class="bi bi-download"></i> Descargar PDF
-              </a>
-            </div>
-          </div>
-          <!-- Simulación de renderizado PDF -->
-          <iframe
-            class="pdf-frame"
-            src="../../doc/unid.circular_infomativa.maestria.pdf"
-          ></iframe>
-        </div>
+      <div class="info-pill-alert">
+        <i class="bi bi-info-circle"></i> Usa los botones superiores para
+        filtrar la información
       </div>
     </div>
 
-    <!-- Pie de Página -->
-    <footer
-      class="footer-portal d-flex justify-content-between align-items-center"
-    >
-      <span
-        >© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
-        reservados.</span
-      >
-      <div class="d-flex gap-3">
-        <a href="#" class="text-white-50 text-decoration-underline"
-          >Aviso de privacidad</a
-        >
-        <span>Versión: 8.8.4.1</span>
+    <!-- Sección 1: Licenciatura (Muestra visor PDF) -->
+    <div id="section-licenciatura" class="d-none">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 fw-bold mb-0">Circular Oficial - Licenciaturas 2026</h2>
+        <span class="badge bg-primary px-3 py-2">Actualizado</span>
       </div>
-    </footer>
+      <div class="pdf-viewer-container">
+        <div class="pdf-toolbar">
+          <span class="small fw-semibold"><i class="bi bi-file-earmark-pdf me-1"></i>
+            unid.circular_infomativa.licenciatura.pdf</span>
+          <div class="d-flex gap-2">
+            <a href="../../doc/unid.circular_infomativa.licenciatura.pdf" target="_blank"
+              class="btn btn-sm btn-outline-light">
+              <i class="bi bi-download"></i> Descargar PDF
+            </a>
+          </div>
+        </div>
+        <!-- Simulación de renderizado PDF -->
+        <iframe class="pdf-frame" src="../../doc/unid.circular_infomativa.licenciatura.pdf"></iframe>
+      </div>
+    </div>
 
-    <!-- Bootstrap 5.3.8 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Sección 2: Ejecutivas -->
+    <div id="section-ejecutivas" class="d-none">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 fw-bold mb-0">
+          Circulares para Licenciaturas Ejecutivas
+        </h2>
+        <span class="badge bg-primary px-3 py-2">Actualizado</span>
+      </div>
+      <div class="pdf-viewer-container">
+        <div class="pdf-toolbar">
+          <span class="small fw-semibold"><i class="bi bi-file-earmark-pdf me-1"></i>
+            unid.circular_infomativa.licenciatura_ejecutiva.pdf</span>
+          <div class="d-flex gap-2">
+            <a href="../../doc/unid.circular_infomativa.licenciatura_ejecutiva.pdf" target="_blank"
+              class="btn btn-sm btn-outline-light">
+              <i class="bi bi-download"></i> Descargar PDF
+            </a>
+          </div>
+        </div>
+        <!-- Simulación de renderizado PDF -->
+        <iframe class="pdf-frame" src="../../doc/unid.circular_infomativa.licenciatura_ejecutiva.pdf"></iframe>
+      </div>
+    </div>
 
-    <!-- Lógica JavaScript Vanilla -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const filterBtns = document.querySelectorAll(".tab-filter-btn");
+    <!-- Sección 3: Maestría -->
+    <div id="section-maestria" class="d-none">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 fw-bold mb-0">Circulares para Maestrías</h2>
+        <span class="badge bg-primary px-3 py-2">Actualizado</span>
+      </div>
+      <div class="pdf-viewer-container">
+        <div class="pdf-toolbar">
+          <span class="small fw-semibold"><i class="bi bi-file-earmark-pdf me-1"></i>
+            unid.circular_infomativa.maestria.pdf</span>
+          <div class="d-flex gap-2">
+            <a href="../../doc/unid.circular_infomativa.maestria.pdf" target="_blank"
+              class="btn btn-sm btn-outline-light">
+              <i class="bi bi-download"></i> Descargar PDF
+            </a>
+          </div>
+        </div>
+        <!-- Simulación de renderizado PDF -->
+        <iframe class="pdf-frame" src="../../doc/unid.circular_infomativa.maestria.pdf"></iframe>
+      </div>
+    </div>
+  </div>
 
-        // Secciones a controlar
-        const sections = {
-          empty: document.getElementById("section-empty"),
-          licenciatura: document.getElementById("section-licenciatura"),
-          ejecutivas: document.getElementById("section-ejecutivas"),
-          maestria: document.getElementById("section-maestria"),
-        };
+  <!-- Pie de Página -->
+  <footer class="footer-portal d-flex justify-content-between align-items-center">
+    <span>© 2026 Ellucian Company L.P. y sus afiliadas. Todos los derechos
+      reservados.</span>
+    <div class="d-flex gap-3">
+      <a href="#" class="text-white-50 text-decoration-underline">Aviso de privacidad</a>
+      <span>Versión: 8.8.4.1</span>
+    </div>
+  </footer>
 
-        filterBtns.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            // 1. Quitar clase active de todos los botones
-            filterBtns.forEach((b) => b.classList.remove("active"));
+  <!-- Bootstrap 5.3.8 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-            // 2. Activar el botón presionado
-            const selectedBtn = e.currentTarget;
-            selectedBtn.classList.add("active");
+  <!-- Lógica JavaScript Vanilla -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const filterBtns = document.querySelectorAll(".tab-filter-btn");
 
-            // 3. Ocultar TODAS las secciones
-            Object.values(sections).forEach((section) => {
-              if (section) section.classList.add("d-none");
-            });
+      // Secciones a controlar
+      const sections = {
+        empty: document.getElementById("section-empty"),
+        licenciatura: document.getElementById("section-licenciatura"),
+        ejecutivas: document.getElementById("section-ejecutivas"),
+        maestria: document.getElementById("section-maestria"),
+      };
 
-            // 4. Mostrar solo la sección seleccionada
-            const level = selectedBtn.getAttribute("data-level");
-            if (sections[level]) {
-              sections[level].classList.remove("d-none");
-            }
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          // 1. Quitar clase active de todos los botones
+          filterBtns.forEach((b) => b.classList.remove("active"));
+
+          // 2. Activar el botón presionado
+          const selectedBtn = e.currentTarget;
+          selectedBtn.classList.add("active");
+
+          // 3. Ocultar TODAS las secciones
+          Object.values(sections).forEach((section) => {
+            if (section) section.classList.add("d-none");
           });
+
+          // 4. Mostrar solo la sección seleccionada
+          const level = selectedBtn.getAttribute("data-level");
+          if (sections[level]) {
+            sections[level].classList.remove("d-none");
+          }
         });
-
-         const modalLogout = new bootstrap.Modal(
-          document.getElementById("modalLogout"),
-        );
-
-        // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
-        const btnLogout = document.getElementById("btnLogout");
-        if (btnLogout) {
-          btnLogout.addEventListener("click", () => {
-            modalLogout.show();
-            F;
-          });
-        }
-
-        // Acción al confirmar la salida dentro del modal
-        const btnConfirmLogout = document.getElementById("btnConfirmLogout");
-        if (btnConfirmLogout) {
-          btnConfirmLogout.addEventListener("click", () => {
-            // Borrar el historial de navegación para evitar volver atrás
-            history.pushState(null, null, "../index.html");
-            window.location.href = "../index.html";
-          });
-        }
       });
-    </script>
-  </body>
+
+      const modalLogout = new bootstrap.Modal(
+        document.getElementById("modalLogout"),
+      );
+
+      // Botón Salir (Abre el Modal en lugar del confirm de Chrome)
+      const btnLogout = document.getElementById("btnLogout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+          modalLogout.show();
+          F;
+        });
+      }
+
+      // Acción al confirmar la salida dentro del modal
+      const btnConfirmLogout = document.getElementById("btnConfirmLogout");
+      if (btnConfirmLogout) {
+        btnConfirmLogout.addEventListener("click", () => {
+          // Extrae la ruta base del repositorio (e.g., "/unid_Banner/")
+          const pathSegments = window.location.pathname.split('/');
+
+          // Si el sitio corre en GitHub Pages (ej: localdesktop-33.github.io/unid_Banner/...)
+          // pathSegments[1] siempre será "unid_Banner"
+          if (window.location.hostname.includes("github.io")) {
+            const repoName = pathSegments[1];
+            window.location.href = `${window.location.origin}/${repoName}/index.html`;
+          } else {
+            // Para cuando pruebas localmente en VS Code (Live Server)
+            window.location.href = "/index.html";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

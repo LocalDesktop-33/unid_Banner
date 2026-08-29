@@ -815,13 +815,22 @@
         });
       }
 
-      // Acción al confirmar la salida dentro del modal
+       // Acción al confirmar la salida dentro del modal
       const btnConfirmLogout = document.getElementById("btnConfirmLogout");
       if (btnConfirmLogout) {
         btnConfirmLogout.addEventListener("click", () => {
-          // Detecta el nombre de tu repositorio dinámicamente
-          const repoName = window.location.pathname.split('/')[1];
-          window.location.href = `/${repoName}/index.html`;
+          // Extrae la ruta base del repositorio (e.g., "/unid_Banner/")
+          const pathSegments = window.location.pathname.split('/');
+
+          // Si el sitio corre en GitHub Pages (ej: localdesktop-33.github.io/unid_Banner/...)
+          // pathSegments[1] siempre será "unid_Banner"
+          if (window.location.hostname.includes("github.io")) {
+            const repoName = pathSegments[1];
+            window.location.href = `${window.location.origin}/${repoName}/index.html`;
+          } else {
+            // Para cuando pruebas localmente en VS Code (Live Server)
+            window.location.href = "/index.html";
+          }
         });
       }
     });
